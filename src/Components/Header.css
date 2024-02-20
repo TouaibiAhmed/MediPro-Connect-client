@@ -1,0 +1,142 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    /* Other styling for your header */
+  }
+  
+  .header-icons {
+    display: flex;
+    align-items: center;
+  }
+  
+  .icon-container {
+    position: relative;
+    margin: 10px;
+  }
+  
+  .notification-icon, .account-icon {
+    cursor: pointer;
+    margin-left: 20px;
+    font-size: 24px; /* Adjust as needed */
+  }
+  
+  .dropdown-menu {
+    position: absolute;
+    top: 100%; /* Position below the icon */
+    right: 0;
+    background-color: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+    padding: 10px;
+    z-index: 1000; /* Make sure it's above other content */
+  }
+  
+  .dropdown-menu p {
+    margin: 10px 0;
+    padding: 5px 10px;
+    cursor: pointer;
+  }
+  
+  .dropdown-menu p:hover {
+    background-color: #f0f0f0;
+  }
+  
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    height: 60px;
+}
+
+.logo img {
+    height: 75px; /* You can adjust the size as needed */
+    width: 170px ;
+    margin-bottom: 5px;
+
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 10px;
+}
+
+nav ul li {
+    padding: 0 40px;
+    
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+    transition: color 0.3s; /* Smooth transition for hover effect */
+}
+
+/* Hover effect for navigation links */
+nav ul li a:hover {
+    color: #007bff; /* Change the color to whatever you prefer */
+}
+
+
+.header-right {
+    display: flex;
+    align-items: center;
+}
+
+.search input[type="text"] {
+    padding: 5px;
+    margin-right: 10px;
+    border: none;
+    border-radius: 4px;
+}
+
+.sign-in button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.sign-in button:hover {
+    background-color: #0056b3;
+}
+
+
+/* Header.css */
+
+.sign-in {
+    position: relative;
+  }
+  
+  .sign-in button {
+    /* Style your button here */
+  }
+  
+  .dropdown-menu {
+    position: absolute;
+    top: 100%; /* Position right below the button */
+    right: 0;
+    /* Other styles for the dropdown */
+  }
+  
+  .dropdown-menu p {
+    /* Styles for dropdown items */
+  }
+  
+  /* Make sure the dropdown is not hidden */
+  

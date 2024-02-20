@@ -1,0 +1,301 @@
+.dashboard-container {
+    display: flex;
+    flex-direction: row; /* Ensures that sidebar and main content are in a row */
+    font-family: 'Arial', sans-serif;
+    background-color: #F6F1F1;
+  }
+  
+ /* Sidebar.css */
+.sidebar {
+    width: 250px;
+    height: 100vh;
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+  }
+  
+  .profile-section {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  
+  .profile-image {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+  }
+  
+  .profile-name {
+    font-size: 1.2em;
+    color: #333;
+  }
+  
+  .profile-title {
+    font-size: 1em;
+    color: #777;
+  }
+  
+  /* Add this CSS to your stylesheet */
+/* Adjust the .navigation-menu class */
+.navigation-menu ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: block; /* Change made here to ensure vertical stacking */
+  }
+  
+  .navigation-menu li.menu-item {
+    display: block; /* This ensures each menu item appears on a new line */
+    padding: 10px;
+    color: #333;
+    text-decoration: none;
+    font-size: 16px;
+    cursor: pointer;
+    border-bottom: 1px solid #ddd; /* Adds a separator between the items */
+  }
+  
+  /* Adjust the .menu-item class */
+  .menu-item {
+    padding: 10px;
+    margin: 10px 0; /* This will add space between menu items */
+    cursor: pointer;
+    display: flex;
+    font-size: 1rem;
+    color: #333; /* Set the color of the menu item text */
+  }
+  
+  /* Rest of your styles follow... */
+    
+  .navigation-menu li.menu-item:hover {
+    background-color: #f7f7f7; /* Changes the background on hover */
+  }
+  
+  .navigation-menu li.menu-item.active {
+    background-color: #e9ecef; /* Highlights the active menu item */
+  }
+  
+  .menu-icon {
+    margin-right: 8px; /* Adds some space between the icon and the text */
+    /* Add additional styles for your icons */
+  }
+  
+  /* You can use specific classes to add specific icons */
+  .dashboard-icon {
+    /* Style for dashboard icon */
+  }
+  
+  .appointments-icon {
+    /* Style for appointments icon */
+  }
+  
+  .history-icon {
+    /* Style for history icon */
+  }
+  
+  .reports-icon {
+    /* Style for reports icon */
+  }
+  
+  /* Add specific styles for the icons, such as background-image if you're using sprites */
+  
+  
+  .menu-item.active {
+    background-color: #ddd;
+  }
+  
+  .menu-item:not(:last-child) {
+    margin-bottom: 10px;
+  }
+  
+  .menu-icon {
+    margin-right: 10px;
+    /* You'll need to replace the following with actual icon images or font icons */
+  }
+  
+  .dashboard-icon::before {
+    content: '🏠'; /* Placeholder emoji, replace with your icon */
+  }
+  
+  .appointments-icon::before {
+    content: '📅'; /* Placeholder emoji, replace with your icon */
+  }
+  
+  .history-icon::before {
+    content: '📚'; /* Placeholder emoji, replace with your icon */
+  }
+  
+  .reports-icon::before {
+    content: '📈'; /* Placeholder emoji, replace with your icon */
+  }
+  
+  .profile-section {
+    /* Style your profile section */
+  }
+  
+  .navigation {
+    /* Style your navigation */
+  }
+  
+  .main-content {
+    flex-grow: 1;
+    padding: 20px;
+    /* Additional styling */
+  }
+  
+  .dashboard-header {
+    /* Style your dashboard header */
+  }
+  
+  .stats-section {
+    /* Style your stats section */
+  }
+  
+  .appointment-activity {
+    background-color: #ffffff;
+    margin-top: 20px;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .appointment-activity h2 {
+    margin-bottom: 30px;
+    margin-top: -50px;
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  table th, table td {
+    text-align: left;
+    padding: 8px;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .navigation-menu {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    margin: 0;
+  }
+  
+  .menu-item {
+    padding: 10px;
+    margin: 10px 0;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    font-size: 1rem;
+    width:200px;
+  }
+  
+  .nav-item:hover {
+    background-color: #e0e0e0; /* A slight hover effect */
+  }
+
+  .stats-section {
+    display: flex;
+    justify-content: space-around; /* Adjust as necessary for your layout */
+    padding: 20px;
+    /* Add other styles as needed for your layout */
+  }
+  
+  .stat-item {
+    display: flex;
+    align-items: center;
+    background-color: #fff; /* Or any color that matches your design */
+    padding: 10px;
+    border-radius: 8px; /* Round the corners of the stat items */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Add a subtle shadow */
+    /* Add other styles as needed for your layout */
+  }
+  
+  .stat-icon {
+    font-size: 2rem; /* Adjust the size of your icons */
+    margin-right: 10px; /* Add some space between the icon and the text */
+  }
+  
+  .stat-info {
+    text-align: left;
+  }
+  
+  .stat-value {
+    font-size: 1.5rem; /* Adjust as necessary for your design */
+    font-weight: bold;
+  }
+  
+  .stat-label {
+    font-size: 1rem;
+    color: #666; /* Adjust the color as needed */
+  }
+  
+  .pagination {
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    margin-left: 500px;
+    
+  }
+  
+  .page-item {
+      padding: 5px 10px;
+    cursor: pointer;
+    background-color: #f0f0f0;
+    border-radius: 5px;
+    user-select: none;
+    border-radius: 8px; /* Round the corners of the stat items */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Add a subtle shadow */
+
+  }
+  
+  .page-item:hover:not(.disabled) {
+    background-color: #e0e0e0;
+  }
+  
+  .page-item.active {
+    background-color: #007bff;
+    color: white;
+  }
+  
+  .page-item.disabled {
+    color: #ccc;
+    cursor: default;
+  }
+
+.medipro{
+  text-align: center;
+  margin-top: 130px;
+  color: #746F6F;
+  font-size: medium;
+
+}
+
+.date-switcher {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 30px;
+  margin-left: 850px;
+}
+
+.date-switcher button {
+  padding: 5px 10px;
+  margin: 0 10px;
+  background: #f0f0f0;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.date-switcher button:hover {
+  background: #e0e0e0;
+}
+
+.date-switcher span {
+  font-weight: bold;
+}
