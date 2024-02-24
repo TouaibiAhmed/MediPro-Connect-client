@@ -4,16 +4,29 @@ import React, {useState} from 'react';
 import './Header.css';
 function Header() {
 
+
     const [showNotifications, setShowNotifications] = useState(false);
     const [showAccountOptions, setShowAccountOptions] = useState(false);
-  
+    const [language, setLanguage] = useState('en'); // Default language is English
+    const [showLanguageOptions, setShowLanguageOptions] = useState(false);
+
+
+
+
     const toggleNotifications = () => setShowNotifications(!showNotifications);
     const toggleAccountOptions = () => {
         setShowAccountOptions(prevShow => !prevShow);
       };  
 
+      const toggleLanguageOptions = () => setShowLanguageOptions(prevShow => !prevShow);
 
 
+
+      const changeLanguage = (lang) => {
+        setLanguage(lang);
+        setShowLanguageOptions(false);
+        // Add your language change logic here
+      };
 
     return (
         <div className="header-container">
@@ -32,6 +45,16 @@ function Header() {
         <div className="header-right">
         <div className="header-icons">
         <div className="icon-container">
+
+        <span className="language-icon" onClick={toggleLanguageOptions}>🌐</span>
+            {showLanguageOptions && (
+              <div className="dropdown-menu language-dropdown">
+                <p onClick={() => changeLanguage('en')}>English</p>
+                <p onClick={() => changeLanguage('ar')}>العربية</p>
+                <p onClick={() => changeLanguage('fr')}>Français</p>
+              </div>
+            )}
+
           <span className="notification-icon" onClick={toggleNotifications}>🔔</span>
           {showNotifications && (
             <div className="dropdown-menu notifications-dropdown">

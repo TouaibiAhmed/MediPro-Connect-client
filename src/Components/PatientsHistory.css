@@ -374,3 +374,53 @@
   
   /* Add additional styling as needed */
   
+
+
+
+
+
+
+/* PatientInteractions.css */
+
+.patient-interactions {
+    margin-top: 20px;
+  }
+  
+  .patient-interactions h2 {
+    margin-bottom: 10px;
+  }
+  
+  .patient-interactions table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .patient-interactions th,
+  .patient-interactions td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+  }
+  
+  .patient-interactions th {
+    background-color: #f4f4f4;
+  }
+  
+  .patient-interactions td {
+    background-color: #fff;
+  }
+  
+  .search-container {
+    margin-bottom: 20px;
+  }
+  
+  .search-container input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+  }
+  
+
+

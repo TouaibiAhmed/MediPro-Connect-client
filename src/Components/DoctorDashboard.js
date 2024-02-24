@@ -56,7 +56,7 @@ const DoctorDashboard = () => {
     <div className="dashboard-container">
         <aside className="sidebar">
       <div className="profile-section">
-        <img src="/images/3ozba.jpg" alt="Dr. Profile" className="profile-image" />
+        <img src="/images/doctor.png" alt="Dr. Profile" className="profile-image" />
         <h3 className="profile-name">Dr. Touaibi Ahmed</h3>
         <p className="profile-title">Dentist</p>
       </div>

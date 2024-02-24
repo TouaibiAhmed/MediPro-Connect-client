@@ -6,12 +6,13 @@ import SignUpPat from './Components/Signuppatients.js';
 import DoctorDashboard from './Components/DoctorDashboard.js';
 import SearchBar from './Components/Doctorslist.js';
 import Appointments from './Components/Appointments.js'
+import PatientHistory from './Components/PatientsHistory.js';
 function App() {
   return (
     <div className="App">
       <Header/>
       
-     <Appointments/>
+     <DoctorDashboard/>
 
     </div>
   );
