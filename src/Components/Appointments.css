@@ -2,7 +2,7 @@
     display: flex;
     flex-direction: row; /* Ensures that sidebar and main content are in a row */
     font-family: 'Arial', sans-serif;
-    background-color: #F6F1F1;
+    background-color: #f4f4f4;
   }
   
  /* Sidebar.css */
@@ -112,13 +112,7 @@
     content: '📈'; /* Placeholder emoji, replace with your icon */
   }
   
-  .profile-section {
-    /* Style your profile section */
-  }
-  
-  .navigation {
-    /* Style your navigation */
-  }
+ 
   
   .main-content {
     flex-grow: 1;
@@ -126,13 +120,7 @@
     /* Additional styling */
   }
   
-  .dashboard-header {
-    /* Style your dashboard header */
-  }
-  
-  .stats-section {
-    /* Style your stats section */
-  }
+
   
   .appointment-activity {
     background-color: #ffffff;
@@ -142,10 +130,7 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   }
   
-  .appointment-activity h2 {
-    margin-bottom: 30px;
-    margin-top: -50px;
-  }
+
   
   table {
     width: 100%;
@@ -179,74 +164,10 @@
     background-color: #e0e0e0; /* A slight hover effect */
   }
 
-  .stats-section {
-    display: flex;
-    justify-content: space-around; /* Adjust as necessary for your layout */
-    padding: 20px;
-    /* Add other styles as needed for your layout */
-  }
-  
-  .stat-item {
-    display: flex;
-    align-items: center;
-    background-color: #fff; /* Or any color that matches your design */
-    padding: 10px;
-    border-radius: 8px; /* Round the corners of the stat items */
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Add a subtle shadow */
-    /* Add other styles as needed for your layout */
-  }
-  
-  .stat-icon {
-    font-size: 2rem; /* Adjust the size of your icons */
-    margin-right: 10px; /* Add some space between the icon and the text */
-  }
-  
-  .stat-info {
-    text-align: left;
-  }
-  
-  .stat-value {
-    font-size: 1.5rem; /* Adjust as necessary for your design */
-    font-weight: bold;
-  }
-  
-  .stat-label {
-    font-size: 1rem;
-    color: #666; /* Adjust the color as needed */
-  }
-  
-  .pagination {
-    display: flex;
-    justify-content: center;
-    padding: 20px;
-    margin-left: 500px;
-    
-  }
-  
-  .page-item {
-      padding: 5px 10px;
-    cursor: pointer;
-    background-color: #f0f0f0;
-    border-radius: 5px;
-    user-select: none;
-    border-radius: 8px; /* Round the corners of the stat items */
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Add a subtle shadow */
+ 
 
-  }
   
-  .page-item:hover:not(.disabled) {
-    background-color: #e0e0e0;
-  }
-  
-  .page-item.active {
-    background-color: #007bff;
-    color: white;
-  }
-  
-  .page-item.disabled {
-    color: #ccc;
-    cursor: default;
-  }
+
 
 .medipro{
   text-align: center;
@@ -256,30 +177,7 @@
 
 }
 
-.date-switcher {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 30px;
-  margin-left: 850px;
-}
 
-.date-switcher button {
-  padding: 5px 10px;
-  margin: 0 10px;
-  background: #f0f0f0;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-.date-switcher button:hover {
-  background: #e0e0e0;
-}
-
-.date-switcher span {
-  font-weight: bold;
-}
 
 
 .appointment-requests .header {
@@ -289,16 +187,16 @@
   
   .appointment-requests .header .request-details div,
   .appointment-requests .header .request-actions {
-    padding: 10px 0; /* More padding for header items */
+    padding: 20px ; /* More padding for header items */
   }
 
 
 
-/* AppointmentRequests.css */
 
 .appointment-requests {
     margin-top: 40px;
     margin-left: 30px;
+    padding: 20px;
   }
   
   .appointment-request {
@@ -313,64 +211,130 @@
     width: 600px;
   }
   
-  .request-details > div {
-    margin-right: 10px;
-  }
-  
-  .request-actions > button {
-    padding: 5px 10px;
-    margin-left: 10px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-  }
-  
-  .request-actions > button:hover {
-    opacity: 0.8;
-  }
-
-
   /* Appointments.css */
 
-.appointment-requests {
-    /* Style as needed */
-  }
-  
-  .appointment-requests h2 {
-    /* Style as needed */
-  }
-  
-  .appointment-requests table {
-    width: 900px;
-    border-collapse: collapse;
-    margin-top: 20px;
-  }
-  
-  .appointment-requests th,
-  .appointment-requests td {
-    border: 1px solid #ddd;
-    padding: 8px;
-    text-align: left;
-  }
-  
-  .appointment-requests th {
-    background-color: #f4f4f4;
-    text-align: center;
-  }
-  
-  .appointment-requests td {
-    background-color: #fff;
-    text-align: center;
-  }
-  
-  .appointment-requests button {
-        margin: 10px 10px;
-        height: 30px;
-        width: 90px;
-    
+/* Existing styles */
 
-    /* Additional button styling */
-  }
+/* ... */
+
+/* Style for the status indicator resembling a toggle switch */
+.status-indicator {
+  display: inline-block;
+  width: 45px; /* Width of the outer part of the switch */
+  height: 20px; /* Height of the outer part of the switch */
+  border-radius: 15px; /* Full border radius to make it rounded */
+  background-color: #bbb; /* Default inactive color */
+  position: relative;
+  transition: background-color 0.3s;
+  border: 1px solid #746F6F;
+}
+
+.status-indicator:before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 2px; /* Small space from the left side */
+  transform: translate(0, -50%);
+  width: 15px; /* Width of the inner circle */
+  height: 15px; /* Height of the inner circle */
+  border-radius: 50%;
+  background-color: white; /* Color of the inner circle */
+  transition: transform 0.3s;
+}
+
+.status-indicator.active {
+  background-color: #4CAF50; /* Active color, green for example */
+}
+
+.status-indicator.active:before {
+  transform: translate(15px, -50%); /* Move to the right when active */
+}
+
+/* Add styles for the table headers and cells to match the design */
+table {
+  /* Existing styles */
+  width: 950px;
+  height: 400px;
+  border-collapse: collapse;
+  text-align: left;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  border-radius: 15px; /* Adjusted for rounded corners */
+
+}
+
+
+
+th {
   
-  /* Add additional styling as needed */
+  background-color: #007bff; /* Adjust the color to match your design */
+  color: white;
+  border-bottom: 1px solid #ddd; /* Light grey border for separation */
+  padding: 10px; /* Adjust padding as needed */
+}
+
+td {
+  padding: 10px; /* Adjust padding as needed */
+  background-color:#ffffff;
+  border-bottom: 1px solid #ddd; /* Light grey border for separation */
+}
+
+/* Add additional styling for contact info and other table elements as needed */
+
+/* Styles for the contact column to resemble the design */
+.contact-info {
+  /* Styling for contact information, possibly to include a phone icon or similar */
+}
+
+/* Ensure that your table rows and other elements match the styling from the image */
+tr:hover {
+  background-color: #f2f2f2; /* Adjust hover color as needed */
+}
+
+
+.acc_icon{
+  height: 30px;
+  width: 30px;
+  margin-top: 3px;
+  margin-right: 4px;
+}
+.dec_icon{
   
+  height: 28px;
+  width: 28px;
+  margin-top: 3px;
+  margin-right: 4px;
+  margin-left: 10px;
+}
+
+
+/* Inside Appointments.css */
+
+/* Toggle switch styles */
+.toggle {
+  position: relative;
+  width: 40px; /* Width of the outer toggle */
+  height: 20px; /* Height of the outer toggle */
+  background-color: #ccc; /* Background of the toggle when inactive */
+  border-radius: 20px; /* Full border radius for rounded edges */
+  transition: background-color 0.3s;
+  cursor: pointer; /* Changes the cursor to a pointer */
+}
+
+.toggle.active {
+  background-color: #4CAF50; /* Active color for the toggle */
+}
+
+.toggle-handle {
+  position: absolute;
+  top: 2px; /* Slightly smaller to create a gap at the top and bottom */
+  left: 2px; /* Positioned at the left when inactive */
+  width: 16px; /* The size of the inner circle */
+  height: 16px; /* The size of the inner circle */
+  background-color: #fff; /* Color of the inner circle */
+  border-radius: 50%; /* Full border radius for a circular shape */
+  transition: left 0.3s;
+}
+
+.toggle.active .toggle-handle {
+  left: 22px; /* Positioned to the right when active */
+}

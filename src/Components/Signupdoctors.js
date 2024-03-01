@@ -10,10 +10,18 @@ const SignUp = () => {
     email: '',
     password: '',
     rneCode: '',
-    specialty: ''
+    specialte: ''
   });
 
   const [rneCode, setRneCode] = useState('');
+
+
+ // New state for managing toast notification
+ const [showToast, setShowToast] = useState(false);
+ const [toastMessage, setToastMessage] = useState('');
+
+
+
 
 
   const handleInputChange = (e) => {
@@ -21,14 +29,50 @@ const SignUp = () => {
     setFormData({ ...formData, [name]: value });
   };
 
-  const handleSignIn = (event) => {
+  const handleSignIn = async (event) => {
     event.preventDefault();
-    // Handle the sign-in logic here
-    console.log('Signing in with:', formData);
+    try {
+      const response = await fetch("http://localhost:3000/api/medecins/register", {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          nom: formData.name,
+          prenom: formData.prename,
+          dateDeNaissance: formData.birthDate,
+          codePostal: formData.postalCode,
+          email: formData.email,
+          motDePasse: formData.password,
+          Rne: rneCode, 
+          specialite: formData.specialte,
+        }),
+      });
+  
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+  
+      const data = await response.json();
+      console.log('Success:', data);
+
+
+
+// Show toast on success
+      setShowToast(true);
+      setToastMessage("Registration successful! Welcome to our platform.");
+      setTimeout(() => setShowToast(false), 5000); // Hide toast after 5 seconds  
+      
+    
+    } 
+      catch (error) {
+      console.error('There was an error:', error);
+    }
   };
 
   return (
     <div className="signin-container">
+      {showToast && <div className="toast">{toastMessage}</div>}
       <div className="signin-image">
         <img src="/images/signup1.png" alt="Doctors Illustration" />
       </div>
@@ -93,6 +137,7 @@ const SignUp = () => {
   <input
     type="text"
     placeholder="RNE code"
+    name='rneCode'
     value={rneCode}
     onChange={(e) => setRneCode(e.target.value)}
     required
@@ -100,7 +145,7 @@ const SignUp = () => {
           <p className="input-hint">*The RNE code is used for the identity verification*</p>
           </div>
           <select
-            name="specialty"
+            name="specialte"
             value={formData.specialty}
             onChange={handleInputChange}
             required

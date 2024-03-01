@@ -1,20 +1,55 @@
 import React, {useState} from 'react';
-import './Appointments.css'; // Ensure you have a corresponding CSS file for styling
+import './Appointments.css'; 
 
 
 const Appointments = ({ requests, onAccept, onCancel }) => {
+  const [searchTerm, setSearchTerm] = useState('');
+  const [filteredRequests, setFilteredRequests] = useState([]);
+
+
+
+ 
+    setFilteredRequests(filtered);
+}, [searchTerm, appointmentRequests]);
 
 
     const [appointmentRequests, setAppointmentRequests] = useState([
         // Placeholder data for appointment requests
-        { patientName: 'Ahmed', prename: 'Touaibi', age: 21, date: '20/02/2024', visitTime: '10:00-10:30 am' },
-        { patientName: 'Belgacem', prename: 'Balti', age: 22, date: '20/02/2024', visitTime: '11:00-11:30 am' },
-        { patientName: 'Jane Doe', prename: 'Jane', age: 28, date: '20/02/2024', visitTime: '10:00-10:30 am' },
-        { patientName: 'Jane Doe', prename: 'Jane', age: 28, date: '20/02/2024', visitTime: '10:00-10:30 am' },
-        { patientName: 'Jane Doe', prename: 'Jane', age: 28, date: '20/02/2024', visitTime: '10:00-10:30 am' },
+        { patientName: 'Ahmed', prename: 'Touaibi', age: 21, date: '20/02/2024', visitTime: '10:00-10:30 am' , contact: 99777555, status: 'pending'},
+        { patientName: 'Belgacem', prename: 'Balti', age: 22, date: '20/02/2024', visitTime: '11:00-11:30 am',contact: 99777555 ,status: 'pending' },
+        { patientName: 'Jane Doe', prename: 'Jane', age: 28, date: '20/02/2024', visitTime: '10:00-10:30 am',contact: 99777555 ,status: 'pending' },
+        { patientName: 'Jane Doe', prename: 'Jane', age: 28, date: '20/02/2024', visitTime: '10:00-10:30 am',contact: 99777555, status: 'pending' },
+        { patientName: 'Jane Doe', prename: 'Jane', age: 28, date: '20/02/2024', visitTime: '10:00-10:30 am',contact: 99777555, status: 'pending' },
 
         // ... more requests
       ]);
+
+
+      const toggleStatus = (index) => {
+        setAppointmentRequests((currentRequests) => {
+          // Clone the array to avoid direct state mutation
+          const newRequests = [...currentRequests];
+          // Toggle the status at the specified index
+          newRequests[index] = {
+            ...newRequests[index],
+            status: newRequests[index].status === 'confirmed' ? 'declined' : 'confirmed'
+          };
+          return newRequests;
+        });
+      };
+
+      const ToggleStatus = ({ isActive, onToggle }) => {
+        return (
+          <div className={`toggle ${isActive ? 'active' : 'inactive'}`} onClick={onToggle}>
+            <div className="toggle-handle"></div>
+          </div>
+        );
+      };
+      
+      
+
+
+
     
       // Handlers for accepting and canceling appointment requests
       const acceptAppointment = (index) => {
@@ -70,37 +105,52 @@ const Appointments = ({ requests, onAccept, onCancel }) => {
     <p  className='medipro'> © 2024 MediPro Connect. </p>
   </aside>
   <div className="appointment-requests">
-  <h2>Appointment Requests</h2>
-      <table>
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Prename</th>
-            <th>Age</th>
-            <th>Date</th>
-            <th>Visit Time</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          {appointmentRequests.map((request, index) => (
-            <tr key={index}>
-              <td>{request.patientName}</td>
-              <td>{request.prename}</td>
-              <td>{request.age}</td>
-              <td>{request.date}</td> {/* Ensure you have the 'date' in your data */}
-              <td>{request.visitTime}</td>
-              <td>
-                <button onClick={() => acceptAppointment(index)}>Accept</button>
-                <button onClick={() => cancelAppointment(index)}>Cancel</button>
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
-    </div>
-  );
+
+  <input
+                    type="text"
+                    placeholder="Search by patient name..."
+                    value={searchTerm}
+                    onChange={(e) => setSearchTerm(e.target.value)}
+                    className="search-field"
+                />
+                <h2>Appointment Requests</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Patient Name</th>
+                            <th>Age</th>
+                            <th>Date</th>
+                            <th>Time</th>
+                            <th>Contact</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {appointmentRequests.map((request, index) => (
+                            <tr key={index}>
+                                <td>{`${request.patientName} ${request.prename}`}</td>
+                                <td>{request.age}</td>
+                                <td>{request.date}</td>
+                                <td>{request.visitTime}</td>
+                                <td>{request.contact}</td>
+                                <td>
+                                <ToggleStatus
+          isActive={request.status === 'confirmed'}
+          onToggle={() => toggleStatus(index)}
+        />
+                                            </td>
+                                <td>
+                                    <img src='/images/acc_icon.png' onClick={() => acceptAppointment(index)} className='acc_icon'/>
+                                    <img src='/images/dec_icon.png' onClick={() => cancelAppointment(index)} className='dec_icon'/>
+                                </td>
+                            </tr>
+                        ))}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    );
 };
 
 export default Appointments;

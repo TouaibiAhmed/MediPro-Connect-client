@@ -6,7 +6,7 @@ const SignUpPat = () => {
     name: '',
     prename: '',
     birthDate: '',
-    postalCode: '',
+    telephone: '',
     email: '',
     password: '',
     Adresse: '',
@@ -17,22 +17,66 @@ const SignUpPat = () => {
     setFormData({ ...formData, [name]: value });
   };
 
-  const handleSignIn = (event) => {
+// New state for managing toast notification
+const [showToast, setShowToast] = useState(false);
+const [toastMessage, setToastMessage] = useState('');
+
+
+
+
+  const handleSignUp = async (event) => {
     event.preventDefault();
-    // Handle the sign-in logic here
-    console.log('Signing in with:', formData);
+    try {
+      const response = await fetch("http://localhost:3000/api/patient/register", {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          nom: formData.name,
+          prenom: formData.prename,
+          dateNaissance: formData.birthDate,
+          telephone: formData.telephone,
+          email: formData.email,
+          motDePasse: formData.password,
+          adresse: formData.Adresse,
+
+        }),
+      });
+  
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+  
+      const data = await response.json();
+      console.log('Success:', data);
+
+// Show toast on success
+setShowToast(true);
+setToastMessage("Registration successful! Welcome to our platform.");
+setTimeout(() => setShowToast(false), 5000); // Hide toast after 5 seconds  
+
+      
+
+
+    } catch (error) {
+      console.error('There was an error:', error);
+    }
   };
+  
 
   return (
     <div className="signin-container">
+            {showToast && <div className="toast">{toastMessage}</div>}
+
       <div className="signin-image">
         <img src="/images/signup2.png" alt="Doctors Illustration" />
       </div>
       <div className="signin-form-container">
-        <form onSubmit={handleSignIn} className="signin-form">
+        <form onSubmit={handleSignUp} className="signin-form">
           <h2>Sign In</h2>
           <p className="subtitle">Patients Registration</p>
-          <div className="input-row">
+          <div className="input-row" >
             <input
               type="text"
               name="name"
@@ -60,9 +104,9 @@ const SignUpPat = () => {
             />
             <input
               type="text"
-              name="postalCode"
-              placeholder="Postal Code"
-              value={formData.postalCode}
+              name="telephone"
+              placeholder="Telephone"
+              value={formData.telephone}
               onChange={handleInputChange}
               required
             />
@@ -94,6 +138,7 @@ const SignUpPat = () => {
             onChange={handleInputChange}
             required
           />
+          
   </div>
           <button type="submit" className="signin-button">Sign In</button>
           <div className="signin-footer">

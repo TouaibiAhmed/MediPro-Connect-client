@@ -1,10 +1,52 @@
 import React, { useState } from 'react';
 import './DoctorDashboard.css';
-import Appointments from './Appointments';
+import { Calendar, momentLocalizer } from 'react-big-calendar';
+import moment from 'moment';
+import 'react-big-calendar/lib/css/react-big-calendar.css';
+import { Bar, Pie } from 'react-chartjs-2';
+import { Doughnut } from 'react-chartjs-2';
+import 'chart.js/auto'; // You need to import this for Chart.js 3
+
+const data = {
+  labels: ['Satisfied', 'Unsatisfied', 'NA'],
+  datasets: [
+    {
+      data: [85, 6, 9],
+      backgroundColor: [
+        '#49A9EA',
+        '#36CAAB',
+        '#FFD700'
+      ],
+      hoverBackgroundColor: [
+        '#49A9EA',
+        '#36CAAB',
+        '#FFD700'
+      ],
+      borderWidth: 0, // Set this to 0 to remove the border
+    }
+  ]
+};
+
+const options = {
+  cutoutPercentage: 80,
+  maintainAspectRatio: false, // Add this to maintain the aspect ratio without stretching
+  plugins: {
+    legend: {
+      display: true,
+      position: 'bottom'
+    }
+  }
+};
+
+
+
+
+
+
+
 const DoctorDashboard = () => {
 
-  const [currentPage, setCurrentPage] = useState(1);
-  const [appointmentsPerPage] = useState(5);
+  
 
   // New state for selected date
   const [selectedDate, setSelectedDate] = useState(new Date().toISOString().split('T')[0]); // Format: YYYY-MM-DD
@@ -18,33 +60,65 @@ const DoctorDashboard = () => {
     });
   };
 
+  const localizer = momentLocalizer(moment);
+
+
+  const chartData = {
+    labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August','September', 'October', 'Novermber', 'December' ],
+    datasets: [
+      {
+        label: 'Number of Appointments',
+        data: [9, 14, 6, 11, 7, 10,9, 14, 6, 11, 7, 10],
+        backgroundColor: 'rgba(41, 166, 250)',
+        borderColor: 'rgba(54, 162, 235, 1)',
+        borderWidth: 1,
+      },
+    ],
+  };
+  
+  const chartOptions = {
+    scales: {
+      y: {
+        beginAtZero: true,
+      },
+    },
+    plugins: {
+      legend: {
+        display: true,
+      },
+    },
+  };
+  
+
+
+
+
     const appointments = [
     { name: 'Ahmed', prename: 'Touaibi', age: 21, date: '06/02/2024', time: '9.15-10.15 am' },
     // ... more appointments
   ];
+
+  const myEventsList = appointments.map(appointment => {
+    return {
+      title: `${appointment.name} ${appointment.prename}`,
+      start: new Date(appointment.date),
+      end: new Date(appointment.date),
+      allDay: false
+    };
+  });
+
+
   const stats = [
-    { label: 'Total Patients', value: 10, icon: '👥' },
-    { label: 'Total Appointments', value: 14, icon: '📅' },
-    { label: 'Total Review', value: '4.2/5', icon: '⭐' },
+    { label: 'Total Patients', value: 10, icon: '/images/stat-icon1.svg '  },
+    { label: 'Total Appointments', value: 14, icon: '/images/stat-icon2.svg'    },
+    { label: 'Total Review', value: '4.2/5', icon: '/images/stat-icon3.svg'  },
     // ... more stats
   ];
-  const indexOfLastAppointment = currentPage * appointmentsPerPage;
-  const indexOfFirstAppointment = indexOfLastAppointment - appointmentsPerPage;
-  const currentAppointments = appointments.slice(indexOfFirstAppointment, indexOfLastAppointment);
-
-  const totalPageCount = Math.ceil(appointments.length / appointmentsPerPage);
-  const pageNumbers = [];
-  for (let i = 1; i <= totalPageCount; i++) {
-    pageNumbers.push(i);
-  }
-
-  const paginate = (pageNumber) => setCurrentPage(pageNumber);
-  const goToPrevPage = () => setCurrentPage(currentPage => Math.max(1, currentPage - 1));
-  const goToNextPage = () => setCurrentPage(currentPage => Math.min(totalPageCount, currentPage + 1));
-
-  
   
 
+
+
+  
 
 
 
@@ -88,62 +162,56 @@ const DoctorDashboard = () => {
           {/* Search and other header content */}
         </header>
         <section className="stats-section">
-      {stats.map((stat, index) => (
-        <div key={index} className="stat-item">
-          <span className="stat-icon">{stat.icon}</span>
-          <div className="stat-info">
-          <div className="stat-label">{stat.label}</div>
-            <div className="stat-value">{stat.value}</div>
-            
-          </div>
-        </div>
-      ))}
-    </section>
-  
-        <section className="appointment-activity">
-        <div className="date-switcher">
-            <button onClick={() => changeDate(-1)}>&lt;</button>
-            <span>{selectedDate}</span>
-            <button onClick={() => changeDate(1)}>&gt;</button>
-          </div>
-          <h2>Appointment Activity</h2>
-          <table>
-            <thead>
-              <tr>
-                <th>Name</th>
-                <th>Prename</th>
-                <th>Age</th>
-                <th>Date</th>
-                <th>Visit Time</th>
-              </tr>
-            </thead>
-            <tbody>
-              {appointments.map((appointment, index) => (
-                <tr key={index}>
-                  <td>{appointment.name}</td>
-                  <td>{appointment.prename}</td>
-                  <td>{appointment.age}</td>
-                  <td>{appointment.date}</td>
-                  <td>{appointment.time}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-           <div className="pagination">
-            <span className={`page-item ${currentPage === 1 ? 'disabled' : ''}`} onClick={goToPrevPage}>
-              Prev
-            </span>
-            {pageNumbers.map(number => (
-              <span key={number} className={`page-item ${currentPage === number ? 'active' : ''}`} onClick={() => paginate(number)}>
-                {number}
-              </span>
-            ))}
-            <span className={`page-item ${currentPage === totalPageCount ? 'disabled' : ''}`} onClick={goToNextPage}>
-              Next
-            </span>
-          </div>
-             </section>
-       
+  {stats.map((stat, index) => (
+    <div key={index} className="stat-item">
+      <div className="stat-info">
+        <div className="stat-label">{stat.label}</div>
+        <div className="stat-value">{stat.value}</div>
+      </div>
+      <div className="stat-icon-wrapper">
+        <img src={stat.icon} alt="" className="stat-icon"/>
+      </div>
+    </div>
+  ))}
+</section>
+
+
+  <div className="appointment-activity">
+
+
+<div className="calendar-container">
+  <h2>Appointment Activity</h2>
+  <Calendar
+    localizer={localizer}
+    events={myEventsList}
+    startAccessor="start"
+    endAccessor="end"
+    style={{ height: 400 , width: '100%'}} // Removed width here to be controlled by CSS
+  />
+</div>
+<div className="charts-container">
+
+<div className="bar-chart-container">
+  <h2>Monthly Appointments</h2>
+  <Bar data={chartData} options={chartOptions} style={{ height: 100 , width: 600 }} />
+</div>
+
+<div className="doughnut-chart-container">
+    <h2>New Patients</h2>
+    <div style={{ position: 'relative', width: '300px', height: '300px', marginLeft: '20px' }}>
+      <Doughnut data={data} options={options} />
+    </div>
+    <div style={{ display: 'flex', justifyContent: 'center', marginTop: '10px', }}>
+      <div style={{ marginRight: '10px' }}><strong>85%</strong> Satisfied</div>
+      <div style={{ marginRight: '10px' }}><strong>6%</strong> Unsatisfied</div>
+      <div><strong>9%</strong> NA</div>
+    </div>
+  </div>
+
+</div>
+
+</div>
+
       </main>
     </div>
   );

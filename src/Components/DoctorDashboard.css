@@ -1,14 +1,78 @@
 .dashboard-container {
-    display: flex;
-    flex-direction: row; /* Ensures that sidebar and main content are in a row */
-    font-family: 'Arial', sans-serif;
-    background-color: #F6F1F1;
+  display: flex;
+  justify-content: space-between; /* This will place space between the two elements */
+  flex-direction: row; /* Ensures that sidebar and main content are in a row */
+background-color: #f0eeee;
   }
+
+  .appointment-activity {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.calendar-container {
+  background-color: white; /* White background */
+  border: 1px solid #ddd; /* Light grey border */
+  padding: 20px; /* Padding around the content */
+  margin: 20px; /* Margin around the container */
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Optional: Adds shadow for more depth */
+  border-radius: 10px; /* Optional: Rounds the corners */
+}
+
+.charts-container {
+    display: flex;
+    gap: 20px; /* Adjust this gap as necessary */
+}
+
+.bar-chart-container,
+.doughnut-chart-container {
+    background-color: white;
+    border: 1px solid #ddd;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    border-radius: 10px;
+    flex: 1; /* Each chart container will take up equal space */
+}
+
+.bar-chart-container {
+    margin-right: 15px; 
+margin-bottom: -10px;
+margin-left: 15px;
+}
+
+.doughnut-chart-container {
+    width: 230px; /* Adjust if you want a specific width */
+    height: auto; /* Adjust if you want a specific height */
+    align-items: center ;
+    margin-right: 20px;
+    
+}
+
+.bar-chart-container h2, .calendar-container h2, .doughnut-chart-container h2 {
+    margin-top: 5px !important;
+    font-size: large;
+    text-align: left;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
   
  /* Sidebar.css */
 .sidebar {
     width: 250px;
-    height: 100vh;
+    height: 150vh;
     background-color: #ffffff;
     padding: 20px;
     border-radius: 5px;
@@ -26,6 +90,7 @@
     height: 80px;
     border-radius: 50%;
     margin-bottom: 10px;
+    border: 1px solid #666;
   }
   
   .profile-name {
@@ -82,24 +147,6 @@
     /* Add additional styles for your icons */
   }
   
-  /* You can use specific classes to add specific icons */
-  .dashboard-icon {
-    /* Style for dashboard icon */
-  }
-  
-  .appointments-icon {
-    /* Style for appointments icon */
-  }
-  
-  .history-icon {
-    /* Style for history icon */
-  }
-  
-  .reports-icon {
-    /* Style for reports icon */
-  }
-  
-  /* Add specific styles for the icons, such as background-image if you're using sprites */
   
   
   .menu-item.active {
@@ -131,51 +178,20 @@
     content: '📈'; /* Placeholder emoji, replace with your icon */
   }
   
-  .profile-section {
-    /* Style your profile section */
-  }
   
-  .navigation {
-    /* Style your navigation */
-  }
   
   .main-content {
     flex-grow: 1;
     padding: 20px;
-    /* Additional styling */
+    background-color: transparent; /* Removes any background from the parent container */
   }
   
-  .dashboard-header {
-    /* Style your dashboard header */
-  }
+ 
   
-  .stats-section {
-    /* Style your stats section */
-  }
   
-  .appointment-activity {
-    background-color: #ffffff;
-    margin-top: 20px;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  }
   
-  .appointment-activity h2 {
-    margin-bottom: 30px;
-    margin-top: -50px;
-  }
   
-  table {
-    width: 100%;
-    border-collapse: collapse;
-  }
-  
-  table th, table td {
-    text-align: left;
-    padding: 8px;
-    border-bottom: 1px solid #ddd;
-  }
+ 
   
   .navigation-menu {
     list-style-type: none;
@@ -198,104 +214,86 @@
     background-color: #e0e0e0; /* A slight hover effect */
   }
 
+  
+  
   .stats-section {
     display: flex;
-    justify-content: space-around; /* Adjust as necessary for your layout */
-    padding: 20px;
-    /* Add other styles as needed for your layout */
+    justify-content: space-around;
+    padding: 10px; /* Reduced padding */
   }
   
   .stat-item {
     display: flex;
     align-items: center;
-    background-color: #fff; /* Or any color that matches your design */
-    padding: 10px;
-    border-radius: 8px; /* Round the corners of the stat items */
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Add a subtle shadow */
-    /* Add other styles as needed for your layout */
-  }
-  
-  .stat-icon {
-    font-size: 2rem; /* Adjust the size of your icons */
-    margin-right: 10px; /* Add some space between the icon and the text */
+    justify-content: space-between;
+    padding: 10px; /* Reduced padding */
+    border-radius: 15px; /* Adjusted for rounded corners */
+    color: #FFF;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(121.7deg, rgb(41, 166, 250) 22.9%, rgb(67, 212, 255) 69%);
+    width: 250px; /* Adjust width as necessary */
+    height: 60px; /* Adjust height as necessary */
   }
   
   .stat-info {
-    text-align: left;
-  }
-  
-  .stat-value {
-    font-size: 1.5rem; /* Adjust as necessary for your design */
-    font-weight: bold;
-  }
-  
-  .stat-label {
-    font-size: 1rem;
-    color: #666; /* Adjust the color as needed */
-  }
-  
-  .pagination {
+    z-index: 1;
     display: flex;
-    justify-content: center;
-    padding: 20px;
-    margin-left: 500px;
+    flex-direction: column;
+    justify-content:first baseline;
     
   }
   
-  .page-item {
-      padding: 5px 10px;
-    cursor: pointer;
-    background-color: #f0f0f0;
-    border-radius: 5px;
-    user-select: none;
-    border-radius: 8px; /* Round the corners of the stat items */
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Add a subtle shadow */
+  .stat-value {
+    font-size: 1.5rem; /* Smaller font size for the value */
+    font-weight: bold;
+    margin-bottom: 0.25rem; /* Space between the value and label */
+    margin:10px;
+  }
+  
+  .stat-label {
+    margin-top:10px;
 
+    font-size: 20px;
+    color: white; /* This should override other styles */
   }
   
-  .page-item:hover:not(.disabled) {
-    background-color: #e0e0e0;
+  .stat-icon-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #00bfff;
+    border-radius: 50%;
+    width: 80px; /* Smaller circle size */
+    height: 80px; /* Smaller circle size */
+    position: absolute;
+    right: -10px; /* Adjust to partially hide the circle */
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 0;
+    margin-right: -5px;
   }
   
-  .page-item.active {
-    background-color: #007bff;
-    color: white;
+  .stat-icon {
+    width: 55px; /* Smaller icon size */
+    height: 55px; /* Smaller icon size */
+    margin-right: 3px;
   }
   
-  .page-item.disabled {
-    color: #ccc;
-    cursor: default;
-  }
+  
 
 .medipro{
   text-align: center;
-  margin-top: 130px;
   color: #746F6F;
   font-size: medium;
+  margin-top: 130px;
+
 
 }
 
-.date-switcher {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 30px;
-  margin-left: 850px;
-}
 
-.date-switcher button {
-  padding: 5px 10px;
-  margin: 0 10px;
-  background: #f0f0f0;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  cursor: pointer;
-}
 
-.date-switcher button:hover {
-  background: #e0e0e0;
-}
 
-.date-switcher span {
-  font-weight: bold;
-}
+
+

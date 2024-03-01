@@ -1,0 +1,433 @@
+.home-container {
+    font-family: 'Arial', sans-serif;
+    margin: 20px;
+  }
+  
+  .header {
+    background-color: #fff;
+    text-align: center;
+    padding: 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background:  linear-gradient(89deg, rgb(21, 74, 189) 0.1%, rgb(26, 138, 211) 51.5%, rgb(72, 177, 234) 100.2%);
+
+max-height: 500px;
+    color: white;
+    padding: 20px;
+  }
+
+  .header-content {
+    flex-basis: 60%; /* Adjust as needed for your layout */
+    height: 340px;
+    padding: 20px;
+  }
+  
+  .header h1 {
+    position: relative; /* Needed for absolute positioning of the pseudo-element */
+    display: inline-block; /* Ensures the header respects the width for line breaks */
+    display: block;
+    /* This will break words that are too long for the line */
+    margin-left: 120px;
+    white-space: normal;
+   font-size: 40px;
+    text-align: left;
+    
+    
+  }
+  
+
+  
+  .header p {
+    color: #ffffff;
+    margin: 10px ;
+    text-align:left;
+    margin-left: 120px;
+    display: block;
+    font-size: 18px;
+    margin-top: 20px;
+
+
+}
+
+.header-buttons {
+    display: flex;
+    gap: 10px;
+  }
+
+
+  .header-image {
+    flex-basis: 40%; /* Adjust as needed for your layout */
+  }
+  .doctor-img{
+    width: 600px;
+    height: 400px;
+  }
+
+
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column;
+  }
+  .header-content,
+  .header-image {
+    flex-basis: 100%;
+    text-align: center;
+  }
+  .header-image {
+    order: -1; /* Put the image above the text on smaller screens */
+    height: 200px;
+  }
+}
+
+  .btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+  }
+
+.book-an-appointment{
+    margin-right: 340px !important;
+    margin-top: 30px;
+}
+  
+  
+  .btn-appointment  {
+    padding: 1rem 1rem;
+    border: none;
+    color: rgb(0, 0, 0);
+    cursor: pointer;
+    background-color: #ffffff; /* Blue color */
+    border-radius: 10px; /* Rounded corners */
+    font-size: 19px; 
+    font-weight:normal; 
+    cursor: pointer; 
+    align-self: start;
+    margin-left: 40px;
+  }
+  .btn-appointment:hover {
+    background-color: #dfcdcddd; /* Slightly darker blue on hover */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Optional: more pronounced shadow on hover */
+  }
+  
+  .btn-appointment:active {
+    background-color: #002c5f; /* Even darker blue when the button is clicked */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Optional: less shadow when the button is clicked */
+  }
+
+  .search-bar-container {
+    display: flex;
+    justify-content: start; /* Align items to the start of the container */
+    align-items: center; /* Vertically center align the items */
+    background-color: white; /* White background */
+    border-radius: 15px; /* Rounded corners */
+    padding: 0.5rem; /* Padding around the items */
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+    max-width: 500px; /* Maximum width of the search bar */
+    width: 100%; /* Full width */
+    margin: 1rem auto; /* Center the search bar within its parent */
+    margin-top: -12px;
+  }
+  
+  .search-input {
+    flex-grow: 1; /* Input takes up the available space */
+    border: none; /* No border */
+    border-radius: 20px; /* Rounded corners */
+    margin-right: 0.5rem; /* Space between input and button */
+    padding: 0.5rem 1rem; /* Padding inside the input */
+    outline: none; /* Removes the outline on focus */
+  }
+  
+  .search-btn {
+    padding: 0.5rem 1rem; /* Padding inside the button */
+    border: none; /* No border */
+    border-radius: 15px; /* Rounded corners */
+    background-color: #0056b3; /* Background color from your design */
+    color: white; /* Text color */
+    cursor: pointer; /* Changes the cursor to signify this is a button */
+    outline: none; /* Removes the outline on focus */
+    white-space: nowrap; /* Prevents wrapping of text inside the button */
+    width: 100px;
+  }
+  
+  .search-btn:hover {
+    background-color: #003880; /* Darker blue on hover, adjust the color as needed */
+  }
+  
+  /* Responsive adjustments if necessary */
+  @media (max-width: 768px) {
+    .search-bar-container {
+      flex-direction: column; /* Stack the input and button on smaller screens */
+      align-items: stretch; /* Stretch items to fill the container */
+    }
+    .search-input,
+    .search-btn {
+      width: 100%; /* Full width for both input and button */
+      margin-right: 0; /* Reset margin-right on smaller screens */
+    }
+    .search-input {
+      margin-bottom: 0.5rem; /* Space between input and button on smaller screens */
+    }
+  }
+  
+  
+  .how-it-works-section {
+    text-align: center; /* Center-align text */
+    padding: 2rem 0; /* Top and bottom padding */
+    margin-top: -10px;
+  }
+  
+  .how-it-works-title {
+    font-size: 2rem; /* Large font size for the title */
+    color: #333; /* Dark text color */
+    margin-bottom: 0.5rem; /* Spacing below the title */
+  }
+  
+  .how-it-works-description {
+    color: #666; /* Lighter text color for the description */
+    margin-bottom: 2rem; /* Space below the description */
+  }
+  
+  .how-it-works-steps {
+    display: flex;
+    justify-content: center; /* Align steps in the center */
+    gap: 1rem; /* Spacing between each step */
+  }
+  
+  .step {
+    width: 20%; /* Width of each step, adjust as needed */
+    padding: 1rem; /* Padding around content */
+  }
+
+  
+  .icon-wrapper {
+    background: #f0f0f0; /* Light grey background */
+    display: inline-block;
+    padding: 1rem; /* Padding around the icon */
+    border-radius: 50%; /* Circular shape */
+  position: relative; 
+align-items: center;
+  justify-content: center;
+  background-size: contain; /* Ensures the background image is scaled to fit */
+  background-position: center; /* Centers the background image */
+  background-repeat: no-repeat; /* Prevents the image from repeating */
+  width: 50px; /* Adjust to the desired width */
+  height: 50px; 
+
+}
+
+
+.icon-wrapper img {
+  max-width: 100%; /* Ensures the image or SVG doesn't exceed its container */
+  max-height: 50px; /* Adjust to the desired size */
+  width: auto; /* Maintains the aspect ratio */
+  height: auto; /* Maintains the aspect ratio */
+}
+
+
+  .step h3 {
+    font-size: 1.25rem; /* Font size for the step title */
+    color: #333; /* Dark text color */
+    margin-bottom: 0.5rem; /* Space below the step title */
+  }
+  
+  .step p {
+    color: #666; /* Lighter text color for the step description */
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .how-it-works-steps {
+      flex-direction: column; /* Stack the steps on top of each other */
+    }
+  
+    .step {
+      width: 100%; /* Full width on smaller screens */
+    }
+  }
+  
+  .step-number {
+    position: absolute;
+    top: -10px; /* Adjust as needed */
+    right: -10px; /* Adjust as needed */
+    background-color: #0056b3; /* Match the blue from your design */
+    color: white;
+    width: 20px; /* Adjust size as needed */
+    height: 20px; /* Adjust size as needed */
+    border-radius: 50%; /* Circular shape */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem; /* Adjust font size as needed */
+    border: 2px solid white; /* Adds white border to number */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); }
+
+
+
+
+    .departments-section {
+      text-align: center;
+      padding: 2rem 0; /* Top and bottom padding */
+      margin: 0px 150px !important;
+      margin-top: -25px !important;
+
+    }
+    
+    .department-title {
+      font-size: 1.1rem; /* Adjusted font size */
+      color: #333;
+      text-align: center; /* Center the title text */
+      margin: 0.5rem 0; /* Space above and below the title */
+    }
+    
+    .departments-container {
+      display: flex;
+      justify-content: space-around; /* Evenly distribute space around items */
+      flex-wrap: wrap; /* Allow items to wrap to the next line */
+      gap: 0.5rem; /* Smaller gap between cards */
+    }
+    
+    .department-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 1.5rem; /* Increased padding */
+      border-radius: 15px; /* Rounded corners */
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+      transition: transform 0.3s ease;
+      width: 150px; /* Increased width */
+      margin: 0.5rem; /* Space between cards */
+    }
+    
+    .department-card:hover {
+      transform: translateY(-5px); /* Gives a lifted effect on hover */
+    }
+    
+    .icon {
+      width: 100px; /* Increased width */
+      height: 100px; /* Increased height */
+      margin-bottom: 1rem;
+      border-radius: 15px; /* Adjusted border-radius */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    
+    .department-card p {
+      font-size: 1.1rem; /* Slightly increased font size */
+      color: #333;
+    }
+    
+    /* Add responsiveness if needed */
+    @media (max-width: 768px) {
+      .departments-container {
+        justify-content: center; /* Center the items on smaller screens */
+      }
+    }
+    
+     
+    .more{
+      position: relative; /* Needed for absolute positioning of the pseudo-element */
+      display: inline-block; /* Ensures the header respects the width for line breaks */
+      display: block;
+      /* This will break words that are too long for the line */
+      margin-left: 120px;
+      white-space: normal;
+     font-size: 20px;
+      text-align: center;
+      margin-right: 95px;
+    }
+    
+    
+    .about-us-section {
+      display: flex;
+      align-items: center;
+      padding: 2rem;
+      background-color: #f8f8f8; /* Soft background color */
+      height: 400px;
+    }
+    
+    .about-us-container {
+      display: flex;
+      align-items: center;
+      max-width: 1200px; /* Adjust based on your design */
+      margin: 0 auto;
+      gap: 2rem; /* Adds space between image and text */
+      max-height: 700px;
+    }
+    
+    .about-us-image {
+      flex: 0 0 40%; /* flex-grow, flex-shrink, flex-basis - image container won't grow or shrink but start at 40% of the container's width */
+      max-width: 40%; /* Ensures the image container doesn't exceed 40% of the .about-us-container's width */
+    }
+    
+    .about-us-image img {
+      width: 100%; /* Makes the image responsive */
+      height: auto; /* Maintains aspect ratio */
+      border-radius: 10px; /* Softens the edges of the image */
+      margin-bottom: 3px;
+    }
+    
+    .about-us-content {
+      flex: 1; /* Takes up the remaining space */
+      padding-left: 2rem; /* Adds padding between the image and the text */
+    }
+    
+    .about-us-title {
+      font-size: 2.5rem;
+      color: #0056b3; /* Color theme for the clinic */
+      margin-bottom: 3rem;
+    }
+    
+    .about-us-paragraph {
+      font-size: 1rem;
+      color: #666;
+      line-height: 1.6; /* Makes text more readable */
+      align-self:first baseline ;
+    }
+    
+
+
+    .about-us-button {
+      background-color: #0056b3; /* Match the button color to your design */
+      color: white;
+      border: none;
+      padding: 0.75rem 1.5rem; /* Adjust the padding as needed */
+      border-radius: 25px; /* Rounded corners */
+      font-size: 1rem; /* Adjust the font size as needed */
+      cursor: pointer; /* Changes cursor to a pointer on hover */
+      transition: background-color 0.3s ease;
+      text-transform: uppercase; /* Optional: makes the text uppercase */
+      font-weight: bold; /* Optional: makes the font bold */
+      margin-top: 20px;
+    }
+    
+    .about-us-button:hover {
+      background-color: #003880; /* Darker shade for the hover state */
+      /* Optional: add a box-shadow for the hover effect */
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+
+
+
+
+    /* Responsive adjustments */
+    @media (max-width: 992px) {
+      .about-us-container {
+        flex-direction: column;
+        text-align: center;
+      }
+    
+      .about-us-image,
+      .about-us-content {
+        max-width: 100%; /* Full width on smaller screens */
+        flex: none; /* Disable flex sizing for stacked layout */
+      }
+    
+      .about-us-image {
+        margin-bottom: 1rem; /* Space below the image */
+      }
+    }

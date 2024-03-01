@@ -75,7 +75,7 @@
     font-size: small;
     margin-left: 8px;
     margin-bottom: 5px;
-    color: rgb(249, 11, 59);
+    color: rgb(158, 158, 165);
 }
 .signin-button{
     background-color: #4169E1;
@@ -101,3 +101,40 @@
 .signin-form select {
   width: 400px;
 }
+.speciality{
+  width: 480px !important;
+    height: 40px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #e0ddddf4;
+    margin-right: 30px ;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+
+   }
+   .toast {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 10px 20px;
+    color: #fff;
+    background-color: #4CAF50;
+    border-radius: 5px;
+    z-index: 1000;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    animation: slideIn 0.5s ease-out;
+  }
+  
+  @keyframes slideIn {
+    from {
+      opacity: 0;
+      transform: translateX(100%);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  
