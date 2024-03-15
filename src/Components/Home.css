@@ -4,79 +4,114 @@
   }
   
   .header {
-    background-color: #fff;
-    text-align: center;
-    padding: 2rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background:  linear-gradient(89deg, rgb(21, 74, 189) 0.1%, rgb(26, 138, 211) 51.5%, rgb(72, 177, 234) 100.2%);
-
-max-height: 500px;
-    color: white;
-    padding: 20px;
+    position: relative;
+    color: white; /* Adjust text color as needed */
+    text-align: center; /* Center the title and text */
+    background-size: cover;
+    background-position: center;
+    transition: background-image 0.5s ease-in-out; /* Optional for a fade effect */
+    
   }
-
+  
   .header-content {
-    flex-basis: 60%; /* Adjust as needed for your layout */
-    height: 340px;
-    padding: 20px;
+    padding: 150px 20px; /* Adjust padding as needed */
+    position: relative; /* Ensure the content is positioned over the background */
+    margin: 0px 250px;
+  }
+  .title-container{
+    align-items: center;
+margin: 0px 80px;  }
+
+
+  .title-container h1 {
+    font-size: 2.5em; /* Adjust font size as needed */
+    margin-bottom: 0.5em; /* Space between the title and the description */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Horizontal offset, vertical offset, blur radius, and color */
+
   }
   
-  .header h1 {
-    position: relative; /* Needed for absolute positioning of the pseudo-element */
-    display: inline-block; /* Ensures the header respects the width for line breaks */
-    display: block;
-    /* This will break words that are too long for the line */
-    margin-left: 120px;
-    white-space: normal;
-   font-size: 40px;
-    text-align: left;
-    
-    
+  .title-container p {
+    font-size: 1.2em; /* Adjust font size as needed */
+    margin-bottom: 0.5em; /* Space between the description and search area */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Horizontal offset, vertical offset, blur radius, and color */
+
   }
   
-
-  
-  .header p {
-    color: #ffffff;
-    margin: 10px ;
-    text-align:left;
-    margin-left: 120px;
-    display: block;
-    font-size: 18px;
-    margin-top: 20px;
-
-
-}
-
-.header-buttons {
+  .search-container {
     display: flex;
-    gap: 10px;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    background: rgba(255, 255, 255, 0.5); /* Semi-transparent white background for the container */
+    padding: 15px 30px; /* Padding around the search fields */
+    border-radius: 10px; /* Rounded corners for the container */
+    max-width: 800px; /* Maximum width of the search container */
+    margin: auto; /* Center the container */
+    width: 700px;
+    margin-top: 20px;
+    
+  }
+  
+  .search-field {
+    display: flex;
+    align-items: center;
+    margin-right: 10px;
+    border-radius: 10px; /* Rounded corners for the container */
+
+    background: transparent; /* Transparent background for each field */
+    border: none; /* No border for each field */
+    position: relative; /* To position the icons */
+  }
+  
+  .search-input {
+    border: 1px solid #ccc; /* Light grey border */
+    border-radius: 20px; /* Rounded corners for the input fields */
+    padding: 10px 20px 10px 40px; /* Adjust left padding to accommodate the icon */
+    margin-right: 10px; /* Space between the fields */
+    outline: none; /* Remove the default focus outline */
+    color: #000; /* Text color */
+    font-size: 1em; /* Font size */
+    flex-grow: 1; /* Allows the input to fill the space */
+    width: 100%;
+
+  }
+  
+  .search-btn {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  /* Styles for the icons within the search fields */
+  .search-field-icon {
+    position: absolute;
+    top: 50%;
+    left: -25px;
+    height: 20px; /* Adjust as needed */
+    width: 22px; /* Adjust as needed */
+    transform: translateY(-50%);
+
   }
 
-
-  .header-image {
-    flex-basis: 40%; /* Adjust as needed for your layout */
+  
+  
+  .search-btn:hover {
+    background-color: #0056b3; /* Darken button on hover */
   }
-  .doctor-img{
-    width: 600px;
-    height: 400px;
-  }
-
-
-@media (max-width: 768px) {
-  .header {
-    flex-direction: column;
-  }
-  .header-content,
-  .header-image {
-    flex-basis: 100%;
-    text-align: center;
-  }
-  .header-image {
-    order: -1; /* Put the image above the text on smaller screens */
-    height: 200px;
+  
+  /* Media query for responsive adjustments */
+  @media (max-width: 768px) {
+    .search-container {
+      flex-direction: column; 
+    }
+    .search-field,
+  .search-btn {
+    width: 100%; /* Full width on small screens */
+    margin-bottom: 10px; /* Space between stacked fields */
   }
 }
 

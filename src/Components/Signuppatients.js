@@ -9,7 +9,10 @@ const SignUpPat = () => {
     telephone: '',
     email: '',
     password: '',
-    Adresse: '',
+    adresse: '',
+    statutSocial: '', // Initialize statutSocial
+    image: '', // Initialize image
+    sexe: 'Homme' // Initialize sexe
   });
 
   const handleInputChange = (e) => {
@@ -39,14 +42,18 @@ const [toastMessage, setToastMessage] = useState('');
           telephone: formData.telephone,
           email: formData.email,
           motDePasse: formData.password,
-          adresse: formData.Adresse,
-
+          adresse: formData.adresse,
+          statutSocial: formData.statutSocial, // Include it in the new patient object
+          image: formData.image, // Include it in the new patient object
+          sexe: formData.sexe 
         }),
       });
   
       if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
-      }
+        const errorData = await response.json();
+        throw new Error(`HTTP error! status: ${response.status}, message: ${errorData.message}`);
+    }
+    
   
       const data = await response.json();
       console.log('Success:', data);
@@ -74,7 +81,7 @@ setTimeout(() => setShowToast(false), 5000); // Hide toast after 5 seconds
       </div>
       <div className="signin-form-container">
         <form onSubmit={handleSignUp} className="signin-form">
-          <h2>Sign In</h2>
+          <h2>Sign Up</h2>
           <p className="subtitle">Patients Registration</p>
           <div className="input-row" >
             <input
@@ -132,15 +139,15 @@ setTimeout(() => setShowToast(false), 5000); // Hide toast after 5 seconds
           <div className='adresse'>
           <input 
             type="text"
-            name="Adresse"
+            name="adresse"  
             placeholder="Adresse"
-            value={formData.Adresse}
+            value={formData.adresse}
             onChange={handleInputChange}
             required
           />
           
   </div>
-          <button type="submit" className="signin-button">Sign In</button>
+          <button type="submit" className="signin-button">Sign Up</button>
           <div className="signin-footer">
             <p>Already have an account? <a href="#log-in">Log In</a></p>
           </div>

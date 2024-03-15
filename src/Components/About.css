@@ -1,0 +1,94 @@
+.about-us-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 200px; /* Adjust the height as needed */
+    background: rgba(32, 70, 224, 1.0);
+    background: conic-gradient(from 315deg, rgba(32, 70, 224, 1.0), rgba(117, 163, 216, 1.0));
+    color: white; /* Adjust text color as needed */
+    font-size: 36px; /* Adjust font size as needed */
+    font-weight: bold;
+    margin-top: 10px;
+    margin-right:20px ;
+    margin-left:20px ;
+  }
+  
+  h1 {
+    margin: 0; /* Removes default margin from h1 tag */
+    margin-right: 990px;
+  }
+
+
+  .about-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 50px; /* Adjust padding as needed */
+    max-width: 1200px; /* Maximum width of the section */
+    margin: -46px auto; /* Centering the section */
+  }
+  
+  .about-section-left {
+    flex: 1;
+  }
+  
+  .about-image {
+    width: 480px;
+    height: 500px;
+    border-radius: 10px; /* Optional: if you want rounded corners */
+  }
+  
+  .about-section-right {
+    flex: 1;
+    padding-left: 50px; /* Space between image and text content */
+  }
+  
+  .about-section h2 {
+    font-size: 2rem; /* Large font size for the title */
+    color: #238df0; /* Title color */
+    margin-bottom: 3rem; /* Space below the title */
+    margin-top: -40px;
+  }
+  
+  .about-description {
+    font-size: 1rem;
+    margin-bottom: 1rem; /* Space below the description */
+  }
+  
+  .about-list {
+    list-style: none;
+    padding-left: 0; /* Removes default list padding */
+
+  }
+  
+  .about-list li {
+    display: flex;
+    align-items: center; /* Aligns icon and text vertically */
+    font-size: 1rem;
+    margin-bottom: 1rem; /* Adjust the space between list items as necessary */
+    color: #333;
+
+  }
+  .check-icon {
+    margin-right: 10px; /* Space between the icon and the text, adjust as needed */
+    width: 20px; /* Width of your icon */
+    height: 20px; /* Height of your icon */
+    margin-bottom: 5px;
+  }
+  
+  .about-button {
+    padding: 10px 20px;
+    background-color: #238df0;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s;
+  }
+  
+  .about-button:hover {
+    background-color: #1632A0; /* Slightly darker blue on hover */
+  }
+  
+  

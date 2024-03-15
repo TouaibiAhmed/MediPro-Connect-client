@@ -1,54 +1,152 @@
-.search-bar-container {
+.doctors{
+  background-color: #ffffff;
+margin-left: 70px;
+margin-right: 70px;
+border-radius: 8px;
+
+}
+
+.title{
+  
     display: flex;
     justify-content: center;
-    padding: 10px;
-    background-color: #AFD3E2; /* Adjust the color to match your design */
-  }
-  
-  .search-form {
-    display: flex;
     align-items: center;
-    background-color: #fff; /* Use a white background for the input fields */
-    border-radius: 20px; /* Rounded corners for the search bar */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* A slight shadow for depth */
-    margin-left: -60px;
+    height: 200px; /* Adjust the height as needed */
+    background: rgba(32, 70, 224, 1.0);
+    background: conic-gradient(from 315deg, rgba(32, 70, 224, 1.0), rgba(117, 163, 216, 1.0));
+    color: white; /* Adjust text color as needed */
+    font-size: 36px; /* Adjust font size as needed */
+    font-weight: bold;
+    margin-top: 10px;
+    margin-right:20px ;
+    margin-left:20px ;
+    margin-bottom: 20px;
+  }
+h2{
+  margin: 0; /* Removes default margin from h1 tag */
+    margin-right: 990px;
+}
 
-  }
+
+
+
+.doctor-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1rem;
+  padding: 1rem;
+  margin-top: 30px;
+  margin-left: 60px;
+  margin-right: 60px;
+
+}
+
+.card {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.card-header img {
+  width: 100%;
+  height: 100%;
+  border-bottom: 1px solid #ccc;
+}
+
+.card-body {
+  padding: 1rem;
+  text-align: center;
+}
+
+.card-body h3 {
+  margin: 0.5rem 0;
+}
+
+.card-body p {
+  color: #555;
+  margin-bottom: 1rem;
+}
+
+.rating {
+  color: #f5a623;
+  margin-bottom: 1rem;
+}
+
+button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+.rating{
+  font-size: 20px;
+}
+
+
+.filter-container {
+  display: flex;
+  padding: 1rem;
+  gap: 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
   
-  .input-group {
-    display: flex;
-    align-items: center;
-    padding: 5px 10px;
-    height: 30px;
-    margin-left: -60px;
-  }
-  
-  .search-icon, .location-icon {
-    margin-right: 5px;
-  }
-  
-  .input-group input {
-    border: none;
-    outline: none;
-    padding: 10px;
-    font-size: 16px; /* Adjust the font size as needed */
-    height: 20px;
-    background-color: #fff;
-  }
-  
-  .search-button {
-    padding: 10px 20px;
-    background-color: #007bff; /* Adjust the color to match your design */
-    color: #fff;
-    border: none;
-    border-radius: 20px; /* Match the border-radius of the search bar */
-    cursor: pointer;
-    margin-left: 10px; /* Add some space between the input field and the button */
-  }
-  
-  .search-button:hover {
-    background-color: #0056b3; /* A darker shade for hover effect */
-  }
-  
-  /* Additional responsive styles as needed */
-  
+  background-color: #ffffff;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  margin-left: 70px;
+  margin-right: 70px;
+
+}
+
+.search-box {
+  display: flex;
+  align-items: center;
+  background-color: #fff;
+  border-radius: 8px;
+  border: 0.5px solid  #0b0b0b !important;
+}
+
+.search-box input {
+  border: none;
+  margin-left: 0.5rem;
+  flex-grow: 1;
+  border-radius: 8px 0 0 8px;
+}
+
+
+
+.search-box input:focus {
+  outline: none;
+}
+
+.dropdown select {
+  padding: 0.5rem;
+  margin-left: 0.5rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #fff;
+  cursor: pointer;
+}
+
+.dropdown select:focus {
+  outline: none;
+}
+
+.search-btn{
+  background-color: #007bff;
+  color: white;
+  border: none;
+  height: 40px;
+  width: 90px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin-left: 40px;
+}

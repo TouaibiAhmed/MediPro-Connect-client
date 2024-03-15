@@ -10,10 +10,19 @@ const SignUp = () => {
     email: '',
     password: '',
     rneCode: '',
-    specialte: ''
+    specialite: '',
+    image: '',
+          numeroProfessionnel: '',
+          adresseCabinet: '',
+          telephoneCabinet: '',
+          listeImagesCabinet: [],
+          experience: 0, 
+          age: 25, 
+          description: '',
+          formation: [],
+          signature: ''
   });
 
-  const [rneCode, setRneCode] = useState('');
 
 
  // New state for managing toast notification
@@ -29,7 +38,7 @@ const SignUp = () => {
     setFormData({ ...formData, [name]: value });
   };
 
-  const handleSignIn = async (event) => {
+  const handleSignUp = async (event) => {
     event.preventDefault();
     try {
       const response = await fetch("http://localhost:3000/api/medecins/register", {
@@ -44,10 +53,22 @@ const SignUp = () => {
           codePostal: formData.postalCode,
           email: formData.email,
           motDePasse: formData.password,
-          Rne: rneCode, 
-          specialite: formData.specialte,
-        }),
-      });
+          Rne: formData.rneCode, 
+          specialite: formData.specialite,
+          image: formData.image,
+          numeroProfessionnel: formData.numeroProfessionnel,
+          adresseCabinet: formData.adresseCabinet,
+          telephoneCabinet: formData.telephoneCabinet,
+          listeImagesCabinet: formData.listeImagesCabinet,
+          experience: formData.experience, 
+          age: formData.age, 
+          description: formData.description,
+          formation: formData.formation,
+          signature: formData.signature,
+          // Don't need to include 'status' if you're using a default value defined in the model
+        })
+        })
+    
   
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
@@ -77,8 +98,8 @@ const SignUp = () => {
         <img src="/images/signup1.png" alt="Doctors Illustration" />
       </div>
       <div className="signin-form-container">
-        <form onSubmit={handleSignIn} className="signin-form">
-          <h2>Sign In</h2>
+        <form onSubmit={handleSignUp} className="signin-form">
+          <h2>Sign Up</h2>
           <p className="subtitle">Doctors Registration</p>
           <div className="input-row">
             <input
@@ -138,15 +159,15 @@ const SignUp = () => {
     type="text"
     placeholder="RNE code"
     name='rneCode'
-    value={rneCode}
-    onChange={(e) => setRneCode(e.target.value)}
+    value={formData.rneCode}
+    onChange={handleInputChange}
     required
   />
           <p className="input-hint">*The RNE code is used for the identity verification*</p>
           </div>
           <select
-            name="specialte"
-            value={formData.specialty}
+            name="specialite"
+            value={formData.specialte}
             onChange={handleInputChange}
             required
             className='speciality'

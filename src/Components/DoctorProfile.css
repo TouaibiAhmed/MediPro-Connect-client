@@ -1,0 +1,224 @@
+.profile-card-container {
+  display: flex;
+  justify-content: space-between; /* Aligns children to the start and end of the container */
+}
+
+.profile-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background-color: #fff;
+  border: 2px solid transparent; /* Transparent border */
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  width: 1000px; /* Adjust the width as needed */
+margin-bottom: 80px;
+margin-left: 60px;}
+
+
+.cover-image {
+  position: relative; /* Change from absolute to relative */
+  width: 100%;
+  height: 200px; /* Adjust height as needed */
+  overflow: hidden;
+  border-top-left-radius: 8px; /* Ensure the border radius is applied */
+  border-top-right-radius: 8px;
+  z-index: 1;
+}
+
+.cover-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.doctor-details {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.about {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  width: 300px; /* Adjust the width as needed */
+  height: 200px;
+  margin-top: -380px;
+  margin-bottom: 30px;
+  margin-left:1100px ;
+ text-align: left;
+}
+.contact-info{
+  margin-left: 15px;
+}
+
+.title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px; /* Adjust the height as needed */
+  background: rgba(32, 70, 224, 1.0);
+  background: conic-gradient(from 315deg, rgba(32, 70, 224, 1.0), rgba(117, 163, 216, 1.0));
+  color: white; /* Adjust text color as needed */
+  font-size: 36px; /* Adjust font size as needed */
+  font-weight: bold;
+  margin-top: 10px;
+  margin-right: 20px;
+  margin-left: 20px;
+  margin-bottom: 20px;
+}
+
+.titre {
+  margin-right: 990px;
+}
+
+.profile-details {
+  position: relative; /* Ensure the details are positioned correctly */
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 20px;
+}
+
+.profile-image-container {
+  position: relative; /* Add this line */
+
+  width: 120px; /* Adjust width as needed */
+  height: 120px; /* Adjust height as needed */
+  border-radius: 50%; /* Make the profile image rounded */
+  overflow: hidden;
+  margin-right: 690px;
+  z-index: 2; /* Ensure the profile image is above the cover image */
+  margin-top: -30px; /* Adjust this value as needed to position the profile picture */
+  border: 3px solid rgb(70, 67, 67); /* Add a border around the profile picture */
+
+
+}
+
+.profile-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  
+}
+
+.doctor-image:hover {
+  transform: scale(1.1); /* Enlarge the image on hover */
+}
+
+.doctor-info {
+  flex: 1;
+  font-size: small;
+  text-align: left;
+  margin-left: 160px;
+  margin-top: -80px;
+}
+
+.doctor-info h2 {
+  margin: 0;
+  font-weight: bold;
+  color: #000000;
+  font-size: medium;
+  margin-top: 3px;
+}
+
+.doctor-info p {
+  color: #086afe;
+  font-weight: bold;
+  font-size: medium;
+}
+
+.contact-info div {
+  margin-bottom: 2px;
+}
+
+.contact-info svg {
+  margin-right: 5px;
+  color: #65a1fc;
+}
+
+.rating {
+  font-size: 25px; /* Adjust the font size as needed */
+  color: gold; /* Change star color */
+  margin-top: -15px;
+}
+
+
+.container {
+  display: flex;
+  flex-direction: column;
+  border: 2px solid transparent; /* Transparent border */
+  border-radius: 8px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2); /* Add box shadow for 3D effect */
+  width: 1000px; /* Adjust width as needed */
+  height: 300px; /* Adjust height as needed */
+  margin-top: 120px ;
+  margin-left: 60px; 
+  margin-bottom: 20px;
+  overflow: hidden; /* Hide content overflow */
+}
+
+.button-container {
+  display: flex; /* Change to flex to place buttons horizontally */
+  width: 99%; /* Adjust width as needed */
+  padding: 4px;
+
+}
+
+.button-container button {
+  flex: 1; /* Make buttons take equal space */
+  margin-right: 10px; /* Add spacing between buttons */
+  font-size: 17px;
+ padding: 0.5em 2em;
+ border: transparent;
+ box-shadow: 2px 2px 4px rgba(0,0,0,0.4);
+ background: dodgerblue;
+ color: white;
+ border-radius: 4px;
+}
+
+.button-container button:last-child {
+  margin-right: 0; /* Remove margin from the last button */
+}
+
+.button-container button:hover {
+  background: rgb(2,0,36);
+ background: linear-gradient(90deg, rgba(30,144,255,1) 0%, rgba(0,212,255,1) 100%);
+}
+
+.content-container {
+  width: 80%; /* Adjust width as needed */
+  padding: 10px;
+  overflow-y: auto; /* Enable vertical scroll if content exceeds container height */
+}
+
+
+.image-list {
+  width: 300px; /* Adjust width as needed */
+  margin-left: auto; /* Align to the right */
+  padding: 10px;
+  border: 2px solid transparent; /* Transparent border */
+  border-radius: 8px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2); /* Add box shadow for 3D effect */
+  margin-top: -410px;
+  margin-right: 50px;
+  margin-bottom: 50px;
+}
+
+.image-list h3 {
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+
+.image {
+  margin-bottom: 10px;
+}
+
+.image img {
+  width: 100%; /* Ensure images fill the container */
+  border-radius: 5px;
+}
