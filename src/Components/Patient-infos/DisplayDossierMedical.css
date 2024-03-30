@@ -1,0 +1,88 @@
+/* DisplayDossierMedical.css */
+
+.dossier-medical-details {
+    width: 800px; /* Adjust the width as needed */
+    margin: 0 auto; /* Center the component horizontally */
+    padding: 20px;
+    border: 2px solid #ccc; /* Add border to resemble a medical folder */
+    border-radius: 10px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    background-color: #ffffff;
+  }
+  
+  .body {
+    background-color: #ebe4e4;
+  }
+  
+  .title-container {
+    background-color: #f2f2f2; /* Grey background color */
+    padding: 25px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+  }
+  
+  .title-container h2 {
+    margin: 0;
+  }
+  
+  .section-container {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 25px; /* Adjust margin between sections */
+    align-items: flex-start;
+  }
+  
+  .left-column, .right-column {
+    flex: 1;
+    margin-top: 45px;
+    margin-left: 20px; /* Adjust the margin between left and right columns */
+    margin-right: 20px; /* Adjust the margin between left and right columns */
+  }
+  
+  .left-column h3, .right-column h3 {
+    font-size: 18px;
+  }
+  
+  .name {
+    font-weight: bold;
+  }
+  .button-containerr {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px; /* Adjust as needed */
+  margin-left: 550px  ;
+
+}
+
+.button-containerr button {
+  margin-right: 10px; /* Adjust spacing between buttons */
+  padding: 10px 20px; /* Adjust button padding */
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-left: 5px !important;
+}
+
+.button-containerr button:hover {
+  background-color: #ccc; /* Change background color on hover */
+}
+
+/* Different design for the Edit button */
+.button-containerr button.edit {
+  background-color: #007bff;
+  color: #fff;
+}
+
+/* Different design for the Save button */
+.button-containerr button.save {
+  background-color: #28a745;
+  color: #fff;
+}
+
+/* Different design for the Delete button */
+.button-containerr button.delete {
+  background-color: #dc3545;
+  color: #fff;
+}

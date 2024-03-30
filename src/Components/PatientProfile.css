@@ -1,0 +1,593 @@
+/* styles.css */
+.sidebar .profile-menu {
+    list-style-type: none; /* Remove bullets */
+  }
+.sidebar {
+    background-color: #f3f4f6; /* Light grey background */
+    border: 2px solid #ccc; /* Border to separate it visually */
+    border-radius: 15px; /* Rounded corners */
+    padding: 30px;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2); /* Add box shadow for 3D effect */
+    width: 230px; /* Set the width of the sidebar */
+    max-width: 230px;
+    height: 650px;
+    margin-top: 10px;
+    float: left;
+    margin-bottom: 20px;
+
+}
+.profile-menu {
+    width: 200px;
+    margin-right: 80px;
+}
+
+.sidebar .profile-image {
+    width: 150px; /* Make the image larger */
+    height: 150px;
+    border-radius: 50%; /* Rounded profile image */
+    display: block;
+    margin: 0 auto 20px; /* Center the image and add space below */
+}
+
+.sidebar .btn {
+    width: 240px; /* Make buttons full width */
+    margin-bottom: 5px; /* Reduce space between buttons */
+    background-color: #f0f0f0; /* Background color */
+    color: #333; /* Button text color */
+    border: 1px solid #ddd; /* Add border */
+    border-radius: 3px; /* Rounded corners for buttons */
+    padding: 20px; /* Add padding for better button appearance */
+    transition: background-color 0.3s ease; /* Smooth transition on hover */
+    display: flex;
+    justify-content: flex-start;
+    margin-left: -40px; /* Adjust margin to move buttons more to the left */
+    align-items: center;
+
+
+}
+.sidebar .btn i {
+    margin-right: 10px; /* Space between icon and text */
+  }
+  .sidebar .btn:hover {
+    background-color: #e0e0e0; /* Darken background color on hover */
+  }
+.sidebar-name{
+margin-left: 70px;
+}
+.sidebar .btn span {
+    /* Style for the text */
+    flex: 1; /* Allow text to take remaining space */
+  }
+.sidebar .btn:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+}
+.sidebar .btn .icon {
+    /* Style for the icon */
+    width: 30px; /* Adjust the width as needed */
+    height: 30px; /* Adjust the height as needed */
+    margin-right: 8px; /* Adjust the space between the icon and the text */
+  }
+
+
+
+/* Profile Card styles */
+.profile-card {
+    margin-left: 420px;
+    margin-top: 20px;
+    width: 900px; 
+    max-width: 1200px; /* Set maximum width */
+    flex: 1; /* Allow the profile card to grow to fill available space */
+ background-color: #ffffff;
+ border-radius: 8px;
+
+  }
+  
+  .container {
+    display: flex; /* Use Flexbox */
+    justify-content: flex-start; /* Align items to the start */
+    content: "";
+    clear: both;
+    display: table;
+    width: 100%;
+    background-color: #f7f3f3;
+  }
+  
+  .card {
+    width: 97%; /* Set card width to 100% */
+  max-width: 100%; 
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .card-header {
+    background-color: #007bff;
+    color: #fff;
+    margin-top: -10px;
+    width: 850px;
+    padding: 20px;
+    margin-left: -10px;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    font-size: large;
+  }
+  
+  .card-body {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 20px; /* Add gap between grid columns */
+
+  }
+  .card-text {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-bottom: 15px;
+  }
+  
+  .card-text input,
+  .card-text select,
+  .card-text textarea {
+    flex-basis: calc(100% - 10px); /* Adjust width */
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    flex-grow: 1; /* Allow input to grow */
+    margin-left: 10px;
+  }
+
+  
+  .card-text input[type='checkbox'] {
+    width: auto; /* Reset width for checkboxes */
+    margin: 0; /* Reset margin for checkboxes */
+  }
+  
+  .btn-primary {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    margin-top: 20px; /* Add margin to create space below the input fields */
+    height: 50px;
+  }
+  
+  .btn-primary:hover {
+    background-color: #0056b3;
+  }
+
+
+  .checkbox-container {
+    display: flex;
+    align-items: center;
+    margin-top: 5px;
+  }
+  
+  .checkbox-label {
+    margin-right: 10px; /* Adjust as needed */
+  }
+  
+  .checkbox-input {
+    margin-right: 5px; /* Adjust as needed */
+  }
+  .password-container {
+    display: flex;
+    flex-direction: column;
+    margin-top: -25px;
+  }
+  
+  .password-inputs {
+    display: flex;
+    align-items: center;
+    margin-top: 5px;
+  }
+  
+  .password-inputs {
+    display: flex;
+    align-items: center;
+  }
+  
+  .password-inputs input {
+    margin-right: 10px; /* Adjust spacing between password inputs */
+  }
+  .btn.active {
+    background-color: #4CAF50; /* Green background color */
+    color: white; /* White text color */
+  }
+ /*Dossier Medical*/
+ /* Medical Records Container styles */
+.medical-records-container {
+  display: flex; 
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  margin-left: 420px; /* Same margin as profile card */
+  margin-top: 20px;
+  width: 900px; 
+  max-width: 1200px; /* Set maximum width */
+  flex: 1; /* Allow the container to grow to fill available space */
+  background-color: #ffffff;
+  margin: 20px auto; /* Center the container */
+  border-radius: 8px;
+}
+
+.medical-records-container h3 {
+  background-color: #007bff;
+  color: #fff;
+  margin-top: -10px;
+  width: 860px;
+  padding: 20px;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  font-size: large;
+}
+.medical-records-container h3 .btn-add {
+  margin-left: auto; /* Push the button to the right */
+}
+
+.medical-records-container ul {
+  list-style: none;
+  padding: 0;
+}
+
+.medical-records-container li {
+  margin-bottom: 10px;
+}
+
+.medical-records-container button {
+  background-color: #f0f0f0; /* Background color */
+  color: #333; /* Button text color */
+  border: 1px solid #ddd; /* Add border */
+  border-radius: 3px; /* Rounded corners for buttons */
+  padding: 10px 20px; /* Add padding for better button appearance */
+  transition: background-color 0.3s ease; /* Smooth transition on hover */
+  display: flex;
+  align-items: center;
+  margin-left: 20px;
+}
+
+.medical-record-btn {
+  background-color: #f0f0f0; /* Background color */
+  color: #333; /* Button text color */
+  border: 1px solid #ddd; /* Add border */
+  border-radius: 5px; /* Rounded corners for buttons */
+  padding: 10px 20px; /* Add padding for better button appearance */
+  transition: background-color 0.3s ease; /* Smooth transition on hover */
+  display: flex;
+  align-items: center;
+  position: relative; /* Make it a positioned container */
+}
+
+.medical-record-btn:hover {
+  background-color: #e0e0e0; /* Darken background color on hover */
+}
+
+.medical-record-btn i {
+  margin-right: 10px; /* Adjust the space between the icon and the text */
+}
+
+.medical-record-btn::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: -25px; /* Adjust as needed */
+  width: 20px;
+  height: 20px;
+  background-color: #007bff; /* Blue color */
+  border-radius: 50%; /* Create a circle */
+}
+.medical-record-cards {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.medical-record-card {
+  width: 200px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin: 10px;
+  padding: 10px 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease;
+  position: relative;
+  display: inline-block; /* Display inline-block */
+  min-width: 200px;
+  cursor: pointer; /* Change cursor to pointer on hover */
+
+}
+
+.medical-record-card:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Updated CSS */
+
+.card-icon {
+  display: flex;
+  justify-content: center; /* Center the icon horizontally */
+  align-items: center; /* Center the icon vertically */
+  margin-bottom: 20px; /* Add margin at the bottom */
+}
+
+.card-icon img {
+  width: 80px; /* Make the icon bigger */
+  transition: transform 0.3s ease; /* Add transition effect for smooth scaling */
+
+}
+.medical-record-card:hover .card-icon img {
+  transform: scale(1.2); /* Scale the icon to 120% when hovering */
+}
+
+.card-content {
+  text-align: center; /* Center the content text */
+  margin-top: auto; /* Push the content to the bottom */
+}
+
+.card-content h4 {
+  margin-top: 0;
+}
+
+.view-record-btn {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 8px 16px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.view-record-btn:hover {
+  background-color: #0056b3;
+}
+
+
+.view-record-btn {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 8px 16px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.view-record-btn:hover {
+  background-color: #0056b3;
+}
+.card-buttons {
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+}
+.modify-button,
+.delete-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 2px; 
+}
+
+.modify-button img,
+.delete-button img {
+  width: 15px; 
+  height: 15px;
+}
+
+.modify-button:hover {
+  background-color: #F9E897; /* Change background color on hover for update button */
+}
+
+.delete-button:hover {
+  background-color: #D04848; /* Change background color on hover for delete button */
+}
+
+.modify-button:hover img {
+  filter: brightness(70%); /* Reduce brightness on hover for update button */
+}
+
+.delete-button:hover img {
+  filter: brightness(70%) sepia(100%) hue-rotate(10deg) saturate(200%); /* Adjust filter for delete button */
+}
+/*upload file*/
+.upload-modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 9999;
+}
+
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1000; /* Ensure modal appears above other content */
+  width: 90%;
+  max-width: 500px;
+  background-color: #FFF;
+  border-radius: .5rem;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, .2); 
+}
+
+
+ *:after, *:before {
+	box-sizing: border-box;
+}
+
+:root {
+	--c-action-primary: #2e44ff;
+	--c-action-primary-accent: #e9e5ff;
+	--c-action-secondary: #e5e5e5;
+	--c-text-primary: #0d0f21; 
+	--c-text-secondary: #6a6b76;
+	--c-background-primary: #d0d1de;
+}
+
+body {
+	font-family: "Inter", sans-serif;
+	color: var(--c-text-primary);
+	background-color: var(--c-background-primary);	
+	line-height: 1.5;
+}
+
+input, button, select, textarea {
+	font: inherit;
+}
+
+.modal {
+  width: 90%;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 10vh;
+  margin-bottom: 10vh;
+  background-color: #FFF;
+  border-radius: .5rem;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, .2); 
+}
+
+.modal-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 1.5rem 1.5rem 1rem;
+}
+
+.logo-circle {
+  width: 3.5rem;
+  height: 3.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  background-color: var(--c-action-primary-accent);
+  svg {
+    max-width: 1.5rem;
+  }
+}
+
+.btn-close {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: .25rem;
+  border: none;
+  background-color: transparent;
+  &:hover, &:focus {
+    background-color: var(--c-action-primary-accent);
+  }
+}
+
+.modal-body {
+  padding: 1rem 1.5rem;
+}
+
+.modal-title {
+  font-weight: 700;
+}
+
+.modal-description {
+  color: var(--c-text-secondary);
+}
+
+.upload-area {
+  margin-top: 1.25rem;
+  border: none;
+  background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' stroke='%23ccc' stroke-width='3' stroke-dasharray='6%2c 14' stroke-dashoffset='0' stroke-linecap='square'/%3e%3c/svg%3e");
+  background-color: transparent;
+  padding: 3rem;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  &:hover, &:focus {
+    background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' stroke='%232e44ff' stroke-width='3' stroke-dasharray='6%2c 14' stroke-dashoffset='0' stroke-linecap='square'/%3e%3c/svg%3e");
+  }
+} 
+
+.upload-area-icon {
+  display: block;
+  width: 2.25rem;
+  height: 2.25rem;
+  svg {
+    max-height: 100%;
+    max-width: 100%;
+  }
+}
+
+.upload-area-title {
+  margin-top: 1rem;
+  display: block;
+  font-weight: 700;
+  color: var(--c-text-primary);
+}
+
+.upload-area-description {
+  display: block;
+  color: var(--c-text-secondary);
+  strong {
+    color: var(--c-action-primary);
+    font-weight: 700;
+  }
+}
+
+.modal-footer {
+  padding: 1rem 1.5rem 1.5rem;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.btn-secondary, .btn-primary {
+  padding: .5rem 1rem;
+  font-weight: 500;
+  border: 2px solid var(--c-action-secondary);
+  border-radius: .25rem;
+  background-color: transparent;
+}
+
+.btn-primary {
+  color: #FFF;
+  background-color: var(--c-action-primary);
+  border-color: var(--c-action-primary);
+}
+.btn-add {
+  font-size: 14px; /* Adjust font size as needed */
+  padding: 6px 10px; /* Adjust padding as needed */
+  margin-left: 10px; /* Adjust margin as needed */
+  height: 20px;
+  width: 20px;
+  background-color: #ffffff;
+color: #ffffff;
+}
+.add{
+  margin-left: 810px;
+  margin-top: -10px;
+  width: 30px; /* Adjust width as needed */
+  height: 30px;
+}
+.btn-add {
+  display: inline-block;
+  padding: 5px;
+  border-radius: 3px;
+  transition: all 0.3s ease; /* Smooth transition for hover effect */
+}
+
+.btn-add:hover {
+  border-color: #ffffff; /* Darker grey border on hover */
+  background-color: #ffffff; /* Lighter grey background on hover */
+}
+
+.btn-add img {
+  width: 30px; /* Adjust width as needed */
+  height: 30px; /* Adjust height as needed */
+  cursor: pointer;
+  margin: 0 auto;
+}

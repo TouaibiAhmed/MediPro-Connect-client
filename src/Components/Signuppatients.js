@@ -10,9 +10,10 @@ const SignUpPat = () => {
     email: '',
     password: '',
     adresse: '',
-    statutSocial: '', // Initialize statutSocial
-    image: '', // Initialize image
-    sexe: 'Homme' // Initialize sexe
+    statutSocial: '', 
+    image: '', 
+    sexe: 'Homme',
+    allergie: '' 
   });
 
   const handleInputChange = (e) => {
@@ -45,7 +46,9 @@ const [toastMessage, setToastMessage] = useState('');
           adresse: formData.adresse,
           statutSocial: formData.statutSocial, // Include it in the new patient object
           image: formData.image, // Include it in the new patient object
-          sexe: formData.sexe 
+          sexe: formData.sexe ,
+          Allergie: formData.allergie 
+
         }),
       });
   

@@ -2,12 +2,14 @@ import React, { useState } from 'react';
 import './SignIn.css'; // Make sure to create a CSS file with the same name
 import { useSelector } from 'react-redux';
 import { jwtDecode } from 'jwt-decode';
+import { useDispatch } from 'react-redux';
 
 
 const SignIn = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
+  const dispatch = useDispatch(); // Get the dispatch function from Redux
 
 
  // New state for managing toast notification
@@ -21,7 +23,11 @@ const SignIn = () => {
 
 
   const handleLogin = async (event) => {
+
     event.preventDefault();
+
+    dispatch(login(email, password));
+
 
     const endpoint = userType === 'patient' 
         ? "http://localhost:3000/api/patient/login" // Adjust this endpoint as needed

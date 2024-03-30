@@ -11,12 +11,12 @@ body {
     /* Other styling for your header */
   }
   
-  .header-icons {
+  .header-iconss {
     display: flex;
     align-items: center;
   }
   
-  .icon-container {
+  .icon-containerz {
     position: relative;
     margin: 10px;
   }
@@ -92,7 +92,7 @@ nav ul li a:hover {
 }
 
 
-.header-right {
+.header-rightt {
     display: flex;
     align-items: center;
 }

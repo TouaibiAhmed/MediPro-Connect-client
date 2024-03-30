@@ -1,6 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import './Doctorslist.css';
 import axios from 'axios';
+import { useDispatch } from 'react-redux';
+import { setSelectedDoctorId } from '../Redux/action/userActions'
+import { Link } from 'react-router-dom'; // Import Link from React Router
+
 
 const Doctors = () => {
   const [doctors, setDoctors] = useState([]);
@@ -11,6 +15,7 @@ const Doctors = () => {
   const [searchAddress, setSearchAddress] = useState('');
 
 
+  const dispatch = useDispatch(); // Redux dispatch function
 
 
 
@@ -53,6 +58,12 @@ const Doctors = () => {
     doctor.nom.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
+
+  const handleBookAppointment = (doctorId, e) => {
+    dispatch(setSelectedDoctorId(doctorId)); // Dispatch action to set selected doctor's ID
+    localStorage.setItem('selectedDoctorId', doctorId); // Store selected doctor's ID in local storage
+    
+  };
 
 
 
@@ -151,7 +162,9 @@ const Doctors = () => {
               ) : (
                 <p>No ratings yet</p>
               )}
-              <button>BOOK APPOINTMENT</button>
+             <Link to={`/doctor/${doctor._id}`} onClick={(e) => handleBookAppointment(doctor._id, e)}>
+                <button>BOOK APPOINTMENT</button>
+              </Link>
             </div>
           </div>
         ))}

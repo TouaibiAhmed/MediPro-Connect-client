@@ -1,8 +1,10 @@
 // redux/reducer/userReducer.js
 import { SET_USER_TYPE } from '../action/actionTypes';
+import { SET_SELECTED_DOCTOR_ID } from '../action/actionTypes'; 
 
 const initialState = {
-  userType: 'patient', // Default user type
+  userType: 'patient',
+  selectedDoctorId: null, 
 };
 
 const userReducer = (state = initialState, action) => {
@@ -11,6 +13,11 @@ const userReducer = (state = initialState, action) => {
       return {
         ...state,
         userType: action.payload,
+      };
+    case SET_SELECTED_DOCTOR_ID: 
+      return {
+        ...state,
+        selectedDoctorId: action.payload,
       };
     default:
       return state;

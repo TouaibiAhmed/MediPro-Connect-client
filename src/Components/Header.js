@@ -49,9 +49,9 @@ function Header() {
                     <li><a href="#contact">Contact</a></li>
                 </ul>
             </nav>
-            <div className="header-right">
-                <div className="header-icons">
-                    <div className="icon-container">
+            <div className="header-rightt">
+                <div className="header-iconss">
+                    <div className="icon-containerz">
                         <span className="language-icon" onClick={toggleLanguageOptions}>🌐</span>
                         {showLanguageOptions && (
                             <div className="dropdown-menu language-dropdown">
