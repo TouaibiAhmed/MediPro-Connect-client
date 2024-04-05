@@ -2,7 +2,7 @@
     font-family: 'Arial', sans-serif;
     margin: 20px;
   }
-  
+
   .header {
     position: relative;
     color: white; /* Adjust text color as needed */
@@ -14,6 +14,8 @@
   }
   
   .header-content {
+
+    
     padding: 150px 20px; /* Adjust padding as needed */
     position: relative; /* Ensure the content is positioned over the background */
     margin: 0px 250px;
@@ -218,6 +220,7 @@ margin: 0px 80px;  }
     font-size: 2rem; /* Large font size for the title */
     color: #333; /* Dark text color */
     margin-bottom: 0.5rem; /* Spacing below the title */
+   margin-left: 620px;
   }
   
   .how-it-works-description {
@@ -310,8 +313,8 @@ align-items: center;
 
     }
     
-    .department-title {
-      font-size: 1.1rem; /* Adjusted font size */
+    .departments-title {
+      font-size: 1.6rem; /* Adjusted font size */
       color: #333;
       text-align: center; /* Center the title text */
       margin: 0.5rem 0; /* Space above and below the title */

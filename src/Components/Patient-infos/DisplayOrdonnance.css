@@ -1,0 +1,151 @@
+/* PrescriptionComponent.css */
+.prescription {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 20px;
+    margin-bottom: 20px;
+    width: 50%;
+    margin: 20px auto;
+    position: relative;
+  }
+
+  .title {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  .speciality {
+    font-style: italic;
+    margin-bottom: 5px;
+  }
+  
+  .header {
+    margin-bottom: 20px;
+  }
+  
+  .header h2 {
+    margin: 0;
+  }
+  
+  .header p {
+    margin: 5px 0;
+  }
+  .doctor-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+  .contact-info{
+    margin-left: 300px;
+  }
+  
+  .patient-info, .prescription-details {
+    margin-bottom: 20px;
+  }
+  
+  .patient-info h3, .prescription-details h3 {
+    margin: 0 0 10px;
+  }
+  
+  .patient-info p, .prescription-details p {
+    margin: 0;
+  }
+  
+  .prescription-details .checkboxes {
+    margin-top: 10px;
+  }
+  
+  .prescription-details .checkboxes label {
+    margin-right: 20px;
+  }
+  .signature {
+    position: absolute;
+    bottom: 120px;
+    right: 50px;
+    display: flex;
+    align-items: center;
+  }
+  
+  .signature-label {
+    margin-right: 10px;
+  }
+  
+  .signature-img {
+    height: 50px;
+    width: auto;
+  }
+  
+  /* Additional styles for signature */
+  .signature-label {
+    font-weight: bold;
+  }
+  
+  .signature-img {
+    border: 1px solid #ccc;
+    padding: 5px;
+  }
+  /* DisplayOrdonnance.css */
+.qr-code-container {
+    position: relative;
+    width: 200px; /* Adjust size as needed */
+    height: 200px; /* Adjust size as needed */
+    margin-left: 40px;
+    margin-top: 30px;
+  }
+  
+  .qr-code-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 10px;
+    border-radius: 5px;
+    text-align: center;
+  }
+  
+  .qr-code-overlay p {
+    margin: 0;
+  }
+  .medicaments {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-right: 40px;
+    gap: 20px;
+  }
+  
+  .medicament {
+    flex: 0 0 33.33%; /* Adjust width as needed */
+    margin-right: 10px; /* Add margin between items */
+  }
+  .medicament-list{
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 20px;
+gap: 20px;  }
+  
+.medic{
+  margin-top: 10px;
+}
+/* Input field styles */
+input[type='text'],
+input[type='date'],
+textarea  {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  font-size: 14px;
+}
+
+
+button:hover {
+  background-color: #0056b3;
+}
+.submit{
+  margin-left: 620px;
+}

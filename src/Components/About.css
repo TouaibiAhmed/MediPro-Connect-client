@@ -1,3 +1,13 @@
+.aboutUS{
+  margin-top: 90px;
+}
+
+
+
+
+
+
+
 .about-us-header {
     display: flex;
     justify-content: center;
@@ -13,13 +23,13 @@
     margin-left:20px ;
   }
   
-  h1 {
+  .aboutuss {
     margin: 0; /* Removes default margin from h1 tag */
     margin-right: 990px;
   }
 
 
-  .about-section {
+  .aboutUs-section {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -28,7 +38,7 @@
     margin: -46px auto; /* Centering the section */
   }
   
-  .about-section-left {
+  .aboutUs-section-left {
     flex: 1;
   }
   
@@ -38,12 +48,12 @@
     border-radius: 10px; /* Optional: if you want rounded corners */
   }
   
-  .about-section-right {
+  .aboutUs-section-right {
     flex: 1;
     padding-left: 50px; /* Space between image and text content */
   }
   
-  .about-section h2 {
+  .aboutUs-section h2 {
     font-size: 2rem; /* Large font size for the title */
     color: #238df0; /* Title color */
     margin-bottom: 3rem; /* Space below the title */

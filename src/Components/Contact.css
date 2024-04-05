@@ -1,0 +1,20 @@
+
+.contact-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 200px; /* Adjust the height as needed */
+    background: rgba(32, 70, 224, 1.0);
+    background: conic-gradient(from 315deg, rgba(32, 70, 224, 1.0), rgba(117, 163, 216, 1.0));
+    color: white; /* Adjust text color as needed */
+    font-size: 36px; /* Adjust font size as needed */
+    font-weight: bold;
+    margin-top: 90px;
+    margin-right:20px ;
+    margin-left:20px ;
+  }
+  
+  .contact {
+    margin: 0; /* Removes default margin from h1 tag */
+    margin-right: 990px;
+  }

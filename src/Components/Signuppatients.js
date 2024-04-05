@@ -63,7 +63,7 @@ const [toastMessage, setToastMessage] = useState('');
 
 // Show toast on success
 setShowToast(true);
-setToastMessage("Registration successful! Welcome to our platform.");
+setToastMessage("Registration successful! Welcome to MediPro Connect platform!.");
 setTimeout(() => setShowToast(false), 5000); // Hide toast after 5 seconds  
 
       

@@ -1,7 +1,36 @@
 import React, { useState, useEffect } from 'react';
 import './Home.css'; // Make sure to create an App.css file for the CSS
 
+
+import { useDispatch, useSelector } from 'react-redux';
+
+import { setSearchName, setSearchAddress } from '../Redux/action/searchActions';
+
+import { Link } from 'react-router-dom';
+
+import { useNavigate } from "react-router-dom";
+
+
+ 
+
 function Home() { 
+
+
+
+  const dispatch = useDispatch();
+  const searchName = useSelector(state => state.searchName);
+  const searchAddress = useSelector(state => state.searchAddress);
+
+  const navigate = useNavigate();
+
+
+  const handleSearch = () => {
+    // Dispatch Redux actions to update state
+    dispatch(setSearchName(searchName));
+    dispatch(setSearchAddress(searchAddress));
+    navigate(`/doctors?name=${encodeURIComponent(searchName)}&address=${encodeURIComponent(searchAddress)}`);
+  };
+
 
 
 
@@ -64,6 +93,9 @@ function Home() {
   }, []);
 
 
+  const handlebtn = (event) =>{
+    navigate('/about');
+  }
 
 
 
@@ -79,14 +111,14 @@ function Home() {
     <div className="search-container">
     <div className="search-field">
   <img src="/images/gps.png" alt="Location Icon" className="search-field-icon" />
-  <input type="text" placeholder="Location:" className="search-input" />
+  <input type="text" placeholder="Location:" className="search-input" value={searchAddress} onChange={(e) => dispatch(setSearchAddress(e.target.value))}/>
 </div>
 <div className="search-field">
   <img src="/images/doc.png" alt="Doctor Icon" className="search-field-icon" />
-  <input type="text" placeholder="Doctor Name:" className="search-input" />
+  <input type="text" placeholder="Doctor Name:" className="search-input"  value={searchName} onChange={(e) => dispatch(setSearchName(e.target.value))} />
 </div>
 
-      <button className="search-btn">Search</button>
+    <button onClick={handleSearch} className="search-btn">Search </button> 
     </div>
   </div>
   <div className="header-image">
@@ -161,7 +193,7 @@ function Home() {
       the patient experience through innovative solutions. With a focus on user-friendly design and cutting-edge technology, 
       we aim to empower both healthcare providers and patients. Discover a new era of seamless and secure healthcare with us.
       </p>
-      <button className="about-us-button">Learn More</button>
+      <button className="about-us-button" onClick={handlebtn}>Learn More</button>
     </div>
   </div>
 </section>

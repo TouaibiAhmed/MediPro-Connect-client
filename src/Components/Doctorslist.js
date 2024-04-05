@@ -1,9 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import './Doctorslist.css';
+import styles from './Doctorslist.module.css'; // Import CSS module for Doctors component
 import axios from 'axios';
 import { useDispatch } from 'react-redux';
 import { setSelectedDoctorId } from '../Redux/action/userActions'
-import { Link } from 'react-router-dom'; // Import Link from React Router
+import { Link  } from 'react-router-dom'; // Import Link from React Router
+
+
+import { useSelector   } from 'react-redux';
+
+import { setSearchName, setSearchAddress } from '../Redux/action/searchActions';
+
 
 
 const Doctors = () => {
@@ -15,7 +21,11 @@ const Doctors = () => {
   const [searchAddress, setSearchAddress] = useState('');
 
 
-  const dispatch = useDispatch(); // Redux dispatch function
+  const dispatch = useDispatch();
+
+  
+
+  
 
 
 
@@ -91,7 +101,8 @@ const Doctors = () => {
 
 
 
-
+  const searchName = useSelector(state => state.searchName);
+  const SearchAddress = useSelector(state => state.searchAddress);
 
 
 
@@ -100,77 +111,65 @@ const Doctors = () => {
 
 
   return (
-    <div className='doctors'>
-      <div className='title'>
-        <h2>Doctors</h2>
+    <div className={styles.doctors}>
+    <div className={styles.title}>
+      <h2 className={styles.doctorslist}>Doctors</h2>
+    </div>
+    <div className={styles.filterContainer}>
+      <div className={styles.searchBox}>
+        <input type="text"  value={searchName} placeholder="Search Doctor By Name" onChange={handleSearchChange} />
       </div>
-      <div className="filter-container">
-        <div className="search-box">
-          <input type="text" placeholder="Search Doctor By Name" onChange={handleSearchChange} />
-        </div>
-        <div className="search-box">
-          <input type="text" placeholder="Adresse" onChange={handleAddressChange} />
-        </div>
-        <div className="dropdown">
+      <div className={styles.searchBox}>
+        <input type="text" value={SearchAddress} placeholder="Adresse" onChange={handleAddressChange} />
+      </div>
+      <div className={styles.dropdown}>
         <select value={selectedSpeciality} onChange={handleSpecialityChange}>
           <option value="">Speciality</option>
-          <option value="General Practitioner">General Practitioner</option>
-          <option value="Dental Care">Dental Care</option>
-          <option value="Psychologist">Psychologist</option>
-          <option value="Internal Medicine">Internal Medicine</option>
-          <option value="Pediatrics">Pediatrics</option>
-          <option value="Obstetrics and Gynecology">Obstetrics and Gynecology</option>
-          <option value="Cardiology">Cardiology</option>
-          <option value="Osteopath">Osteopath</option>
-          <option value="Radiology">Radiology</option>
-          <option value="Dermatologist">Dermatologist</option>
-          <option value="Pediatrics and Neurology">Pediatrics and Neurology</option>
-        </select> 
-        </div>
-        <div className="dropdown">
+          {/* Options for specialities */}
+        </select>
+      </div>
+      <div className={styles.dropdown}>
         <select value={selectedTariff} onChange={handleTariffChange}>
           <option value="">Tariff</option>
-          <option value="gt50">Less than 50 dt</option>
-          <option value="50to100">Between 50 and 100 dt</option>
-          <option value="lt100">Greater than 100 dt</option>
+          {/* Options for tariffs */}
         </select>
-        </div>
-        <div className="dropdown">
-           <select value={selectedRating} onChange={handleRatingChange}>
+      </div>
+      <div className={styles.dropdown}>
+        <select value={selectedRating} onChange={handleRatingChange}>
           <option value="">Rating</option>
-          <option value="highRated">High Rated (4-5)</option>
-          <option value="mediumRated">Medium Rated (3-4)</option>
-          <option value="lowRated">Low Rated (below 3)</option>
+          {/* Options for ratings */}
         </select>
-        </div>
-        <button className="search-btn" onClick={searchDoctors}>Search</button>
       </div>
-      <div className="doctor-grid">
-        {filteredDoctors.map((doctor) => (
-          <div className="card" key={doctor._id}>
-            <div className="card-header">
-              <img src={doctor.image} alt={`${doctor.nom} ${doctor.prenom}`} />
-            </div>
-            <div className="card-body">
-              <h3>{`${doctor.nom} ${doctor.prenom}`}</h3>
-              <p>{doctor.specialite}</p>
-              {doctor.ratingMoyen !== "Pas de rating" ? (
-                <div className="rating">
-                  {'★'.repeat(doctor.ratingMoyen)}
-                  {'☆'.repeat(5 - doctor.ratingMoyen)}
-                </div>
-              ) : (
-                <p>No ratings yet</p>
-              )}
-             <Link to={`/doctor/${doctor._id}`} onClick={(e) => handleBookAppointment(doctor._id, e)}>
-                <button>BOOK APPOINTMENT</button>
-              </Link>
-            </div>
-          </div>
-        ))}
-      </div>
+      <button className={styles.searchBtn} onClick={searchDoctors}>
+        Search
+      </button>
     </div>
-  );
+    <div className={styles.doctorGrid}>
+      {filteredDoctors.map((doctor) => (
+        <div className={styles.doctorCard} key={doctor._id}>
+          <div className={styles.doctorCardHeader}>
+            <img src={doctor.image} alt={`${doctor.nom} ${doctor.prenom}`} />
+          </div>
+          <div className={styles.doctorCardBody}>
+            <h3>{`${doctor.nom} ${doctor.prenom}`}</h3>
+            <p>{doctor.specialite}</p>
+            {doctor.ratingMoyen !== 'Pas de rating' ? (
+              <div className={styles.rating}>
+                {'★'.repeat(doctor.ratingMoyen)}
+                {'☆'.repeat(5 - doctor.ratingMoyen)}
+              </div>
+            ) : (
+              <p>No ratings yet</p>
+            )}
+            <Link to={`/profile/medecin/${doctor._id}`} onClick={(e) => handleBookAppointment(doctor._id, e)}>
+              <button>BOOK APPOINTMENT</button>
+            </Link>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+);
 };
 
 export default Doctors;

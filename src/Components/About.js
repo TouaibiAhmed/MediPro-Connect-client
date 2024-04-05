@@ -6,17 +6,17 @@ const About = () => {
 
 return(
 
-<div className='about' >
+<div className='aboutUS' >
 
     <div className="about-us-header">
-    <h1>About Us</h1>
+    <h1 className='aboutuss'>About Us</h1>
   </div>
 
 
-  <div className="about-section">
+  <div className="aboutUs-section">
      
-      <div className="about-section-right">
-        <h2>Who Are We?</h2>
+      <div className="aboutUs-section-right">
+        <h2 className='aboutush2'>Who Are We?</h2>
         <p className="about-description">
           
 MediPro Connect is a dedicated team of healthcare and technology experts. Our platform streamlines medical information and appointment management for practitioners, allowing them to focus on delivering quality patient care.
@@ -28,7 +28,7 @@ MediPro Connect is a dedicated team of healthcare and technology experts. Our pl
         </ul>
         <button className="about-button">Connect Now</button>
       </div>
-      <div className="about-section-left">
+      <div className="aboutUs-section-left">
         <img 
           src="/images/about1.png" 
           alt="About Us" 
@@ -46,16 +46,16 @@ MediPro Connect is a dedicated team of healthcare and technology experts. Our pl
 
 
   
-  <div className="about-section">
-      <div className="about-section-left">
+  <div className="aboutUs-section">
+      <div className="aboutUs-section-left">
         <img 
           src="/images/about2.gif" 
           alt="About Us" 
           className="about-image" 
         />
       </div>
-      <div className="about-section-right">
-        <h2>For Patients</h2>
+      <div className="aboutUs-section-right">
+        <h2 className='aboutush2'>For Patients</h2>
         <p className="about-description">
         Seeking medical advice or an appointment? Look no further than MediPro Connect.
 
@@ -74,10 +74,10 @@ and book appointments online, all at no cost to you. Experience convenience and 
 
 
 
-    <div className="about-section">
+    <div className="aboutUs-section">
      
-      <div className="about-section-right">
-        <h2>For Doctors</h2>
+      <div className="aboutUs-section-right">
+        <h2 className='aboutush2'>For Doctors</h2>
         <p className="about-description">
           
         MediPro Connect provides a comprehensive medical practice management service, streamlining your organization and saving you valuable time.
@@ -87,7 +87,7 @@ and book appointments online, all at no cost to you. Experience convenience and 
         <p className="about-description">Share your real-time availability with patients
          according to your criteria while retaining control over your medical schedule.</p>
       </div>
-      <div className="about-section-left">
+      <div className="aboutUs-section-left">
         <img 
           src="/images/about3.gif" 
           alt="About Us" 

@@ -11,9 +11,10 @@
     width: 230px; /* Set the width of the sidebar */
     max-width: 230px;
     height: 650px;
-    margin-top: 10px;
+    margin-top: 5px;
     float: left;
     margin-bottom: 20px;
+    margin-left: -10px;
 
 }
 .profile-menu {
@@ -29,14 +30,14 @@
     margin: 0 auto 20px; /* Center the image and add space below */
 }
 
-.sidebar .btn {
+.sidebar .btnn {
     width: 240px; /* Make buttons full width */
     margin-bottom: 5px; /* Reduce space between buttons */
     background-color: #f0f0f0; /* Background color */
     color: #333; /* Button text color */
     border: 1px solid #ddd; /* Add border */
     border-radius: 3px; /* Rounded corners for buttons */
-    padding: 20px; /* Add padding for better button appearance */
+    padding: 15px; /* Add padding for better button appearance */
     transition: background-color 0.3s ease; /* Smooth transition on hover */
     display: flex;
     justify-content: flex-start;
@@ -45,23 +46,23 @@
 
 
 }
-.sidebar .btn i {
+.sidebar .btnn i {
     margin-right: 10px; /* Space between icon and text */
   }
-  .sidebar .btn:hover {
+  .sidebar .btnn:hover {
     background-color: #e0e0e0; /* Darken background color on hover */
   }
 .sidebar-name{
 margin-left: 70px;
 }
-.sidebar .btn span {
+.sidebar .btnn span {
     /* Style for the text */
     flex: 1; /* Allow text to take remaining space */
   }
-.sidebar .btn:hover {
+.sidebar .btnn:hover {
     background-color: #0056b3; /* Darker blue on hover */
 }
-.sidebar .btn .icon {
+.sidebar .btnn .sidebar-icon {
     /* Style for the icon */
     width: 30px; /* Adjust the width as needed */
     height: 30px; /* Adjust the height as needed */
@@ -71,7 +72,7 @@ margin-left: 70px;
 
 
 /* Profile Card styles */
-.profile-card {
+.patient-profile-card {
     margin-left: 420px;
     margin-top: 20px;
     width: 900px; 
@@ -82,14 +83,15 @@ margin-left: 70px;
 
   }
   
-  .container {
+  .patient-container {
     display: flex; /* Use Flexbox */
     justify-content: flex-start; /* Align items to the start */
     content: "";
     clear: both;
     display: table;
     width: 100%;
-    background-color: #f7f3f3;
+    background-color: #ffffff;
+    margin-top: 80px;
   }
   
   .card {
@@ -429,12 +431,7 @@ margin-left: 70px;
 	--c-background-primary: #d0d1de;
 }
 
-body {
-	font-family: "Inter", sans-serif;
-	color: var(--c-text-primary);
-	background-color: var(--c-background-primary);	
-	line-height: 1.5;
-}
+
 
 input, button, select, textarea {
 	font: inherit;
@@ -590,4 +587,93 @@ color: #ffffff;
   height: 30px; /* Adjust height as needed */
   cursor: pointer;
   margin: 0 auto;
+}
+
+
+
+/* Ordonnances Container styles */
+.ordonnances-container {
+  display: flex; 
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  margin-left: 420px; /* Same margin as profile card */
+  margin-top: 20px;
+  width: 900px; 
+  max-width: 1200px; /* Set maximum width */
+  flex: 1; /* Allow the container to grow to fill available space */
+  background-color: #ffffff;
+  margin: 20px auto; /* Center the container */
+  border-radius: 8px;
+}
+
+.ordonnances-container h3 {
+  background-color: #007bff;
+  color: #fff;
+  margin-top: -10px;
+  width: 860px;
+  padding: 20px;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  font-size: large;
+}
+
+.ordonnances-container h3 .btn-add {
+  margin-left: auto; /* Push the button to the right */
+}
+
+.ordonnances-container ul {
+  list-style: none;
+  padding: 0;
+}
+
+.ordonnances-container li {
+  margin-bottom: 10px;
+}
+
+.ordonnance-cards {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.ordonnance-card {
+  width: 200px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin: 10px;
+  padding: 10px 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease;
+  position: relative;
+  display: inline-block; /* Display inline-block */
+  min-width: 200px;
+  cursor: pointer; /* Change cursor to pointer on hover */
+}
+
+.ordonnance-card:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card-icon {
+  display: flex;
+  justify-content: center; /* Center the icon horizontally */
+  align-items: center; /* Center the icon vertically */
+  margin-bottom: 20px; /* Add margin at the bottom */
+}
+
+.card-icon img {
+  width: 80px; /* Make the icon bigger */
+  transition: transform 0.3s ease; /* Add transition effect for smooth scaling */
+}
+
+.ordonnance-card:hover .card-icon img {
+  transform: scale(1.2); /* Scale the icon to 120% when hovering */
+}
+
+.card-content {
+  text-align: center; /* Center the content text */
+  margin-top: auto; /* Push the content to the bottom */
+}
+
+.card-content h4 {
+  margin-top: 0;
 }

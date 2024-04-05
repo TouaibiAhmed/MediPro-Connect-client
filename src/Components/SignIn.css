@@ -7,18 +7,19 @@
     min-height: 100vh;
     height: 220px;
     background-color: #f4f7fa; /* Or any color you prefer */
-    margin-top: -5px;
+    margin-top:5px;
     
   }
   
-  .img-container {
+  .img-containerr {
     flex: 1;
     display: flex;
     justify-content: center;
+    margin-top: 15px;
 
   }
   
-  .img-container img {
+  .img-containerr img {
     width: 700px;
     height: 700px;
     margin-left: 5px;
@@ -35,9 +36,9 @@
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     margin-right: 60px;
     margin-bottom: 70px;
-
+margin-top: 55px;
     font-family: 'Arial', sans-serif;
-    height: 450px;
+    height: 470px;
     width: 400px;
   }
   .login-form {
@@ -54,18 +55,18 @@
 
   }
   
-  .input-group {
+  .input-groupp {
     margin-bottom: 15px;
     margin-right: 60px;
     margin-left: -30px;
   }
   
-  .input-group label {
+  .input-groupp label {
     display: block;
     margin-bottom: 5px;
   }
   
-  .input-group input {
+  .input-groupp input {
     width: 100%;
     height: 40px;
     padding: 10px;

@@ -8,7 +8,7 @@ import './DisplayDossierMedical.css';
 
 const DisplayDossierMedical = () => {
   const { id } = useParams();
-
+console.log(id)
   const [dossierMedical, setDossierMedical] = useState(null);
 
 

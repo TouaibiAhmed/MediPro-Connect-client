@@ -11,9 +11,11 @@
     const PatientProfile = () => {
       
       const [patient, setPatient] = useState(null);
-      const { id } = useParams();
+      const { idPatient } = useParams();
       const navigate = useNavigate(); 
-      console.log('Patient ID:', id);
+      console.log('Patient ID:', idPatient);
+
+      const authToken = localStorage.getItem('authToken');
 
 
       const [editing, setEditing] = useState(false);
@@ -23,6 +25,7 @@
       const [activeButton, setActiveButton] = useState(null); // State for the currently active button
 
       const [medicalRecords, setMedicalRecords] = useState([]); // State for medical records
+
       const [showMedicalRecords, setShowMedicalRecords] = useState(false); // State for showing medical records
 
       const [showUploadModal, setShowUploadModal] = useState(false);
@@ -30,6 +33,9 @@
 
       const [selectedFile, setSelectedFile] = useState(null);
 
+      const [showOrdonnance, setShowOrdonnance] = useState(false); // State for showing ordonnance section
+
+      const [ordonnances, setOrdonnances] = useState([]);
 
 
       const cloudinary = new Cloudinary({
@@ -37,6 +43,7 @@
       });
 
 
+      const loggedInUserId = idPatient; // Add this line
 
 
 
@@ -93,7 +100,9 @@
       useEffect(() => {
         const fetchPatient = async () => {
           try {
-            const response = await axios.get(`http://localhost:3000/api/patient/consulterprofil/6602155980e4b3f198b73f6d`);
+            const response = await axios.get(`http://localhost:3000/api/patient/consulterprofil/${idPatient}`);
+            
+      
             const patientData = response.data;
 
             setPatient({
@@ -107,15 +116,19 @@
               image: patientData.image,
               sexe: patientData.sexe,
               Allergie: patientData.Allergie, // Corrected key
-              dossiersMedicaux: patientData.dossiersMedicaux // Array of medical record IDs
-
-            });     
+              dossiersMedicaux: patientData.dossiersMedicaux, 
+              Ordonnances: patientData.ordonnances        });     
 
 
             if (patientData && patientData.dossiersMedicaux) {
               setMedicalRecords(patientData.dossiersMedicaux);
             }
-
+            
+            if (patientData.ordonnances) {
+              console.log("Ordonnance IDs:", patientData.ordonnances);
+              setOrdonnances(patientData.ordonnances); // Update this line
+            }
+          
 
             } catch (error) {
             console.error('Error fetching patient:', error);
@@ -123,14 +136,14 @@
         };
 
         fetchPatient();
-      }, [id]);
+      }, [idPatient]);
 
 
 
       const handleUpdate = async () => {
         try {
           console.log("Updating patient data:", patient);
-          const response = await axios.put(`http://localhost:3000/api/patient/updateProfil/6602155980e4b3f198b73f6d`, patient);
+          const response = await axios.put(`http://localhost:3000/api/patient/updateProfil/${idPatient}`, patient);
           console.log("Update response:", response.data);
       
           const updatedPatientData = response.data;
@@ -157,22 +170,27 @@
           setShowProfileCard(true);
         }
       };
-
       const handleButtonClick = (buttonName) => {
+        console.log('Button clicked:', buttonName);
         setActiveButton(buttonName);
         // Update showProfileCard state based on the button clicked
         if (buttonName === 'profile') {
           setShowProfileCard(true);
           setShowMedicalRecords(false);
+          setShowOrdonnance(false);
         } else if (buttonName === 'medicalRecords') {
           setShowProfileCard(false);
           setShowMedicalRecords(true);
+          setShowOrdonnance(false);
+        } else if (buttonName === 'ordonnance') {
+          setShowProfileCard(false);
+          setShowMedicalRecords(false);
+          setShowOrdonnance(true);
         }
       };
 
 
       // Assume that the logged-in user's ID is the same as the profile being viewed
-      const loggedInUserId = id;
 
       
 
@@ -275,30 +293,43 @@
         // Handle click on "Add Medical Record" button
         try {
           // Navigate to DossierMedical component with the patient ID as URL parameter
-          navigate(`/dossier-medical/${id}`);
+          navigate(`/dossier-medical/${idPatient}`);
         } catch (error) {
           console.error('Error navigating to DossierMedical:', error);
         }
       };
 
 
+      const handleAddOrdonnance = () =>{
 
-      const handleDelete = async (recordId) => {
-        try {
-          await axios.delete(`http://localhost:3000/api/DossierMedical/supprimerDossierMedical/${recordId}`);
-          setMedicalRecords(prevRecords => prevRecords.filter(id => id !== recordId));
-          toast.success('Dossier médical supprimé avec succès');
-        } catch (error) {
-          console.error('Error deleting dossier medical:', error);
+        try{
+          navigate(`/addOrdonnance/${idPatient}`);
+        }catch(error){
+          console.error('Error navigating to Ordonnance:', error);
+
         }
+      };
+
+
+ 
+      
+
+      const handleOrdonnanceButtonClick = () => {
+        console.log('Ordonnance button clicked');
+        setActiveButton('ordonnance');
+        setShowProfileCard(false); // Hide profile card when ordonnance section is active
+        setShowMedicalRecords(false); // Hide medical records section when ordonnance section is active
+        setShowOrdonnance(true); // Show ordonnance section
       };
       
 
-      
-
-      
-
-
+      const navigateToOrdonnance  = async(ordonnanceId) =>{
+        try{
+          navigate(`/ordonnance/${ordonnanceId}`)
+        }  catch (error) {
+          console.error('Error navigating to DisplayOrdonnance:', error);
+        }
+      }
 
 
 
@@ -313,9 +344,10 @@
 
       const dateOfBirth = patient.dateOfBirth ? patient.dateOfBirth.split('T')[0] : '';
 
+      
 
       return (
-        <div className="container">
+        <div className="patient-container">
 
           <div className="sidebar">
           {editing ? (
@@ -341,39 +373,39 @@
 
             <ul className="profile-menu">
       <li>
-            <button className={`btn ${activeButton === 'profile' ? 'active' : ''}`} onClick={() => handleButtonClick('profile')}>
-          <img src="/images/acc.png" alt="User Icon" className="icon" />
+            <button className={`btnn ${activeButton === 'profile' ? 'active' : ''}`} onClick={() => handleButtonClick('profile')}>
+          <img src="/images/acc.png" alt="User Icon" className="sidebar-icon" />
           <span>Profile</span>
 
         </button>
       </li>
       <li>
-      <button className={`btn ${activeButton === 'medicalRecords' ? 'active' : ''}`} onClick={() => handleButtonClick('medicalRecords')}>
-          <img src="/images/dossier.png" alt="Medical File Icon" className="icon" />
+      <button className={`btnn ${activeButton === 'medicalRecords' ? 'active' : ''}`} onClick={() => handleButtonClick('medicalRecords')}>
+          <img src="/images/dossier.png" alt="Medical File Icon" className="sidebar-icon" />
           <span>Dossier Medical</span>
         </button>
       </li>
       <li>
-        <button className="btn">
-          <img src="/images/ord.png" alt="Prescription Icon" className="icon" />
+      <button className={`btnn ${activeButton === 'ordonnance' ? 'active' : ''}`} onClick={handleOrdonnanceButtonClick}>
+          <img src="/images/ord.png" alt="Prescription Icon" className="sidebar-icon" />
           <span>Ordonnance</span>
         </button>
       </li>
       <li>
-        <button className="btn">
-          <img src="/images/rdv.png" alt="Calendar Icon" className="icon" />
+        <button className="btnn">
+          <img src="/images/rdv.png" alt="Calendar Icon" className="sidebar-icon" />
         <span> Rendez-vous</span>
         </button>
       </li>
       <li>
-        <button className="btn" onClick={toggleEditing}>
-          <img src="/images/settings.png" alt="Settings Icon" className="icon" />
+        <button className="btnn" onClick={toggleEditing}>
+          <img src="/images/settings.png" alt="Settings Icon" className="sidebar-icon" />
         <span> Settings</span>
         </button>
       </li>
       <li>
-        <button className="btn" >
-          <img src="/images/logout.png" alt="Logout Icon" className="icon" />
+        <button className="btnn" >
+          <img src="/images/logout.png" alt="Logout Icon" className="sidebar-icon" />
         <span> Logout</span>
         </button>
       </li>
@@ -381,7 +413,7 @@
     </ul>
           </div>
           {showProfileCard && (
-          <div className="profile-card">
+          <div className="patient-profile-card">
             <div className="card">
               <h5 className="card-header">Patient Account</h5>
               <div className="card-body">
@@ -558,6 +590,16 @@
        </div>
      </div>
       )}
+         
+         
+
+
+         
+
+
+
+
+
    
 
     </div>
@@ -565,6 +607,32 @@
 )}
 
 
+  {showOrdonnance && (
+    <div className="ordonnances-container">
+      <h3>Ordonnances</h3>
+      <div className='add'>
+        <button className="btn-add" onClick={handleAddOrdonnance}>                      
+          <img src="/images/ajouter.png" alt="Add Icon" /> 
+        </button>
+      </div>
+
+      <div className="ordonnances">
+      {ordonnances.map((ordonnanceId, index) => (
+          
+          <div key={`${ordonnanceId}-${index}`} className="ordonnance-card">
+          <div className="card-icon">
+              <img src="/images/ordonnance.png" alt="Ordonnance Icon" />
+            </div>
+            <div className="card-content">
+           <p> <Link to={`/ordonnance/${ordonnanceId}`}>Ordonnance {index + 1}</Link></p>
+            </div>
+          </div>
+        ))}
+
+        
+      </div>
+    </div>
+  )}
 
 
 

@@ -1,6 +1,13 @@
 import React, { useState } from 'react';
 import './Signupdoctors.css'; // Make sure the CSS file is named SignInForm.css
 
+import { Alert } from '@mui/material';
+
+
+
+
+
+
 const SignUp = () => {
   const [formData, setFormData] = useState({
     name: '',
@@ -81,8 +88,9 @@ const SignUp = () => {
 
 // Show toast on success
       setShowToast(true);
-      setToastMessage("Registration successful! Welcome to our platform.");
-      setTimeout(() => setShowToast(false), 5000); // Hide toast after 5 seconds  
+      setToastMessage("Thank you for joining MediProConnect team. Your request will be validated soon.");
+
+
       
     
     } 
@@ -93,7 +101,18 @@ const SignUp = () => {
 
   return (
     <div className="signin-container">
-      {showToast && <div className="toast">{toastMessage}</div>}
+
+{showToast && (
+        <Alert
+          severity="info"
+          onClose={() => setShowToast(false)}
+          sx={{ position: 'absolute', top: 0, left: '50%', transform: 'translateX(-50%)', zIndex: 9999, fontSize: '1.0rem', padding: '25px' }}
+        >
+          {toastMessage}
+        </Alert>
+      )}
+
+
       <div className="signin-image">
         <img src="/images/signup1.png" alt="Doctors Illustration" />
       </div>
@@ -170,12 +189,25 @@ const SignUp = () => {
             value={formData.specialte}
             onChange={handleInputChange}
             required
-            className='speciality'
+            className='specialitee'
           >
             <option value="">Speciality</option>
             <option value="cardiology">Cardiology</option>
             <option value="neurology">Neurology</option>
-            <option value="pediatrics">Pediatrics</option>
+            <option value="general practitioners">General Practitioner</option>
+            <option value="dental care">Dental Care</option>
+            <option value="psychologist">Psychologist</option>
+            <option value="internal medicine">Internal Medicine</option>
+            <option value="obstetrics and gynecology">Obstetrics and Gynecology</option>
+            <option value="osteopath">Osteopath</option>
+            <option value="radiology">Radiology</option>
+            <option value="dermatologist">Dermatologist</option>
+
+
+
+
+
+
             {/* Add other specialties as needed */}
           </select>
           <button type="submit" className="signin-button">Validate my request</button>

@@ -1,0 +1,44 @@
+/* DoctorCalendar.css */
+
+
+
+.calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px; /* Add margin for spacing */
+  }
+
+.custom-calendar {
+    border: 1px solid #ccc; /* Add border to the calendar */
+  }
+  
+  .custom-calendar .rbc-toolbar button {
+    background-color: #40A2D8; /* Change color of calendar buttons */
+    color: white;
+    border: none;
+    border-radius: 2px;
+    cursor: pointer;
+    margin-right: 2px; /* Add margin between buttons */
+    font-size: 20px; /* Increase font size */
+  }
+
+  .custom-calendar .rbc-toolbar button:last-child {
+    margin-right: 0; /* Remove margin from last button to avoid extra spacing */
+  }
+  
+  .custom-calendar .rbc-toolbar button:hover {
+    background-color: #40A2D8; /* Change color on hover */
+  }
+  @media screen and (max-width: 768px) {
+    .calendar-header {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    
+    .custom-calendar-btn {
+      margin-top: 10px; /* Add margin between button and date */
+    }
+  }
+
+  /* Media query for smaller screens */

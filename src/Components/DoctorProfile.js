@@ -16,6 +16,7 @@ import { useGeographic } from 'ol/proj';
 
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
+import { useParams } from 'react-router-dom';
 
 
 
@@ -42,7 +43,7 @@ const DoctorProfile = () => {
 
   const dispatch = useDispatch(); // Redux dispatch function
 
-
+const {idMedecin} = useParams();
 
   const [doctor, setDoctor] = useState(null);
 
@@ -70,7 +71,7 @@ const DoctorProfile = () => {
   useEffect(() => {
     const fetchDoctorData = async () => {
       try {
-        const response = await axios.get(`http://localhost:3000/api/medecins/consulterProfil/${selectedDoctorId}`);
+        const response = await axios.get(`http://localhost:3000/api/medecins/consulterProfil/${idMedecin}`);
         setDoctor(response.data);
       } catch (error) {
         console.error('Error fetching doctor data:', error);
@@ -79,7 +80,7 @@ const DoctorProfile = () => {
   
     const fetchReviews = async () => {
       try {
-        const response = await axios.get(`http://localhost:3000/api/review/doctorReviews/${selectedDoctorId}`);
+        const response = await axios.get(`http://localhost:3000/api/review/doctorReviews/${idMedecin}`);
         setReviews(response.data.data);
       } catch (error) {
         console.error('Error fetching reviews:', error);
@@ -89,7 +90,7 @@ const DoctorProfile = () => {
 
     const fetchTimings = async () => {
       try {
-        const response = await axios.get(`http://localhost:3000/api/horaire/consulterHorairesParMedecinId/${selectedDoctorId}`);
+        const response = await axios.get(`http://localhost:3000/api/horaire/consulterHorairesParMedecinId/${idMedecin}`);
         setTimings(response.data);
       } catch (error) {
         console.error('Error fetching timings:', error);
