@@ -16,6 +16,7 @@ import Doctors from './Components/Doctorslist.js';
 import SignUpPatient from './Components/Signuppatients.js';
 import SignUpDoctor from './Components/Signupdoctors.js';
 import Contact from './Components/Contact.js'
+import Service from './Components/Services.js'
 function App() {
   return (
     <Router>
@@ -31,6 +32,9 @@ function App() {
 
       <Route path="/about" element={<About />} /> 
       <Route path="/doctors" element={<Doctors />} /> 
+
+      <Route path="/services" element={<Service />} /> 
+
 
       <Route path="/contact" element={<Contact />} /> 
 

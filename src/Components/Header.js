@@ -206,7 +206,7 @@ console.log(userId);
           <ul>
               <li><Link to='/'>Home</Link></li>
               <li><Link to='/about'>About</Link></li>
-              <li><a href="#services">Services</a></li>
+              <li><Link to='/services'>Services</Link></li>
               <li><Link to='/doctors'>Doctors</Link></li>
               <li><Link to='/contact'>Contact</Link></li>
           </ul>

@@ -1,0 +1,91 @@
+/* services.css */
+
+body {
+    background-color: #FDFDFB; /* Définir le fond de la page en blanc */
+  }
+  
+  .services-container {
+    margin-top: 20px;
+    text-align: center; /* Centrer le texte horizontalement */
+    background-color: #FDFDFB; /* Définir le fond du conteneur principal en blanc */
+  }
+  
+  h2 {
+    color: #5784BA; /* Changer la couleur du titre en #5784BA */
+  }
+
+  .service-details strong {
+    color:#5C6C73 /* Changer la couleur des mots "Description" et "Département" */
+  }
+/* Modifier la couleur du contenu de description et du département en #556C96 */
+.service-details p {
+    color:#9DB5C0;
+}
+
+
+
+  
+  .services-list {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap; /* Permettre le retour à la ligne des éléments */
+    justify-content: center; /* Centrer les éléments horizontalement */
+  }
+  
+  .service-item {
+    width: calc(25% - 20px); /* Chaque élément prend 25% de la largeur - marges */
+    margin: 10px; /* Espacement entre les éléments */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column; /* Disposer les enfants en colonne */
+    align-items: center; /* Centrer les enfants horizontalement */
+    text-align: center; /* Centrer le texte horizontalement */
+  }
+  
+  .service-image {
+    width: 300px; /* Ajustez la largeur de l'image selon vos besoins */
+    height: auto; /* Ajustez la hauteur automatiquement pour maintenir le ratio */
+    margin-bottom: 10px; /* Espacement entre l'image et le titre */
+    border-radius: 10px; /* Ajouter des coins arrondis aux images */
+  }
+  
+  .service-title {
+    font-weight: bold;
+    margin-bottom: 5px; /* Espacement entre le titre et la description */
+    align-self: center; /* Centrer le titre verticalement */
+  }
+  
+  .service-description {
+    margin-bottom: 10px; /* Espacement en dessous de la description */
+  }
+  
+  .service-details {
+    flex: 1; /* Pour occuper l'espace restant */
+  }
+  
+  .pagination {
+    margin-top: 20px;
+  }
+  
+  .pagination button {
+    margin: 0 5px;
+    padding: 5px 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .pagination button:hover {
+    background-color: #0056b3;
+  }
+  
+  .pagination button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
+  
