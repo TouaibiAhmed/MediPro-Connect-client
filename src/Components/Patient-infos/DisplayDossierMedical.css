@@ -6,8 +6,8 @@
     padding: 20px;
     border: 2px solid #ccc; /* Add border to resemble a medical folder */
     border-radius: 10px;
-    margin-bottom: 10px;
-    margin-top: 10px;
+    margin-bottom: 40px;
+    margin-top: 90px;
     background-color: #ffffff;
   }
   
@@ -15,14 +15,14 @@
     background-color: #ebe4e4;
   }
   
-  .title-container {
+  .title-containerr {
     background-color: #f2f2f2; /* Grey background color */
     padding: 25px;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
   }
   
-  .title-container h2 {
+  .title-containerr h2 {
     margin: 0;
   }
   

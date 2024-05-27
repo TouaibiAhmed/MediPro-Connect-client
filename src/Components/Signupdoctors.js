@@ -24,7 +24,7 @@ const SignUp = () => {
           telephoneCabinet: '',
           listeImagesCabinet: [],
           experience: 0, 
-          age: 25, 
+          age: '', 
           description: '',
           formation: [],
           signature: ''
@@ -189,27 +189,35 @@ const SignUp = () => {
             value={formData.specialte}
             onChange={handleInputChange}
             required
-            className='specialitee'
-          >
+            className='specialitee'>
             <option value="">Speciality</option>
-            <option value="cardiology">Cardiology</option>
-            <option value="neurology">Neurology</option>
-            <option value="general practitioners">General Practitioner</option>
-            <option value="dental care">Dental Care</option>
-            <option value="psychologist">Psychologist</option>
-            <option value="internal medicine">Internal Medicine</option>
-            <option value="obstetrics and gynecology">Obstetrics and Gynecology</option>
-            <option value="osteopath">Osteopath</option>
-            <option value="radiology">Radiology</option>
-            <option value="dermatologist">Dermatologist</option>
+            <option value="Cardiology">Cardiology</option>
+            <option value="Neurology">Neurology</option>
+            <option value="General Practitioners">General Practitioner</option>
+            <option value="Dental Care">Dental Care</option>
+            <option value="Psychologist">Psychologist</option>
+            <option value="Internal Medicine">Internal Medicine</option>
+            <option value="Obstetrics and Gynecology">Obstetrics and Gynecology</option>
+            <option value="Osteopath">Osteopath</option>
+            <option value="Radiology">Radiology</option>
+            <option value="Dermatologist">Dermatologist</option>
+            <option value="Pediatrics">Pediatrics</option>
+            <option value="Gynecology">Gynecology</option>
+            <option value="Orthopedics">Orthopedics</option>
+            <option value="Endocrinology">Endocrinology</option>
+            <option value="Ophthalmology">Ophthalmology</option>
+            <option value="Otolaryngology (ENT)">Otolaryngology (ENT)</option>
+            <option value="Psychiatry">Psychiatry</option>
+            <option value="Rheumatology">Rheumatology</option>
+            <option value="urology">Urology</option>
+            <option value="Anesthesiology">Anesthesiology</option>
+            <option value="Nutrition and Dietetics">Nutrition and Dietetics</option>
+            <option value="Radiology">Radiology</option>
+            <option value="Gastroenterology">Gastroenterology</option>
+            <option value="Neurology">Neurology</option>
 
-
-
-
-
-
-            {/* Add other specialties as needed */}
           </select>
+          
           <button type="submit" className="signin-button">Validate my request</button>
           <div className="signin-footer">
             <p>Already have an account? <a href="#log-in">Log In</a></p>

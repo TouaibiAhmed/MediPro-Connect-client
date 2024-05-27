@@ -6,9 +6,9 @@ function Footer() {
     <footer>
       <div className='footerr'>
         <div className="logo-footer">
-          <img src="/images/logo1.png" alt="" className='logo'/>
+          <img src="/images/logo1.png" alt="" className='footer-logo'/>
         </div>
-        <div className="footer-section contact">
+        <div className="footer-section contactt">
           <h3>Contact</h3>
           <ul>
             <li><img src="/images/mail.png" alt="Mail" /> MediPro-Connect@gmail.com</li>
@@ -25,7 +25,7 @@ function Footer() {
             <li><a href="#">Contact </a></li>
           </ul>
         </div>
-        <div className="footer-section products">
+        <div className="footer-section lang">
           <h3>Language</h3>
           <ul>
             <li><a href="#">English</a></li>

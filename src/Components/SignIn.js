@@ -54,13 +54,11 @@ const SignIn = () => {
 
 
   const handleLogin = async (event) => {
-
-
     event.preventDefault();
   
     const endpoint = userType === 'patient' 
-      ? "http://localhost:3000/api/patient/login" // Adjust this endpoint as needed
-      : "http://localhost:3000/api/medecins/login"; // Adjust this endpoint as needed
+      ? "http://localhost:3000/api/patient/login" 
+      : "http://localhost:3000/api/medecins/login"; 
   
     try {
       const response = await fetch(endpoint, {
@@ -70,21 +68,16 @@ const SignIn = () => {
         },
         body: JSON.stringify({ email, motDePasse: password }),
       });
-
-
+  
       if (userType === 'medecin') {
         const status = await getMedecinStatusByEmail(email); 
         console.log(status);
         if (status === "en attente") {
           setShowToast(true);
-      setToastMessage("Your Request For Joining In To MediPro Connect Team Is Not Approved Yet, Thank You For Your Patience It Will Be Validated Soon.");
-
+          setToastMessage("Your Request For Joining In To MediPro Connect Team Is Not Approved Yet, Thank You For Your Patience It Will Be Validated Soon.");
           return;
         }
       }
-
-
-
   
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
@@ -92,36 +85,35 @@ const SignIn = () => {
   
       const { token, userId } = await response.json();
       const decodedToken = jwtDecode(token);
-        // Store token in localStorage
-        localStorage.setItem('token', token);
-        sessionStorage.setItem('userId', userId); 
-
+      
+      // Store token in localStorage
+      localStorage.setItem('token', token);
+      
+      // Store user ID and user type in sessionStorage
+      sessionStorage.setItem('userId', userId); 
+      sessionStorage.setItem('userType', userType);
+      sessionStorage.setItem(userType === 'patient' ? 'patientUserId' : 'doctorUserId', userId);
+  
       console.log(`Login successful as a ${decodedToken.userType}`);
-      
-
-      
-
-
-
-   
-
-
-
+  
       // Store user ID and user type in Redux store
       dispatch(loginSuccess(decodedToken.idMedecin || decodedToken.idPatient, decodedToken.userType));
   
       setShowToast(true);
-      setToastMessage("Login successful! Welcome to  MediPro Connect platform!");
+      setToastMessage("Login successful! Welcome to MediPro Connect platform!");
       setTimeout(() => setShowToast(false), 5000); // Hide toast after 5 seconds  
-
-      navigate("/Homepage");
-
-
+  
+      navigate("/");
     } catch (error) {
       console.error('Login error:', error);
-      // Handle and display error
+      setShowToast(true);
+      setErrorMessage("Invalid login errors usually mean that either the username or password you are trying to log in with are incorrect.");
     }
   };
+  
+
+
+
 
   return (
     <div className="signin-wrapper">
@@ -134,6 +126,18 @@ const SignIn = () => {
           {toastMessage}
         </Alert>
       )}
+
+{errorMessage && (
+      <Alert
+        severity="error"
+        onClose={() => setErrorMessage('')}
+        sx={{ position: 'absolute', top: 0, left: '50%', transform: 'translateX(-50%)', zIndex: 9999, fontSize: '1.0rem', padding: '25px' }}
+      >
+        {errorMessage}
+      </Alert>
+    )}
+
+
       <div className="img-containerr">
         <img src="/images/login.png" alt="Sign In" />
       </div>

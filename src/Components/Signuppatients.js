@@ -76,14 +76,15 @@ setTimeout(() => setShowToast(false), 5000); // Hide toast after 5 seconds
   
 
   return (
-    <div className="signin-container">
+    <div className="signup-container">
             {showToast && <div className="toast">{toastMessage}</div>}
 
-      <div className="signin-image">
+
+      <div className="signup-image">
         <img src="/images/signup2.png" alt="Doctors Illustration" />
       </div>
-      <div className="signin-form-container">
-        <form onSubmit={handleSignUp} className="signin-form">
+      <div className="signup-form-container">
+        <form onSubmit={handleSignUp} className="signup-form">
           <h2>Sign Up</h2>
           <p className="subtitle">Patients Registration</p>
           <div className="input-row" >
@@ -150,8 +151,8 @@ setTimeout(() => setShowToast(false), 5000); // Hide toast after 5 seconds
           />
           
   </div>
-          <button type="submit" className="signin-button">Sign Up</button>
-          <div className="signin-footer">
+          <button type="submit" className="signup-button">Sign Up</button>
+          <div className="signup-footer">
             <p>Already have an account? <a href="#log-in">Log In</a></p>
           </div>
         </form>

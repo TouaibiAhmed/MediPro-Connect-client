@@ -1,5 +1,9 @@
 /* DoctorCalendar.css */
-
+.calendar-container{
+  margin-top: 70px;
+  border-radius: 10px; /* Add border radius for a rounded look */
+  padding: 20px; /* Add padding for spacing */
+}
 
 
 .calendar-header {
@@ -11,10 +15,13 @@
 
 .custom-calendar {
     border: 1px solid #ccc; /* Add border to the calendar */
+    border-radius: 8px; /* Add border radius */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
   }
   
   .custom-calendar .rbc-toolbar button {
-    background-color: #40A2D8; /* Change color of calendar buttons */
+    background-color: #C7C8CC; /* Change color of calendar buttons */
     color: white;
     border: none;
     border-radius: 2px;

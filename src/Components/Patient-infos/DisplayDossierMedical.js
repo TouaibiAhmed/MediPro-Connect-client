@@ -83,7 +83,7 @@ console.log(id)
 
   return (
     <div className="dossier-medical-details">
-    <div className="title-container">
+    <div className="title-containerr">
       <center><h2>Dossier médical</h2></center>
     </div>
     <div className="button-containerr">
@@ -95,12 +95,40 @@ console.log(id)
   <button onClick={handleDelete}>Delete</button> 
 </div>
 
-    <p className="name">Patient: {dossierMedical.nom}</p>
+<h3>Médecin traitant :</h3>
+          {editMode ? (
+            <input
+              type="text"
+              id="nom"
+              name="nom"
+              value={formData.nomMedecin}
+              onChange={handleInputChange}
+              required
+            />
+          ) : (
+            <p>{dossierMedical.nomMedecin}</p>
+          )}
+
+<h3>Spécialité:</h3>
+          {editMode ? (
+            <input
+              type="text"
+              id="nom"
+              name="nom"
+              value={formData.specialiteMedecin}
+              onChange={handleInputChange}
+              required
+            />
+          ) : (
+            <p>{dossierMedical.specialiteMedecin}</p>
+          )}
+
+
     <div className="section-container">
       <h3>Informations Personnelles :</h3>
       <div className="left-column">
         <div className="form-group">
-          <label htmlFor="nom">Nom :</label>
+          <label htmlFor="nom">Nom Patient :</label>
           {editMode ? (
             <input
               type="text"
@@ -126,11 +154,11 @@ console.log(id)
               required
             />
           ) : (
-            <p>{dossierMedical.dateNaissance}</p>
+            <p>{dossierMedical.dateNaissance.substring(0, 10)}</p>
           )}
         </div>
         <div className="form-group">
-          <label htmlFor="sexe">Sexe :</label>
+          <label htmlFor="sexe">Sexe : </label>
           {editMode ? (
             <div className="checkbox-container">
               <label className="checkbox-label">
@@ -179,12 +207,12 @@ console.log(id)
           )}
         </div>
         <div className="form-group">
-          <label htmlFor="numerosTelephone">Numéros de téléphone :</label>
+          <label htmlFor="numeroTelephone">Numéros de téléphone :</label>
           {editMode ? (
             <input
               type="text"
-              id="numerosTelephone"
-              name="numerosTelephone"
+              id="numeroTelephone"
+              name="numeroTelephone"
               value={formData.numeroTelephone}
               onChange={handleInputChange}
               required
@@ -193,21 +221,7 @@ console.log(id)
             <p>{dossierMedical.numeroTelephone}</p>
           )}
         </div>
-        <div className="form-group">
-          <label htmlFor="adresseEmail">Adresse e-mail :</label>
-          {editMode ? (
-            <input
-              type="email"
-              id="adresseEmail"
-              name="adresseEmail"
-              value={formData.adresseEmail}
-              onChange={handleInputChange}
-              required
-            />
-          ) : (
-            <p>{dossierMedical.adresseEmail}</p>
-          )}
-        </div>
+       
         
         {/* Repeat the same pattern for other attributes */}
       </div>
@@ -223,7 +237,7 @@ console.log(id)
               type="text"
               id="taille"
               name="informationsAssuranceMaladie.taille"
-              value={formData.informationsAssuranceMaladie?.taille || ''}
+              value={formData.taille || ''}
               onChange={handleInputChange}
             />
             ) : (
@@ -255,7 +269,7 @@ console.log(id)
               onChange={handleInputChange}
             />
              ) : (
-              <p>{dossierMedical.Poids}</p>
+              <p>{dossierMedical.groupeSanguin}</p>
             )}
           </div>
         </div>
@@ -413,17 +427,17 @@ console.log(id)
               )}
             </div>
             <div className="form-group">
-              <label htmlFor="expositionsProfessionnelles">Expositions professionnelles :</label>
+              <label htmlFor="expositionsProfessionnellesEnvironnementales">Expositions professionnelles :</label>
               {editMode ? (
 
               <textarea
-                id="expositionsProfessionnelles"
-                name="habitudesVieFacteursRisque.expositionsProfessionnelles"
-                value={formData.expositionsProfessionnelles || ''}
+                id="expositionsProfessionnellesEnvironnementales"
+                name="habitudesVieFacteursRisque.expositionsProfessionnellesEnvironnementales"
+                value={formData.expositionsProfessionnellesEnvironnementales || ''}
                 onChange={handleInputChange}
               />
               ) : (
-                <p>{dossierMedical.expositionsProfessionnelles}</p>
+                <p>{dossierMedical.expositionsProfessionnellesEnvironnementales}</p>
               )}
             </div>
           </div>

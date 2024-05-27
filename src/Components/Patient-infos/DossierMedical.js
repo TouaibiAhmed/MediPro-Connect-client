@@ -1,26 +1,41 @@
-import React, { useState } from 'react';
-import './DossierMedical.css'
+import React, { useState, useEffect } from 'react';
+import './DossierMedical.modules.css'
 import axios from 'axios'; // Import Axios
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 
-
+import { Snackbar, Button } from '@mui/material';
+import MuiAlert from '@mui/material/Alert';
 
 const DossierMedical = () => {
-  const { patientId } = useParams();
-    console.log('Patient ID:', patientId); // Add this line to check if patientId is correctly obtained
 
+  const navigate = useNavigate();
+
+  const [patient, setPatient] = useState(null);
+
+  const [openSnackbar, setOpenSnackbar] = useState(false);
+  const [snackbarMessage, setSnackbarMessage] = useState('');
+  const [snackbarSeverity, setSnackbarSeverity] = useState('success');
 
   
+
+  const handleCloseSnackbar = (event, reason) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+    setOpenSnackbar(false);
+  };
+
   const [formData, setFormData] = useState({
-    nom: '',
+    nomMedecin: '',
+    specialiteMedecin:'',
+    nom:'',
     dateDeNaissance: '',
     sexe: '',
     adresseResidentielle: '',
-    numerosTelephone: '',
-    adresseEmail: '',
+    numeroTelephone: '',
     informationsAssuranceMaladie: {
       taille: '',
       poids: '',
@@ -37,11 +52,11 @@ const DossierMedical = () => {
       maladiesHereditaires: '',
     },
     habitudesVieFacteursRisque: {
-      tabagisme: '',
-      consommationAlcool: '',
-      drogues: '',
+      tabagisme: false,
+      consommationAlcool: false,
+      drogues: false,
       regimeAlimentaireActivitePhysique: '',
-      expositionsProfessionnelles: '',
+      expositionsProfessionnellesEnvironnementales: '',
     },
     notesObservationsMedicales: '',
     comptesRendusConsultation: '',
@@ -54,64 +69,135 @@ const DossierMedical = () => {
   const handleInputChange = (e) => {
     const { name, value, type, checked } = e.target;
     
-    // Check if the input field is a checkbox
+    // Handling checkboxes for boolean values
     if (type === 'checkbox') {
-      setFormData({
+      setFormData(formData => ({
         ...formData,
-        [name]: checked,
-      });
+        [name]: checked,  // Directly using the checked value, which is a boolean
+      }));
     } else {
-      // Check if the input field belongs to a nested object
       const nestedFields = name.split('.');
       if (nestedFields.length > 1) {
-        // If it's a nested field, update the nested object immutably
-        setFormData({
+        setFormData(formData => ({
           ...formData,
           [nestedFields[0]]: {
             ...formData[nestedFields[0]],
             [nestedFields[1]]: value,
           },
-        });
+        }));
       } else {
-        // If it's not a nested field or checkbox, update normally
-        setFormData({
+        setFormData(formData => ({
           ...formData,
           [name]: value,
-        });
+        }));
       }
     }
   };
   
+
+  const {patientId} = useParams();
+console.log(patientId)
   
   const handleSubmit = async (e) => {
+
+
+
     e.preventDefault();
+
+
+    const adjustedFormData = {
+
+      patient: patientId ,
+
+      nomMedecin: formData.nomMedecin,
+      specialiteMedecin: formData.specialiteMedecin,
+      dateNaissance: formData.dateDeNaissance, // Make sure the backend expects dateNaissance and not dateDeNaissance
+      sexe: formData.sexe,
+      adresseResidentielle: formData.adresseResidentielle,
+      numeroTelephone: formData.numeroTelephone,
+      taille: parseInt(formData.informationsAssuranceMaladie.taille),
+      poids: parseInt(formData.informationsAssuranceMaladie.poids),
+      groupeSanguin: formData.informationsAssuranceMaladie.groupeSanguin,
+      maladiesHereditaires: formData.antecedentsFamiliaux.maladiesHereditaires,
+      tabagisme: Boolean(formData.habitudesVieFacteursRisque.tabagisme),
+      consommationAlcool: Boolean(formData.habitudesVieFacteursRisque.consommationAlcool),
+      drogues: Boolean(formData.habitudesVieFacteursRisque.drogues),
+      regimeAlimentaireActivitePhysique: formData.habitudesVieFacteursRisque.regimeAlimentaireActivitePhysique,
+      expositionsProfessionnellesEnvironnementales: formData.habitudesVieFacteursRisque.expositionsProfessionnellesEnvironnementales,
+      comptesRendusConsultation: formData.comptesRendusConsultation,
+      resultatsExamensAnalyses: formData.resultatsExamensAnalyses,
+      planTraitementActuel: formData.planTraitementActuel,
+      recommandationsConseilsMedicaux: formData.recommandationsConseilsMedicaux,
+      histoireMaladies: formData.informationsAssuranceMaladie.histoireMaladies,
+      chirurgiesHospitalisations: formData.informationsAssuranceMaladie.chirurgiesHospitalisations,
+      allergies: formData.informationsAssuranceMaladie.allergies,
+      vaccinations: formData.informationsAssuranceMaladie.vaccinations,
+    };
+
     try {
-      // Extract patientId from the route params
-      const patientId = window.location.pathname.split('/').pop(); // Assuming the patient ID is part of the URL path
+      console.log("Adjusted Form Data:", adjustedFormData);  // Debug to see what's being sent
       console.log('Patient ID:', patientId); // Log the extracted patientId
     
-      toast.success('Dossier médical ajouté avec succès');
-      const response = await axios.post(`http://localhost:3000/api/dossierMedical/ajouterDossierMedical/${patientId}`, formData);
-      console.log('Medical folder created:', response.data);
+      
+
+      const response = await axios.post(`http://localhost:3000/api/dossierMedical/ajouterDossierMedical/${patientId}`, adjustedFormData);
+          
+      setSnackbarMessage('Dossier médical ajouté avec succès');
+      setSnackbarSeverity('success');
+      setOpenSnackbar(true);
+      setTimeout(() => {
+        navigate(`/profile/patient/${patientId}`); // Navigate back to the previous page after showing the Snackbar
+      }, 2000); // Adjust time as needed
+            console.log('Medical folder created:', response.data);
+
     } catch (error) {
-      console.error('Error creating medical folder:', error);
+      console.error('Error creating medical folder:', error.response ? error.response.data : error);
       toast.error("Erreur lors de l'ajout du dossier médical");
 
     }
   };
   
+
   
-  
-  
+
+
+
 
   return (
     <div className="medical-record-form">
-  <div className="title-container">
+  <div className="title-containerr">
+
+  <Snackbar open={openSnackbar} autoHideDuration={6000} onClose={handleCloseSnackbar}>
+        <MuiAlert elevation={6} variant="filled" onClose={handleCloseSnackbar} severity={snackbarSeverity}>
+          {snackbarMessage}
+        </MuiAlert>
+      </Snackbar>
 
       <center><h2 >Dossier médical</h2> </center>
       </div>
-<p className='name'>Patient: ...............</p>
       <form onSubmit={handleSubmit}>
+
+<div className='form-group'>
+      <label htmlFor="nomMedecin">Médecin traitant: :</label>
+          <input
+            type="text"
+            id="nomMedecin"
+            name="nomMedecin"
+            value={formData.nomMedecin}
+            onChange={handleInputChange}
+            required
+          />
+         
+      <label htmlFor="specialiteMedecin">Spécialité :</label>
+          <input
+            type="text"
+            id="specialiteMedecin"
+            name="specialiteMedecin"
+            value={formData.specialiteMedecin}
+            onChange={handleInputChange}
+            required
+          />
+      </div>
       <div className="section-container">
 
      
@@ -169,27 +255,17 @@ const DossierMedical = () => {
           />
         </div>
         <div className="form-group">
-          <label htmlFor="numerosTelephone">Numéros de téléphone :</label>
+          <label htmlFor="numeroTelephone">Numéros de téléphone :</label>
           <input
             type="tel"
-            id="numerosTelephone"
-            name="numerosTelephone"
+            id="numeroTelephone"
+            name="numeroTelephone"
             value={formData.numeroTelephone}
             onChange={handleInputChange}
             required
           />
         </div>
-        <div className="form-group">
-          <label htmlFor="adresseEmail">Adresse e-mail :</label>
-          <input
-            type="email"
-            id="adresseEmail"
-            name="adresseEmail"
-            value={formData.adresseEmail}
-            onChange={handleInputChange}
-            required
-          />
-        </div>
+       
         </div>
 </div>
 <div className="section-container">
@@ -380,11 +456,11 @@ const DossierMedical = () => {
           />
         </div>
         <div className="form-group">
-          <label htmlFor="expositionsProfessionnelles">Expositions professionnelles :</label>
+          <label htmlFor="expositionsProfessionnellesEnvironnementales">Expositions professionnelles :</label>
           <textarea
-            id="expositionsProfessionnelles"
-            name="habitudesVieFacteursRisque.expositionsProfessionnelles"
-            value={formData.habitudesVieFacteursRisque.expositionsProfessionnelles}
+            id="expositionsProfessionnellesEnvironnementales"
+            name="habitudesVieFacteursRisque.expositionsProfessionnellesEnvironnementales"
+            value={formData.habitudesVieFacteursRisque.expositionsProfessionnellesEnvironnementales}
             onChange={handleInputChange}
           />
         </div>
@@ -448,7 +524,7 @@ const DossierMedical = () => {
   </div>
 </div>
 </div>
-        <button type="submit">Créer</button>
+        <button className="submitBtn"type="submit">Créer</button>
       </form>
     </div>
   );

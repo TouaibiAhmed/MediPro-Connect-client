@@ -11,22 +11,22 @@ import { NumericFormat } from 'react-number-format';
 // project import
 import Dot from './Dot';
 
-function createData(trackingNo, name, fat, carbs, protein) {
-  return { trackingNo, name, fat, carbs, protein };
+function createData(trackingNo, name, age, status, date) {
+  return { trackingNo, name, age, status, date };
 }
 
 const rows = [
-  createData(84564564, 'Camera Lens', 40, 2, 40570),
-  createData(98764564, 'Laptop', 300, 0, 180139),
-  createData(98756325, 'Mobile', 355, 1, 90989),
-  createData(98652366, 'Handset', 50, 1, 10239),
-  createData(13286564, 'Computer Accessories', 100, 1, 83348),
-  createData(86739658, 'TV', 99, 0, 410780),
-  createData(13256498, 'Keyboard', 125, 2, 70999),
-  createData(98753263, 'Mouse', 89, 2, 10570),
-  createData(98753275, 'Desktop', 185, 1, 98063),
-  createData(98753291, 'Chair', 100, 0, 14001)
+  createData(84564564, 'Ahmed Touaibi', 21, 0, "10/04/2024"),
+  createData(98764564, 'Belgacem Balti', 35, 1, "10/05/2024"),
+  createData(12345678, 'Ahmedd', 28, 2, "10/06/2024"),
+  createData(23456789, 'ahmed tb', 42, 0, "10/07/2024"),
+  createData(34567890, 'Bob Johnson', 55, 1, "10/08/2024"),
+  createData(45678901, 'Belgaa', 31, 2, "10/09/2024"),
+  createData(56789012, 'Michael Brown', 48, 0, "10/10/2024"),
+  createData(67890123, 'Touaibi', 19, 1, "10/11/2024"),
+  createData(78901234, 'David Martinez', 62, 2, "10/12/2024"),
 ];
+
 
 function descendingComparator(a, b, orderBy) {
   if (b[orderBy] < a[orderBy]) {
@@ -61,32 +61,31 @@ const headCells = [
     id: 'trackingNo',
     align: 'left',
     disablePadding: false,
-    label: 'Tracking No.'
+    label: 'Patient No.'
   },
   {
     id: 'name',
     align: 'left',
     disablePadding: true,
-    label: 'Product Name'
+    label: 'Patient Name'
   },
   {
-    id: 'fat',
+    id: 'age',
     align: 'right',
     disablePadding: false,
-    label: 'Total Order'
+    label: 'Age'
   },
   {
-    id: 'carbs',
+    id: 'status',
     align: 'left',
     disablePadding: false,
-
     label: 'Status'
   },
   {
-    id: 'protein',
+    id: 'date',
     align: 'right',
     disablePadding: false,
-    label: 'Total Amount'
+    label: 'Date'
   }
 ];
 
@@ -201,16 +200,14 @@ export default function OrderTable() {
                   selected={isItemSelected}
                 >
                   <TableCell component="th" id={labelId} scope="row" align="left">
-                   
+                    {row.trackingNo}
                   </TableCell>
                   <TableCell align="left">{row.name}</TableCell>
-                  <TableCell align="right">{row.fat}</TableCell>
+                  <TableCell align="right">{row.age}</TableCell>
                   <TableCell align="left">
-                    <OrderStatus status={row.carbs} />
+                    <OrderStatus status={row.status} />
                   </TableCell>
-                  <TableCell align="right">
-                    <NumericFormat value={row.protein} displayType="text" thousandSeparator prefix="$" />
-                  </TableCell>
+                  <TableCell align="right">{row.date}</TableCell>
                 </TableRow>
               );
             })}

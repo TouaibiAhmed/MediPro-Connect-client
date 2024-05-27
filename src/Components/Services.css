@@ -10,7 +10,7 @@ body {
     background-color: #FDFDFB; /* Définir le fond du conteneur principal en blanc */
   }
   
-  h2 {
+  .services-container h2 {
     color: #5784BA; /* Changer la couleur du titre en #5784BA */
   }
 
@@ -22,6 +22,25 @@ body {
     color:#9DB5C0;
 }
 
+.services-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px; /* Adjust the height as needed */
+  background: rgba(32, 70, 224, 1.0);
+  background: conic-gradient(from 315deg, rgba(32, 70, 224, 1.0), rgba(117, 163, 216, 1.0));
+  color: white; /* Adjust text color as needed */
+  font-size: 36px; /* Adjust font size as needed */
+  font-weight: bold;
+  margin-top: 90px;
+  margin-right:20px ;
+  margin-left:40px ;
+}
+
+.services {
+  margin: 0; /* Removes default margin from h1 tag */
+  margin-right: 990px;
+}
 
 
   
@@ -42,15 +61,32 @@ body {
     display: flex;
     flex-direction: column; /* Disposer les enfants en colonne */
     align-items: center; /* Centrer les enfants horizontalement */
-    text-align: center; /* Centrer le texte horizontalement */
+    text-align: center; 
+    transition: transform 0.3s ease; /* Add transition for smooth scaling */
+
+  }
+  .service-item:hover {
+    transform: scale(1.1); /* Scale the item when hovering */
+  }
+  .service-item a, .service-item a:visited {
+    text-decoration: none; /* Removes underline from links */
   }
   
+  
   .service-image {
-    width: 300px; /* Ajustez la largeur de l'image selon vos besoins */
-    height: auto; /* Ajustez la hauteur automatiquement pour maintenir le ratio */
-    margin-bottom: 10px; /* Espacement entre l'image et le titre */
-    border-radius: 10px; /* Ajouter des coins arrondis aux images */
+    width: 360px; /* Set a fixed width */
+    height: 200px; /* Set a fixed height */
+    object-fit: cover; /* Maintain aspect ratio and cover the entire space */
+    margin-bottom: 10px; /* Optional: adjust margin as needed */
+    border-radius: 10px; /* Optional: add rounded corners */
+    transition: transform 0.3s ease; /* Add transition for smooth scaling */
+
   }
+
+  .service-image:hover {
+    transform: scale(0.5.0.5); /* Scale the image when hovering */
+  }
+  
   
   .service-title {
     font-weight: bold;

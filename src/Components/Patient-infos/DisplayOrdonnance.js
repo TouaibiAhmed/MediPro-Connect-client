@@ -20,7 +20,6 @@ const DisplayOrdonnance = () => {
 
   const { ordonnanceId } = useParams();
 
-  console.log('Ordonnance ID:', ordonnanceId);
 
 
 
@@ -61,18 +60,17 @@ const DisplayOrdonnance = () => {
 
 
 
-
   return (
     <div className="prescription">
-    <h1 className="title">Ordonnance Médicale</h1>
+    <h1 className="titrre">Ordonnance Médicale</h1>
     {/* Render prescription data dynamically */}
-    <div className="header">
-      <div className="doctor-info">
+    <div className="headerr">
+      <div className="doctor-infos">
         <div>
           <h2>Dr.{prescriptionData.medecinId.nom} {prescriptionData.medecinId.prenom}</h2>
-          <p className="speciality">Speciality: {prescriptionData.medecinId.specialite}</p>
+          <p className="specialiteee">Speciality: {prescriptionData.medecinId.specialite}</p>
         </div>
-        <div className="contact-info">
+        <div className="contact-infos">
           <p>Adresse Cabinet: {prescriptionData.medecinId.adresseCabinet}</p>
           <p>Numero Professionnel: {prescriptionData.medecinId.numeroProfessionnel}</p>
           <p>Code Postale: {prescriptionData.medecinId.codePostal}</p>
@@ -80,10 +78,10 @@ const DisplayOrdonnance = () => {
         </div>
       </div>
     </div>
-    <div className="patient-info">
+    <div className="patient-infos">
       <h3>Patient Information</h3>
       <p><strong>Nom Patient: </strong> {prescriptionData.patientId.nom} {prescriptionData.patientId.prenom}</p>
-      <p><strong>Date </strong> {prescriptionData.date}</p>
+      <p><strong>Date:</strong> {new Date(prescriptionData.date).toLocaleDateString('en-GB')}</p>
 
     </div>
     <div className="prescription-details">
@@ -104,9 +102,11 @@ const DisplayOrdonnance = () => {
       </div>
     </div>
     <div className="signature">
-      <p className="signature-label">Signature:</p>
-      <p><strong>Signature:</strong>   <img src={doctor.signature} alt="Signature" className="signature-img" /></p>
-    </div>
+  <p className="signature-label">Signature:</p>
+  {/* Assuming prescriptionData.medecinId.signature contains the base64-encoded image data */}
+  <img src={`data:image/png;base64,${prescriptionData.medecinId.signature}`} alt="" className="signature-img" />
+</div>
+
     {/* Display QR Code with prescription data */}
     <div className="qr-code-container">
       <QRCode value={JSON.stringify(prescriptionDetailsData)} />

@@ -1,37 +1,38 @@
 /* SignInForm.css */
-.signin-container {
+.signup-container {
     display: flex;
     align-items: flex-start;
     max-width: 1200px; /* Adjust as necessary */
-    margin: 40px auto;
+    margin: 110px auto;
   }
   
-  .signin-image {
+  .signup-image {
     flex-basis: 50%;
   }
   
-  .signin-image img {
+  .signup-image img {
     width: 700px;
     height: 700px;
-    margin-top: -70px;
+    margin-top: -60px !important;
     margin-right: 5px;
     margin-left: -20px;
   }
   
-  .signin-form-container {
+  .signup-form-container {
     flex-basis: 50%;
     padding: 20px;
     display: block;
+    margin-top: 50px;
 
   }
   
-  .signin-form h2 {
+  .signup-form h2 {
     color: #333;
     margin-bottom: 5px;
     margin-left: 8px;
   }
   
-  .signin-form h3 {
+  .signup-form h3 {
     color: #666;
     margin-bottom: 20px;
   }
@@ -42,10 +43,10 @@
   }
   
   .input-row input,
-  .signin-form input[type="text"],
-  .signin-form input[type="email"],
-  .signin-form input[type="password"],
-  .signin-form select {
+  .signup-form input[type="text"],
+  .signup-form input[type="email"],
+  .signup-form input[type="password"],
+  .signup-form select {
     width: 100%;
     height: 40px;
     padding: 10px;
@@ -69,7 +70,7 @@
     margin-bottom: 5px;
     color: rgb(249, 11, 59);
 }
-.signin-button{
+.signup-button{
     background-color: #4169E1;
     color: white;
     padding: 20px 15px;
@@ -83,7 +84,7 @@
     margin-top: 5px;
     margin-left: 5px;
 }
-.signin-footer{
+.signup-footer{
     text-align: left;
     margin-left: 8px;
 }

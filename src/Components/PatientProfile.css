@@ -91,7 +91,7 @@ margin-left: 70px;
     display: table;
     width: 100%;
     background-color: #ffffff;
-    margin-top: 80px;
+    margin-top: 110px;
   }
   
   .card {
@@ -213,6 +213,8 @@ margin-left: 70px;
   background-color: #ffffff;
   margin: 20px auto; /* Center the container */
   border-radius: 8px;
+  box-shadow: 5px 5px 5px 5px rgba(0, 0, 0, 0.2);
+
 }
 
 .medical-records-container h3 {
@@ -239,11 +241,9 @@ margin-left: 70px;
 }
 
 .medical-records-container button {
-  background-color: #f0f0f0; /* Background color */
   color: #333; /* Button text color */
   border: 1px solid #ddd; /* Add border */
   border-radius: 3px; /* Rounded corners for buttons */
-  padding: 10px 20px; /* Add padding for better button appearance */
   transition: background-color 0.3s ease; /* Smooth transition on hover */
   display: flex;
   align-items: center;
@@ -599,11 +599,13 @@ color: #ffffff;
   margin-left: 420px; /* Same margin as profile card */
   margin-top: 20px;
   width: 900px; 
+  height: 300px;
   max-width: 1200px; /* Set maximum width */
   flex: 1; /* Allow the container to grow to fill available space */
   background-color: #ffffff;
   margin: 20px auto; /* Center the container */
   border-radius: 8px;
+  box-shadow: 5px 5px 5px 5px rgba(0, 0, 0, 0.2);
 }
 
 .ordonnances-container h3 {
@@ -648,7 +650,10 @@ color: #ffffff;
   min-width: 200px;
   cursor: pointer; /* Change cursor to pointer on hover */
 }
-
+.ordonnances{
+  height: 150px;
+  margin-top: -10px;
+}
 .ordonnance-card:hover {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
@@ -676,4 +681,22 @@ color: #ffffff;
 
 .card-content h4 {
   margin-top: 0;
+}
+
+/* Appointments Container styles */
+.appointments-container {
+  margin-left: 280px; /* Adjust this value based on the actual width of your sidebar */
+  width: 300px;
+  margin-top: 20px;
+  width: calc(100% - 260px); /* Adjust width to take full remaining space */
+  padding: 20px;
+  background-color: #ffffff; /* Optional: for better visibility */
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Optional: adds shadow for depth */
+}
+
+/* Specific wrapper for the appointments table */
+.appointments-table-wrapper {
+  padding: 20px; /* Adds padding around the table */
+  margin: 0 auto; /* Centers the table horizontally */
+  max-width: 90%; /* Limits the maximum width of the table */
 }

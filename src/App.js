@@ -17,6 +17,21 @@ import SignUpPatient from './Components/Signuppatients.js';
 import SignUpDoctor from './Components/Signupdoctors.js';
 import Contact from './Components/Contact.js'
 import Service from './Components/Services.js'
+
+import DisplayDossierMedical from './Components/Patient-infos/DisplayDossierMedical.js'
+
+import AddDossierMedical from './Components/Patient-infos/DossierMedical.js'
+
+
+import DisplayOrdonnance from './Components/Patient-infos/DisplayOrdonnance.js'
+
+import AddOrdonnance from './Components/Patient-infos/AddOrdonnance.js'
+
+
+import AdminDashboard from './Components/AdminDashboard/AdminDashboard.js'
+
+
+
 function App() {
   return (
     <Router>
@@ -34,19 +49,42 @@ function App() {
       <Route path="/doctors" element={<Doctors />} /> 
 
       <Route path="/services" element={<Service />} /> 
+      
+
 
 
       <Route path="/contact" element={<Contact />} /> 
 
 
-      <Route exact path="/profile/patient/:idPatient" element={<PatientProfile/>} />
+      <Route exact path="/profile/patient/:patientId" element={<PatientProfile/>} />
 <Route exact path="/profile/medecin/:idMedecin" element={<MedecinProfile/>} />
+
+
+<Route exact path="/profile/medecin/:idMedecin" element={<MedecinProfile/>} />
+
+<Route exact path="/display-dossier-medical/:id" element={<DisplayDossierMedical/>} />
+
+<Route exact path="/AddDossierMedical/:patientId" element={<AddDossierMedical/>} />
+
+
+<Route exact path="/ordonnance/:ordonnanceId" element={<DisplayOrdonnance/>} />
+
+<Route exact path="/addOrdonnance/:patientId" element={<AddOrdonnance/>} />
+
+
+
+
+{/* Nested Dashboard Route */}
+<Route path="/dashboard/:id/*" element={<Dashboard />} />
+
+<Route path="/admin/*" element={<AdminDashboard/>} />
+
+
 
 
 
 
       </Routes>
-      <Footer/>
     </div>
   </Router>
 );

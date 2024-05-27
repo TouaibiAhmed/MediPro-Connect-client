@@ -1,19 +1,110 @@
-    import React, { useState, useEffect } from 'react';
+    import React, { useState, useEffect, useMemo  } from 'react';
     import { useParams, Link, useNavigate  } from 'react-router-dom';
     import axios from 'axios';
     import './PatientProfile.css'; // Import your custom CSS file
-    import { toast, ToastContainer } from 'react-toastify';
     import 'react-toastify/dist/ReactToastify.css';
     import { Cloudinary } from 'cloudinary-core'; // Import Cloudinary
+
+    import { Alert, FormControl, InputLabel, MenuItem, Select } from '@mui/material';
+
+
+    import Snackbar from '@mui/material/Snackbar';
+    import MuiAlert from '@mui/material/Alert';
+    
+   
+
+    import { useTable, useFilters, useGlobalFilter } from 'react-table';
+    import { Table,TableContainer,TableCell, TableHead, TableRow, TableBody, Paper, TextField } from '@mui/material';
+
+
+   
+    
+    
+    function StatusFilter({ filter, setFilter }) {
+      return (
+        <div style={{ textAlign: 'right', width: '300px' }}>
+          Filter by Status:
+          <select
+            value={filter}
+            onChange={e => setFilter(e.target.value)}
+            style={{ marginLeft: '5px', width: '150px' }}
+          >
+            <option value="">All</option>
+            <option value="prévu">Prévu</option>
+            <option value="accepté">Accepté</option>
+            <option value="annulé">Annulé</option>
+            <option value="terminé">Terminé</option>
+          </select>
+        </div>
+      );
+    }
+    
+    function AppointmentsTable({ columns, data }) {
+      const {
+        getTableProps,
+        getTableBodyProps,
+        headerGroups,
+        rows,
+        prepareRow,
+        state,
+        setFilter,  // Use this for setting specific column filter
+      } = useTable(
+        {
+          columns,
+          data,
+          initialState: { filters: [{ id: 'statutRendezVous', value: '' }] }
+        },
+        useFilters,  // Include this hook
+        useGlobalFilter
+      );
+    
+      return (
+        <>
+          <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '10px' }}>
+            <StatusFilter filter={state.filters.find(f => f.id === 'statutRendezVous')?.value || ''} setFilter={value => setFilter('statutRendezVous', value)} />
+          </div>
+          <TableContainer component={Paper}>
+            <Table {...getTableProps()}>
+              <TableHead>
+                {headerGroups.map(headerGroup => (
+                  <TableRow {...headerGroup.getHeaderGroupProps()}>
+                    {headerGroup.headers.map(column => (
+                      <TableCell {...column.getHeaderProps()}>{column.render('Header')}</TableCell>
+                    ))}
+                  </TableRow>
+                ))}
+              </TableHead>
+              <TableBody {...getTableBodyProps()}>
+                {rows.map(row => {
+                  prepareRow(row);
+                  return (
+                    <TableRow {...row.getRowProps()}>
+                      {row.cells.map(cell => (
+                        <TableCell {...cell.getCellProps()}>{cell.render('Cell')}</TableCell>
+                      ))}
+                    </TableRow>
+                  );
+                })}
+              </TableBody>
+            </Table>
+          </TableContainer>
+        </>
+      );
+    }
+    
+
+
+
 
 
 
     const PatientProfile = () => {
-      
+      const [notificationOpen, setNotificationOpen] = useState(false);
+
       const [patient, setPatient] = useState(null);
-      const { idPatient } = useParams();
+      const { patientId } = useParams();
       const navigate = useNavigate(); 
-      console.log('Patient ID:', idPatient);
+      console.log('Patient ID:', patientId);
 
       const authToken = localStorage.getItem('authToken');
 
@@ -37,14 +128,32 @@
 
       const [ordonnances, setOrdonnances] = useState([]);
 
+      const [userType, setUserType] = useState(""); // State to store user type
+
+
+      const [errorMessage, setErrorMessage] = useState(false);
+
+
+      const [showAppointments, setShowAppointments] = useState(false);  // Ensure it is initialized as false
+
+      const [appointments, setAppointments] = useState([]);
+
+      
+        const [rendezVous, setRendezVous] = useState([]);
+
+     
+
+  const [filter, setFilter] = useState('all');
 
       const cloudinary = new Cloudinary({
         cloud_name: process.env.REACT_APP_CLOUDINARY_CLOUD_NAME, 
       });
 
 
-      const loggedInUserId = idPatient; // Add this line
+      const loggedInUserId = patientId; // Add this line
 
+
+      const USERID = sessionStorage.getItem('userId');
 
 
 
@@ -100,7 +209,7 @@
       useEffect(() => {
         const fetchPatient = async () => {
           try {
-            const response = await axios.get(`http://localhost:3000/api/patient/consulterprofil/${idPatient}`);
+            const response = await axios.get(`http://localhost:3000/api/patient/consulterprofil/${patientId}`);
             
       
             const patientData = response.data;
@@ -135,22 +244,120 @@
           }
         };
 
+        const fetchUserType = () => {
+          // Fetch user type from localStorage or API
+          const userTypeFromStorage = localStorage.getItem('userType');
+          setUserType(userTypeFromStorage);
+        };
+       
+
+
+
+        const fetchRendezVous = async () => {
+          try {
+            const response = await axios.get(`http://localhost:3000/api/rendezVous/listAppointmentsPatient/${patientId}`);
+            console.log("RendezVous Data:", response.data); // Add this to log the data
+
+            setRendezVous(response.data);
+          } catch (error) {
+            console.error('Error fetching rendezvous data:', error);
+          }
+        };
+
+
         fetchPatient();
-      }, [idPatient]);
+        fetchUserType();
+        fetchRendezVous();
+
+
+      }, [patientId]);
+
+   
+      const columns = useMemo(() => [
+        {
+          Header: 'Doctor',
+          accessor: row => `${row.medecin[0]?.prenom} ${row.medecin[0]?.nom}`, // Combine first name and last name
+          id: 'medecin', // Adding an ID for filtering purposes
+          Cell: ({ value, row }) => (
+            <>
+              <img src={row.original.medecin[0]?.image} alt={value} style={{ width: 30, borderRadius: '50%' }} />
+              {value}
+            </>
+          )
+        },
+        {
+          Header: 'Specialite',
+          accessor: row => row.medecin[0]?.specialite || '', // Safely access properties
+        },
+        {
+          Header: 'Address',
+          accessor: row => row.medecin[0]?.adresseCabinet || '', // Handle potentially undefined values
+        },
+        {
+          Header: 'Date',
+          accessor: 'date',
+          Cell: ({ value }) => value ? new Date(value).toLocaleDateString() : '' // Check if value is not undefined
+        },
+        {
+          Header: 'Time',
+          accessor: 'heureDebut' // Assume this field is always defined
+        },
+        {
+          Header: 'Status',
+          accessor: 'statutRendezVous',
+          Cell: ({ value }) => {
+            let background = value === 'prévu' ? 'lightblue' :
+                             value === 'accepté' ? 'lightgreen' :
+                             value === 'annulé' ? 'red' : 'grey';
+            return <span style={{ backgroundColor: background, padding: '3px 10px', borderRadius: '5px', color: 'white' }}>{value}</span>
+          }
+        }
+      ], []);
+      
+
+
+    
+
+
+      const handleProfileImageChange = async (e) => {
+        // Check if files are present
+        if (!e.target.files || e.target.files.length === 0) {
+          console.error('No files selected.');
+          return;
+        }
+      
+        // Get the first file from the list
+        const file = e.target.files[0];
+      
+        try {
+          const formData = new FormData();
+          formData.append('file', file);
+          formData.append('upload_preset', 'medipro'); 
+      
+          const response = await axios.post('https://api.cloudinary.com/v1_1/dqrzdmgyl/image/upload', formData);
+      
+          const imageUrl = response.data.secure_url;
+          setPatient({ ...patient, image: imageUrl });
+        } catch (error) {
+          console.error('Error uploading profile image:', error);
+          // Handle error here (e.g., display error message to user)
+        }
+      };
+      
 
 
 
       const handleUpdate = async () => {
         try {
           console.log("Updating patient data:", patient);
-          const response = await axios.put(`http://localhost:3000/api/patient/updateProfil/${idPatient}`, patient);
+          const response = await axios.put(`http://localhost:3000/api/patient/updateProfil/${patientId}`, patient);
           console.log("Update response:", response.data);
       
           const updatedPatientData = response.data;
           setPatient({
             ...patient,
-            dateNaissance: updatedPatientData.dateNaissance, // Corrected key
-            statutSocial: updatedPatientData.statutSocial, // Corrected key
+            dateNaissance: updatedPatientData.dateNaissance,
+            statutSocial: updatedPatientData.statutSocial,
           });
           setEditing(false);
         } catch (error) {
@@ -178,14 +385,26 @@
           setShowProfileCard(true);
           setShowMedicalRecords(false);
           setShowOrdonnance(false);
+          setShowAppointments(false);
+
         } else if (buttonName === 'medicalRecords') {
           setShowProfileCard(false);
           setShowMedicalRecords(true);
           setShowOrdonnance(false);
+          setShowAppointments(false);
+
         } else if (buttonName === 'ordonnance') {
           setShowProfileCard(false);
           setShowMedicalRecords(false);
           setShowOrdonnance(true);
+          setShowAppointments(false);
+
+        }else if (buttonName === 'rdv') {
+          setShowProfileCard(false);
+          setShowMedicalRecords(false);
+          setShowOrdonnance(false);
+          setShowAppointments(true);
+
         }
       };
 
@@ -208,25 +427,8 @@
 
 
       
-      const handleImageChange = async (file) => {
-        try {
-          const formData = new FormData();
-          formData.append('image', file);
       
-          const response = await axios.post('http://localhost:3000/api/upload/image', formData, {
-            headers: {
-              'Content-Type': 'multipart/form-data'
-            }
-          });
       
-          const imageUrl = response.data.imageUrl;
-          setPatient({ ...patient, image: imageUrl });
-        } catch (error) {
-          console.error('Error uploading image:', error);
-          // Handle error here (e.g., display error message to user)
-        }
-      };
-
 
     
       const handleMedicalRecordClick = async (recordId) => {
@@ -290,27 +492,48 @@
       };
 
       const handleAddMedicalRecordClick = () => {
-        // Handle click on "Add Medical Record" button
-        try {
+        if (patientId !== USERID ) {
+          try {
           // Navigate to DossierMedical component with the patient ID as URL parameter
-          navigate(`/dossier-medical/${idPatient}`);
+          navigate(`/AddDossierMedical/${patientId}`);
         } catch (error) {
           console.error('Error navigating to DossierMedical:', error);
         }
+        
+      }
+      else{
+        
+        setErrorMessage("Only doctors can add medical records.");
+
+      }
       };
 
 
       const handleAddOrdonnance = () =>{
+        if (patientId !== USERID ) {
 
         try{
-          navigate(`/addOrdonnance/${idPatient}`);
+          navigate(`/addOrdonnance/${patientId}`);
         }catch(error){
           console.error('Error navigating to Ordonnance:', error);
 
         }
-      };
+      }
+      else{
+        
+        setErrorMessage("Only doctors can add perscriptions.");
 
+      }
+    };
 
+    const handleRDVClick = () => {
+      
+      setActiveButton('rdv');
+      setShowProfileCard(false); 
+      setShowMedicalRecords(false); 
+      setShowOrdonnance(false); 
+      setShowAppointments(true);
+    };
  
       
 
@@ -318,6 +541,8 @@
         console.log('Ordonnance button clicked');
         setActiveButton('ordonnance');
         setShowProfileCard(false); // Hide profile card when ordonnance section is active
+        setShowAppointments(false);
+
         setShowMedicalRecords(false); // Hide medical records section when ordonnance section is active
         setShowOrdonnance(true); // Show ordonnance section
       };
@@ -346,22 +571,61 @@
 
       
 
+      const handleLogout = async () => {
+        try {
+            // Call the logout endpoint on the server
+            await axios.post('http://localhost:3000/api/patient/logout');
+            sessionStorage.removeItem('userId');
+            navigate('/');
+            setNotificationOpen(true);
+
+
+        } catch (error) {
+            console.error("Error during logout:", error);
+            // Handle error
+        }
+    };
+
+
+
+    const handleFilterChange = (event) => {
+      setFilter(event.target.value);
+    };
+  
+    const filteredAppointments = appointments.filter(appointment => {
+      if (filter === 'all') {
+        return true;
+      } else {
+        return appointment.status === filter;
+      }
+    }); 
+    
+ 
+    
+
+  
+  
+
+
+
+      
+
       return (
         <div className="patient-container">
 
           <div className="sidebar">
           {editing ? (
         <>
-          <label htmlFor="profile-image">
-            <img src={patient.image} alt="Profile" className="profile-image" />
-            <input
-              type="file"
-              id="profile-image"
-              accept="image/*"
-              style={{ display: "none" }}
-              onChange={(e) => handleImageChange(e.target.files[0])}
-            />
-          </label>
+        <label htmlFor="profile-image">
+  <img src={patient.image} alt="Profile" className="profile-image" />
+  <input
+    type="file"
+    id="profile-image"
+    accept="image/*"
+    style={{ display: "none" }}
+    onChange={handleProfileImageChange}
+  />
+</label>
         </>
       ) : (
         <>
@@ -392,11 +656,14 @@
         </button>
       </li>
       <li>
-        <button className="btnn">
+        <button className={`btnn ${activeButton === 'rdv' ? 'active' : ''}`}    onClick={() => handleButtonClick('rdv')}
+>
           <img src="/images/rdv.png" alt="Calendar Icon" className="sidebar-icon" />
         <span> Rendez-vous</span>
         </button>
       </li>
+      {patientId === USERID && (
+    <>
       <li>
         <button className="btnn" onClick={toggleEditing}>
           <img src="/images/settings.png" alt="Settings Icon" className="sidebar-icon" />
@@ -404,16 +671,26 @@
         </button>
       </li>
       <li>
-        <button className="btnn" >
+      <button className="btnn" onClick={handleLogout}>
           <img src="/images/logout.png" alt="Logout Icon" className="sidebar-icon" />
         <span> Logout</span>
         </button>
       </li>
-
+      </>
+      )}
     </ul>
           </div>
           {showProfileCard && (
           <div className="patient-profile-card">
+                 <Snackbar
+    open={notificationOpen}
+    autoHideDuration={6000} // Adjust as per your requirement
+    onClose={() => setNotificationOpen(false)}
+>
+    <MuiAlert  severity="success">
+       Logout successfully
+    </MuiAlert >
+</Snackbar>
             <div className="card">
               <h5 className="card-header">Patient Account</h5>
               <div className="card-body">
@@ -466,7 +743,7 @@
     <p className="card-text" style={{ position: "relative" }}>Allergie:
       {editing ? (
         <textarea
-        style={{ position: "absolute", top: "0", left: "120px", width: "200px", height: "50px" }}
+        style={{ position: "absolute", top: "25", left: "120px", width: "200px", height: "50px" }}
 
           value={patient.Allergie}
           onChange={(e) => setPatient(prevPatient => ({ ...prevPatient, Allergie: e.target.value }))}
@@ -510,7 +787,19 @@
 
 
 {showMedicalRecords && (
+  
   <div className="medical-records-container">
+  
+  {errorMessage && (
+      <Alert
+        severity="error"
+        onClose={() => setErrorMessage('')}
+        sx={{ position: 'absolute', top: 0, left: '50%', transform: 'translateX(-50%)', zIndex: 9999, fontSize: '1.0rem', padding: '25px' }}
+      >
+        {errorMessage}
+      </Alert>
+    )}
+
     <h3>Medical Records
    
     </h3>
@@ -609,6 +898,16 @@
 
   {showOrdonnance && (
     <div className="ordonnances-container">
+     {errorMessage && (
+      <Alert
+        severity="error"
+        onClose={() => setErrorMessage('')}
+        sx={{ position: 'absolute', top: 0, left: '50%', transform: 'translateX(-50%)', zIndex: 9999, fontSize: '1.0rem', padding: '25px' }}
+      >
+        {errorMessage}
+      </Alert>
+    )}
+
       <h3>Ordonnances</h3>
       <div className='add'>
         <button className="btn-add" onClick={handleAddOrdonnance}>                      
@@ -633,6 +932,14 @@
       </div>
     </div>
   )}
+
+{showAppointments && (
+  <div className="appointments-container">
+    <div className="appointments-table-wrapper">
+      <AppointmentsTable columns={columns} data={rendezVous} />
+    </div>
+  </div>
+)}
 
 
 

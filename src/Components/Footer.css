@@ -1,32 +1,33 @@
 .footerr {
   display: flex;
-  justify-content: center; /* Changed to center the footer content */
-  align-items: start; /* Aligns items to the start of the cross axis */
+  justify-content: flex-start; /* Changed to center the footer content */
+  align-items: center; /* Aligns items to the start of the cross axis */
   flex-wrap: wrap;
   padding: 20px 20px;
   background-color: #f5f5f5;
   font-size: 14px;
   color: #333;
   position: relative; /* Add relative positioning to the parent container */
+  
 }
 
 .footer-section h3 {
   font-size: 20px;
+  margin-left: 0; 
+
   margin-left: 30px;
   margin-bottom: 8px;
 }
 
 .footer-section {
   flex: 1;
-  margin-right: 70px;
-  margin-left: 70px;
+ 
   margin-bottom: 10px;
-  margin-top: 60px;
 }
 
 .footer-section ul {
   list-style: none;
-  margin-left: 40px;
+  margin-left: 0px;
   padding: 0;
 }
 
@@ -67,18 +68,16 @@
   margin-bottom: -3px; /* Adjust vertical alignment if necessary */
 }
 
-.logo-footer {
-  position: absolute; /* Absolute position the logo */
-  left: 50%; /* Position the center of the logo at the middle of the footer */
-  transform: translateX(-50%); /* Shift the logo left by half its width to center it */
-  width: auto; /* Allow it to be auto to keep the image ratio */
-  max-width: none; /* Override any max width */
-}
 
-.logo {
+
+.footer-logo {
   display: block; /* Make sure the logo is a block to apply width and height correctly */
-  width: 230px; /* Adjust the width as necessary */
-  height: 74px; /* Maintain aspect ratio */
+  width: 290px; /* Adjust the width as necessary */
+  height: 90px; /* Maintain aspect ratio */
+  flex: 1;
+  margin-top: -35px;
+  margin-left: -15px;
+
 }
 
 .footer-nav {
@@ -88,4 +87,18 @@
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.contactt{
+  margin-top: -25px;
+}
+
+.lang{
+  margin-top: -65px;
+
+}
+.follow-us{
+
+  margin-top: -65px;
+
 }

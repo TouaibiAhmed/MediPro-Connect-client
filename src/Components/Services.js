@@ -1,34 +1,35 @@
 import React, { useState } from 'react';
 import './Services.css';
+import { Link } from 'react-router-dom';
 
 const Services = () => {
   const [page, setPage] = useState(1);
   const departmentsPerPage = 9; // Nombre de départements par page
 
-  // Liste des départements (exemples)
-  const departments = [
-    
-        { name: 'Médecine Générale', description: 'Consultation générale pour tous types de maladies.', image: 'images/Médecine Générale.jpeg' },
-        { name: 'Cardiologie', description: 'Consultation et traitement des problèmes cardiaques.', image: '/images/cardiologie.jpg' },
-        { name: 'Pédiatrie', description: 'Spécialisé dans les soins de santé des nourrissons, enfants et adolescents.', image: '/images/pediatrie.jpg' },
-        { name: 'Gynécologie', description: 'Consultation et traitement des problèmes de santé des femmes.', image: '/images/gynecologie.jpg' },
-        { name: 'Neurologie', description: 'Spécialisé dans les maladies du système nerveux.', image: '/images/neurologie.jpg' },
-        { name: 'Dermatologie', description: 'Consultation et traitement des problèmes de peau, des cheveux et des ongles.', image: '/images/dermatologie.jpg' },
-        { name: 'Orthopédie', description: 'Consultation et traitement des problèmes liés aux os, aux articulations et aux muscles.', image: '/images/orthopedie.jpg' },
-        { name: 'Endocrinologie', description: 'Spécialisé dans les troubles hormonaux et métaboliques.', image: '/images/endocrinologie.jpg' },
-        { name: 'Ophtalmologie', description: 'Consultation et traitement des problèmes de vision et des yeux.', image: '/images/ophtalmologie.jpg' },
-        { name: 'Oto-rhino-laryngologie (ORL)', description: 'Consultation et traitement des problèmes liés aux oreilles, au nez et à la gorge.', image: '/images/orl.jpg' },
-        { name: 'Chirurgie générale', description: 'Spécialisé dans les interventions chirurgicales générales.', image: '/images/chirurgie_generale.jpg' },
-        { name: 'Psychiatrie', description: 'Consultation et traitement des troubles mentaux et émotionnels.', image: '/images/psychiatrie.jpg' },
-        { name: 'Rhumatologie', description: 'Spécialisé dans les maladies des articulations, des muscles et des tissus conjonctifs.', image: '/images/rhumatologie.jpg' },
-        { name: 'Urologie', description: 'Consultation et traitement des problèmes du système urinaire chez les hommes et les femmes.', image: '/images/urologie.jpg' },
-        { name: 'Radiologie', description: 'Spécialisé dans limagerie médicale pour le diagnostic des maladies.', image: '/images/radiologie.jpg' },
-        { name: 'Anesthésiologie', description: 'Spécialisé dans la gestion de la douleur et lanesthésie lors des interventions chirurgicales.', image: '/images/anesthesiologie.jpg' },
-        { name: 'Hématologie', description: 'Spécialisé dans les maladies du sang et des organes hématopoïétiques.', image: '/images/hematologie.jpg' },
-        { name: 'Nutrition et diététique', description: 'Consultation et conseils sur la nutrition et les régimes alimentaires.', image: '/images/nutrition_dietetique.jpg' },
-        { name: 'Médecine du travail', description: 'Spécialisé dans la santé des travailleurs et la prévention des risques professionnels.', image: '/images/medecine_travail.jpg' },
-        { name: 'Oncologie', description: 'Spécialisé dans le diagnostic et le traitement des cancers.', image: '/images/oncologie.jpg' }
-      ];
+    // Liste des départements (exemples)
+    const departments = [
+      
+          { name: 'General Practitioner', description: 'General consultation for all types of illnesses.', image: 'images/med gen.jpg' },
+          { name: 'Cardiology', description: ' Consultation and treatment of heart problems.', image: '/images/cardio.jpg' },
+          { name: 'Pediatrics', description: 'Specialized in healthcare for infants, children, and adolescents.', image: '/images/pedia.jpeg' },
+          { name: 'Gynecology', description: 'Consultation and treatment of womens health problems.', image: '/images/gyneco.jpg' },
+          { name: 'Neurology', description: 'Specialized in diseases of the nervous system.', image: '/images/neuro.jpg' },
+          { name: 'Dermatology', description: 'Consultation and treatment of skin, hair, and nail problems.', image: '/images/dermato.jpeg' },
+          { name: 'Orthopedics', description: ' Consultation and treatment of problems related to bones, joints, and muscles.', image: '/images/orthopédie.jpg' },
+          { name: 'Endocrinology', description: 'Specialized in hormonal and metabolic disorders.', image: '/images/endocrinologie.jpeg' },
+          { name: 'Ophthalmology', description: 'Consultation and treatment of vision and eye problems.', image: '/images/ophtalmologie.jpg' },
+          { name: 'Otolaryngology (ENT)', description: 'Consultation and treatment of problems related to ears, nose, and throat.', image: '/images/orl.jpg' },
+          { name: 'Psychiatry', description: 'Consultation and treatment of mental and emotional disorders.', image: '/images/psyc.jpg' },
+          { name: 'Rheumatology', description: ' Specialized in joint, muscle, and connective tissue diseases.', image: '/images/rhumatologie.jpg' },
+          { name: 'Urology', description: 'Consultation and treatment of urinary system problems in both men and women.', image: '/images/urologie.jpg' },
+          { name: 'Anesthesiology', description: 'Specialized in pain management and anesthesia during surgical procedures.', image: '/images/anesthesiologie.jpg' },
+          { name: 'Nutrition and Dietetics', description: ' Consultation and advice on nutrition and dietary plans.', image: '/images/nutrition.jpg' },
+          { name: 'Dental Care', description: ' Specialized in the diagnosis and treatment of dental conditions.', image: '/images/dentist.jpg' },
+          { name: 'Radiology', description: ' Specialized in medical imaging and diagnostic techniques using radiation.', image: '/images/radio.jpg' },
+          { name: 'Gastroenterology', description: 'Specialized in digestive, intestinal, and gastrointestinal disorders. ', image: '/images/gastro.jpg' }
+
+
+        ];
       
 
   // Fonction pour afficher les départements de la page actuelle
@@ -37,13 +38,18 @@ const Services = () => {
     const endIndex = startIndex + departmentsPerPage;
     return departments.slice(startIndex, endIndex).map((department, index) => (
       <li className="service-item" key={startIndex + index}>
-        <div className="service-info">
-          <img src={department.image} alt={department.name} className="service-image" />
-          <div className="service-details">
-            <p><strong>Département: </strong>{department.name}</p>
-            <p><strong>Description: </strong>{department.description}</p>
+           <Link
+  to={`/doctors?speciality=${encodeURIComponent(department.name)}`}
+  departments={departments} // Pass departments as a prop
+>
+          <div className="service-info">
+            <img src={department.image} alt={department.name} className="service-image" />
+            <div className="service-details">
+              <p><strong>Département: </strong>{department.name}</p>
+              <p><strong>Description: </strong>{department.description}</p>
+            </div>
           </div>
-        </div>
+        </Link>
       </li>
     ));
   };
@@ -65,7 +71,9 @@ const Services = () => {
 
   return (
     <div className="services-container">
-      <h2>Nos Services</h2>
+      <div className="services-header">
+    <h1 className='services'>Services</h1>
+  </div>
       <ul className="services-list">
         {renderDepartments()}
       </ul>

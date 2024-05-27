@@ -12,9 +12,20 @@ export const setUserType = (userType) => ({
 
 
 
-
-
 export const setSelectedDoctorId = (doctorId) => ({
   type: SET_SELECTED_DOCTOR_ID,
   payload: doctorId,
 });
+
+
+
+
+
+// userActions.js
+export const setNotifications = (notifications) => ({
+  type: 'SET_NOTIFICATIONS',
+  notifications
+});
+
+// Add more actions as needed
+

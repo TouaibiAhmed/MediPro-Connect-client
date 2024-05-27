@@ -1,4 +1,4 @@
-// actions.js
+// searchAction.js
 export const setSearchName = (searchName) => ({
     type: 'SET_SEARCH_NAME',
     payload: searchName

@@ -34,7 +34,7 @@ const columnChartOptions = {
   },
   yaxis: {
     title: {
-      text: '$ (thousands)'
+      text: 'Patient'
     }
   },
   fill: {
@@ -43,7 +43,7 @@ const columnChartOptions = {
   tooltip: {
     y: {
       formatter(val) {
-        return `$ ${val} thousands`;
+        return ` ${val} Patient`;
       }
     }
   },
@@ -93,12 +93,12 @@ const SalesColumnChart = () => {
 
   const [series] = useState([
     {
-      name: 'Net Profit',
-      data: [180, 90, 135, 114, 120, 145]
+      name: 'Male Patients',
+      data: [20, 27, 12, 30, 46, 86]
     },
     {
-      name: 'Revenue',
-      data: [120, 45, 78, 150, 168, 99]
+      name: 'Female Patients',
+      data: [12, 10, 33,24, 27, 45]
     }
   ]);
 
